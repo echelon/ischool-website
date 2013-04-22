@@ -1,0 +1,50 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400|Poiret+One|Quicksand:300,400|Josefin+Sans|Roboto:400,100|Titillium+Web:400,200|Raleway|Advent+Pro);
+.raleway {
+  font-family: 'Raleway', sans-serif;
+}
+.josefin {
+  font-family: 'Josefin Sans', sans-serif;
+}
+.quicksand {
+  font-family: 'Quicksand', sans-serif;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'ubuntu';
+  background-image: url('/img/light_wool3.png');
+}
+body .red {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+body .blue {
+  background-color: rgba(0, 0, 255, 0.2);
+}
+body .yellow {
+  background-color: rgba(255, 255, 0, 0.5);
+}
+div {
+  padding: 0px;
+  margin: 0px;
+}
+h1,
+h2,
+h3 {
+  padding: 0px;
+  margin: 0px;
+}
+p {
+  padding: 8px;
+  margin: 0px;
+}
+header {
+  background-color: #fff;
+  color: #aaa;
+  font-size: 1.5em;
+  padding: 11px 0px;
+  font-family: 'Raleway', sans-serif;
+}
+header a {
+  color: #111;
+  text-decoration: none;
+}
