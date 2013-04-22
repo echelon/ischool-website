@@ -1,6 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400|Poiret+One|Quicksand:300,400|Josefin+Sans|Roboto:400,100|Titillium+Web:400,200|Raleway|Advent+Pro);
 
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Lato:400,900|Ubuntu:300,400,700,300italic);
+@import url(http://fonts.googleapis.com/css?family=Overlock|Droid+Sans:400,700|Lato:400,900|Oleo+Script|Ubuntu:300,400,700,300italic|Montserrat+Alternates);
+/* 
+Copyright (c) 2013 Brandon Thomas
+Some background images from SubtlePatterns.com 
+*/
 .raleway {
   font-family: 'Raleway', sans-serif;
 }
@@ -19,9 +23,28 @@ body {
   font-family: 'Quicksand';
   background-image: url('/img/light_wool3.png');
 }
-body .top {
+body header {
+  width: 100%;
+  margin: 0px;
+  padding: 14px 8px 11px;
   background-color: #fff;
-  padding-top: 70px;
+  color: #aaa;
+  font-size: 1.0em;
+  font-family: 'Raleway', sans-serif;
+  position: fixed;
+  box-shadow: 0px 0px 8px #999;
+}
+body header a {
+  font-size: 1.5em;
+  color: #111;
+  text-decoration: none;
+}
+body header #social-icons {
+  display: inline-block;
+  width: 68px;
+  float: right;
+  padding: 0px;
+  margin: 0px 12px;
 }
 body #header-spacer {
   margin: 0px;
@@ -36,6 +59,7 @@ body #photo {
   background-attachment: fixed;
   background-position: top center;
   background-size: cover;
+  overflow: hidden;
 }
 body #photo #textbit {
   height: 100%;
@@ -45,6 +69,8 @@ body #photo #textbit {
 body #photo #textbit #textwrap {
   display: table-cell;
   vertical-align: middle;
+  border: 1px solid red;
+  padding: 0px 5%;
 }
 body #photo #textbit #textwrap .text {
   font-family: 'Ubuntu';
@@ -53,10 +79,20 @@ body #photo #textbit #textwrap .text {
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0.7);
   color: #eee;
-  margin: 10px 5% 10px 5%;
+  /*margin: 10px 5% 10px 5%;*/
+
+  margin: 10px 0px 10px 0px;
+  /*box-shadow: 5px 5px 15px #111;*/
+
+}
+body .top {
+  padding-top: 20px;
 }
 body .red {
+  padding: 10px;
   background-color: rgba(255, 0, 0, 0.2);
+  border-top: 3px solid rgba(255, 100, 100, 0.9);
+  border-bottom: 3px solid rgba(100, 100, 100, 0.5);
 }
 body .blue {
   background-color: rgba(0, 0, 255, 0.2);
@@ -64,9 +100,34 @@ body .blue {
 body .yellow {
   background-color: rgba(255, 255, 0, 0.5);
 }
-div {
-  padding: 0px;
-  margin: 0px;
+body #sponsors {
+  text-align: center;
+  padding: 20px;
+  color: #555;
+}
+body #sponsors img {
+  padding: 15px;
+}
+body .photo2 {
+  color: #fff;
+  font-family: 'ubuntu';
+  background-image: url('/img/circles-pattern.jpg');
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: cover;
+}
+body .photo2 h1 {
+  padding: 20px 10px 0px;
+}
+body footer {
+  font-size: 0.8em;
+  font-family: 'lato';
+  font-weight: normal;
+  padding: 0.8em;
+  /*background-color: #151515;*/
+
+  background-color: rgba(10, 10, 10, 0.7);
+  color: #fff;
 }
 h1,
 h2,
@@ -77,27 +138,4 @@ h3 {
 p {
   padding: 8px;
   margin: 0px;
-}
-header {
-  width: 100%;
-  margin: 0px;
-  padding: 14px 8px 11px;
-  background-color: #fff;
-  color: #aaa;
-  font-size: 1.0em;
-  font-family: 'Raleway', sans-serif;
-  position: fixed;
-  box-shadow: 0px 0px 8px #999;
-}
-header a {
-  font-size: 1.5em;
-  color: #111;
-  text-decoration: none;
-}
-header #social-icons {
-  display: inline-block;
-  width: 68px;
-  float: right;
-  padding: 0px;
-  margin: 0px 12px;
 }
