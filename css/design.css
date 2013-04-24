@@ -87,6 +87,14 @@ body #photo #textbit #textwrap .text {
 body .top {
   padding-top: 20px;
 }
+body #logofont {
+  font-size: 5.0em;
+  font-family: 'droid sans';
+  font-style: italic;
+}
+body #logofont:first-letter {
+  color: #ff0;
+}
 body .red {
   padding: 10px;
   background-color: rgba(255, 0, 0, 0.2);

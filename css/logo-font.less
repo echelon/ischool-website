@@ -1,0 +1,96 @@
+
+.no-select {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.f(@family; @weight: none; @style: italic; @size: 1.0em) {
+	font-family: @family;
+	font-weight: @weight;
+	font-style: @style;
+	font-size: @size;
+}
+
+.sz(@size) {
+	font-size: @size;
+}
+
+.it { font-style: italic; }
+.b { font-weight: bold; }
+.l { font-weight: lighter; }
+.nc { text-transform: lowercase; }
+
+body {
+	
+	font-size: 4em;
+	font-style: italic;
+
+	#logos {
+		text-transform: lowercase;
+		.s {
+			color: #000;
+			text-transform: capitalize;
+		}
+		.sp {
+			display: none;
+		}
+		.i {
+			color: #227;
+		}
+		
+/*
+		No: 
+		 	Lemon || Ubuntu
+		 	Oleo Script 0.8 || Ubuntu
+		Okay:
+			Oleo Script 0.8 || Droid Sans
+			Rambla 0.7i || Droid Sans 1.0ic
+		Good:
+			9. Amaranth 0.88i || Rambla 1.0ic
+		*/
+
+
+		#one {
+			.i { .f('nobile'); .it; .sz(0.8em); .b; }
+			.s { .f('rambla'); .it; .l; .nc }
+		}
+		#two {
+			.i { .f('fjord'); .sz(0.88em); .it; .b; }
+			.s { .f('ubuntu'); .it; }
+		}
+		#three {
+			.i { .f('days one'); .sz(0.87em); .it; }
+			.s { .f('droid sans'); .it; }
+		}
+		#four {
+			.i { .f('doppio one'); .sz(0.8em); .it; .b; }
+			.s { .f('droid sans'); .it; }
+		}
+		#five {
+			.i { .f('kenia'); .sz(0.85em); .it; .b; }
+			.s { .f('ubuntu'); .it; }
+		}
+		#six {
+			.i { .f('kenia'); .sz(0.85em); .it; .b; }
+			.s { .f('droid sans'); .it; }
+		}
+		// XXX
+		#seven {
+			.i { .f('iceberg'); .sz(0.77em); .it; .b; }
+			.s { .f('droid sans'); .it; letter-spacing: -0.05em;}
+		}
+		#eight {
+			.i { .f('philosopher'); .sz(0.95em); .it; .b; }
+			.s { .f('rambla'); .it; }
+		}
+		#nine {
+			.i { .f('amaranth'); .sz(0.88em); .it;  }
+			.s { .f('rambla'); .it; }
+		}
+	}
+
+}
