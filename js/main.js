@@ -11,10 +11,7 @@ var main = function() {
 
 		var perc = (s - 85)/END;
 
-		t.css('margin-left', perc*100);
-
-
-		console.log(perc);
-
+		//t.css('margin-left', perc*100);
+		//console.log(perc);
 	});
 }

@@ -69,7 +69,6 @@ body #photo #textbit {
 body #photo #textbit #textwrap {
   display: table-cell;
   vertical-align: middle;
-  border: 1px solid red;
   padding: 0px 5%;
 }
 body #photo #textbit #textwrap .text {
@@ -109,14 +108,15 @@ body #sponsors img {
   padding: 15px;
 }
 body .photo2 {
-  color: #fff;
+  color: #000;
   font-family: 'ubuntu';
-  background-image: url('/img/circles-pattern.jpg');
+  background-image: url('/img/background/bubbles-bokeh2gs.jpg');
   background-repeat: no-repeat;
-  background-position: top left;
+  background-position: center center;
   background-size: cover;
 }
 body .photo2 h1 {
+  text-align: center;
   padding: 20px 10px 0px;
 }
 body footer {
