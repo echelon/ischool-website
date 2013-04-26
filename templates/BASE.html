@@ -1,0 +1,94 @@
+{#
+<!--
+  BASE TEMPLATE
+  -------------
+  This has some variables:
+    * title     - replace title
+    * extraHead - append css, etc.
+    * extraBody - append scripts
+    * header    - (optional: replace header nav)
+    * topAttention - jumbotron media
+    * body      - main body contents
+    * footer    - (TODO)
+-->
+#}<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<!-- 
+      Web Design and Scripting
+      Copyright (c) 2013 Brandon Thomas <bt@brand.io>
+      Some background images from SubtlePatterns.com 
+	-->
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}iSchool{% endblock %}</title>
+
+    <link href="/static/css/yui-reset.css" rel="stylesheet">
+    <link href="/static/css/design.less" rel="stylesheet/less">
+    <link href="/static/css/responsive.less" rel="stylesheet/less">
+    <link href="/static/img/favicon.png" rel="shortcut icon">
+
+    {% block extraHead %}{% endblock %}
+
+  </head>
+  <body>
+    <div id="main">
+      {% block header %}
+      <header>
+        <a href="/">Home</a> | 
+        <a href="/about">About</a> | 
+        <a href="#">Blog</a> | 
+
+        <div id="social-icons">
+          <img src="/static/img/icons/facebook.png" />
+          <img src="/static/img/icons/twitter.png" />
+        </div>
+      </header>
+      {% endblock %}
+
+      {% block topAttention %}
+        <!-- Topmost attention getter -->
+      {% endblock %}
+
+      {% block body %}
+        <!-- Body content -->
+      {% endblock %}
+
+      <div class="photo2">
+        <h1>Some Headline</h1>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec purus quis dolor sollicitudin porttitor. Proin at malesuada dui. Etiam tempor, urna eu imperdiet sagittis, magna enim feugiat felis, vitae auctor neque turpis at lorem. Nulla id auctor nibh. Aliquam erat volutpat. Quisque tincidunt vehicula turpis, non aliquet leo mattis eu.</p>
+        <p>Morbi mattis vestibulum ligula, nec vehicula felis accumsan ac. Aliquam at nisi a elit consectetur laoreet sit amet ut lectus. Sed ullamcorper risus vel ipsum pellentesque pretium feugiat sem volutpat. Morbi ultrices ultrices pretium. Phasellus aliquet vestibulum justo.</p>
+
+
+        <footer>
+        &copy; 2013 iSchool Initiative
+        </footer>
+      </div>
+    </div>
+
+    <!-- NOTE: DEVELOPMENT ONLY -->
+    <script type="text/javascript">
+        less = {
+            env: "development",
+            async: false,
+            fileAsync: false,
+            poll: 1000,
+            functions: {},
+            dumpLineNumbers: "comments",
+            relativeUrls: false,
+        };
+    </script>
+    <script src="/static/js/lib/jquery.js"></script>
+    <script src="/static/js/lib/less.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script type="text/javascript">
+      less.watch();
+      main();
+    </script>
+    {% block extraBody %}{% endblock %}
+  </body>
+</html>
