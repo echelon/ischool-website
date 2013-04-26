@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<!-- 
+		Copyright (c) 2013 Brandon Thomas
+        Some background images from SubtlePatterns.com 
+	-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>head rotate demo</title>
+
+
+  </head>
+  <body>
+    <div id="main">
+
+      <img width="250" src="#">
+
+    </div>
+
+    <!-- NOTE: DEVELOPMENT ONLY -->
+    <script type="text/javascript">
+        less = {
+            env: "development",
+            async: false,
+            fileAsync: false,
+            poll: 1000,
+            functions: {},
+            dumpLineNumbers: "comments",
+            relativeUrls: false,
+        };
+    </script>
+    <script src="/public/js/lib/jquery.js"></script>
+    <script src="/public/js/lib/less.min.js"></script>
+    <script src="/public/js/head.js"></script>
+    <script type="text/javascript">
+      less.watch();
+      headRotate();
+    </script>
+  </body>
+</html>

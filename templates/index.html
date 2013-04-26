@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<!-- 
+		Copyright (c) 2013 Brandon Thomas
+        Some background images from SubtlePatterns.com 
+	-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>iSchool</title>
+
+    <link href="/static/css/yui-reset.css" rel="stylesheet">
+    <link href="/static/css/design.less" rel="stylesheet/less">
+    <link href="/static/css/responsive.less" rel="stylesheet/less">
+    <link href="/static/img/favicon.png" rel="shortcut icon">
+
+  </head>
+  <body>
+    <div id="main">
+      <header>
+        <a href="/">Home</a> | 
+        <a href="/about">About</a> | 
+        <a href="#">Blog</a> | 
+
+        <div id="social-icons">
+          <img src="/static/img/icons/facebook.png" />
+          <img src="/static/img/icons/twitter.png" />
+        </div>
+      </header>
+      <div id="header-spacer"></div>
+
+      <div id="photo">
+        <span id="logofont">
+          <span id="logo-s">i</span>School
+          <img src="/static/img/isi-new-logo-orange.png" height="60">
+        </span>
+        <div id="textbit">
+          <div id="textwrap">
+            <p class="text">Imagine a Classroom</p>
+            <p class="text">Without Walls</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="top">
+        <h1>THIS PART IS NOT DONE</h1>
+
+        <p>At iSchool, we do things different. Not different different, but actually <em>different</em> different. The kind of different that doesn't grow on trees, but you know it's gotta be fresh because you paid like an extra $2.50 at whole foods. Yeah, that kind of different.</p>
+        <p>So, this is the part of the page where we talk about things in another language. Except this is going to be an imaginary language construct thing. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec purus quis dolor sollicitudin porttitor. Proin at malesuada dui. Etiam tempor, urna eu imperdiet sagittis, magna enim feugiat felis, vitae auctor neque turpis at lorem. Nulla id auctor nibh. Aliquam erat volutpat. Quisque tincidunt vehicula turpis, non aliquet leo mattis eu.</p>
+        <p>Had enough? Didn't think so. Morbi mattis vestibulum ligula, nec vehicula felis accumsan ac. Aliquam at nisi a elit consectetur laoreet sit amet ut lectus. Sed ullamcorper risus vel ipsum pellentesque pretium feugiat sem volutpat. Morbi ultrices ultrices pretium. Phasellus aliquet vestibulum justo.</p>
+      </div>
+
+      <div id="teacher">
+        <h1>Get our Professional Development!</h1>
+      </div>
+
+      <div class="red">
+        <h2>Some Title</h2>
+
+        <p>Praesent arcu lectus, euismod sed interdum at, iaculis et velit. Phasellus eget dui augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Curabitur ac mi at velit viverra commodo. Mauris placerat dolor dolor. Proin malesuada elit non leo congue in ultrices ipsum ornare. Donec vitae eros metus, vitae lobortis mauris. Curabitur tincidunt rutrum eros cursus dignissim. Maecenas a congue lorem. Vestibulum lobortis vehicula pharetra. Integer aliquet magna eu mi posuere ac pellentesque magna tristique.</p>
+      </div>
+
+      <div id="sponsors">
+        <h2>Our Sponsors</h2>
+        <img src="/static/img/sponsors/remind101_gray.png">
+        <img src="/static/img/sponsors/airwatch_gray.png">
+        <img src="/static/img/sponsors/itology_gray.png">
+
+      </div>
+
+
+      <div class="photo2">
+        <h1>Some Headline</h1>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec purus quis dolor sollicitudin porttitor. Proin at malesuada dui. Etiam tempor, urna eu imperdiet sagittis, magna enim feugiat felis, vitae auctor neque turpis at lorem. Nulla id auctor nibh. Aliquam erat volutpat. Quisque tincidunt vehicula turpis, non aliquet leo mattis eu.</p>
+        <p>Morbi mattis vestibulum ligula, nec vehicula felis accumsan ac. Aliquam at nisi a elit consectetur laoreet sit amet ut lectus. Sed ullamcorper risus vel ipsum pellentesque pretium feugiat sem volutpat. Morbi ultrices ultrices pretium. Phasellus aliquet vestibulum justo.</p>
+
+
+      <footer>
+      &copy; 2013 iSchool Initiative
+      </footer>
+
+      </div>
+
+
+    </div>
+
+    <!-- NOTE: DEVELOPMENT ONLY -->
+    <script type="text/javascript">
+        less = {
+            env: "development",
+            async: false,
+            fileAsync: false,
+            poll: 1000,
+            functions: {},
+            dumpLineNumbers: "comments",
+            relativeUrls: false,
+        };
+    </script>
+    <script src="/static/js/lib/jquery.js"></script>
+    <script src="/static/js/lib/less.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script type="text/javascript">
+      less.watch();
+      main();
+    </script>
+  </body>
+</html>
