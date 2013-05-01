@@ -1,51 +1,14 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400|Poiret+One|Quicksand:300,400|Josefin+Sans|Roboto:400,100|Titillium+Web:400,200|Raleway|Advent+Pro);
-
-@import url(http://fonts.googleapis.com/css?family=Overlock|Droid+Sans:400,700|Lato:400,900|Oleo+Script|Ubuntu:300,400,700,300italic|Montserrat+Alternates);
-/* 
-Copyright (c) 2013 Brandon Thomas
-Some background images from SubtlePatterns.com 
-*/
-/*****
- * SET UP RESPONSIVENESS BREAKPOINTS
- *****/
-@media all and (max-width: 479px) {
-  
-}
-@media all and (min-width: 480px) and (max-width: 599px) {
-  font-size: 0.2em;
-}
-@media all and (min-width: 600px) and (max-width: 768px) {
-  
-}
-@media all and (min-width: 600px) and (max-width: 768px) and (orientation: portrait) {
-  
-}
-@media all and (min-width: 769px) and (max-width: 1024px) {
-  
-}
-@media all and (min-width: 769px) and (min-device-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
-  
-}
-@media all and (min-width: 1025px) and (max-width: 1280px) {
-  font-size: 5.0em;
-  color: #f00;
-}
-@media all and (min-width: 1281px) {
-  font-size: 5.0em;
-  color: #f00;
-}
-/************* MAIN DESIGN ******************/
-.raleway {
-  font-family: 'Raleway', sans-serif;
-}
-.josefin {
-  font-family: 'Josefin Sans', sans-serif;
-}
-.quicksand {
-  font-family: 'Quicksand', sans-serif;
-}
+/*  Web Design and Scripting
+    Copyright (c) 2013 Brandon Thomas <bt@brand.io>
+    Some background images from SubtlePatterns.com */
+/**
+ * Flat design colors!
+ */
+/* ============================================================= *\
+ * MAIN STYLES AND SUCH
+ * ============================================================= */
 .box-shadow {
-  box-shadow: 0px 0px 8px #999;
+  box-shadow: 0px 0px 2px #999;
 }
 .no-select {
   -webkit-touch-callout: none;
@@ -59,44 +22,12 @@ body {
   margin: 0px;
   padding: 0px;
   font-family: 'Quicksand';
-  background-image: url('/img/light_wool3.png');
-  /*#header-spacer {
-		margin: 0px;
-		padding: 0px;
-		height: 60px;
-	}*/
-
-}
-body header {
-  display: none;
-  z-index: 5;
-  width: 100%;
-  margin: 0px;
-  padding: 14px 8px 11px;
-  background-color: #fff;
-  color: #aaa;
-  font-size: 1.0em;
-  font-family: 'Raleway', sans-serif;
-  position: fixed;
-  box-shadow: 0px 0px 8px #999;
-}
-body header a {
-  font-size: 1.5em;
-  color: #111;
-  text-decoration: none;
-}
-body header #social-icons {
-  display: inline-block;
-  width: 68px;
-  float: right;
-  padding: 0px;
-  margin: 0px 12px;
+  background-image: url('/static/img/pattern/escheresque2.png');
 }
 body #photo {
   z-index: 1;
   max-width: 100%;
-  height: 450px;
-  background-image: url('/img/header/hands_raised2.jpg');
+  background-image: url('/static/img/header/hands_raised2.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -120,21 +51,14 @@ body #photo #textbit #textwrap .text {
   text-align: right;
   font-size: 3.2em;
   font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: #eee;
-  /*margin: 10px 5% 10px 5%;*/
-
+  background-color: #e74c3c;
+  color: #f5f5f5;
   margin: 0.2em 1.3em 0.2em 0px;
-  /*box-shadow: 5px 5px 15px #111;*/
-
-}
-body .top {
-  padding-top: 20px;
 }
 body #logofont {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: #1a242f;
   color: #f5f5f5;
-  padding: 0.1em 0.5em 0.0em 0.3em;
+  padding: 0.1em 0.2em 0.0em 0.3em;
   margin: 0.15em;
   text-align: center;
   position: absolute;
@@ -144,12 +68,57 @@ body #logofont {
   font-family: 'droid sans';
   letter-spacing: -0.05em;
 }
+body #logofont img {
+  vertical-align: center;
+}
 body #logofont #logo-s {
-  color: #e88c8c;
+  color: #e74c3c;
   font-weight: bold;
   font-size: 1.00em;
   font-family: 'philosopher';
   letter-spacing: 0.03em;
+}
+body header {
+  font-family: 'raleway';
+  display: none;
+  z-index: 5;
+  width: 100%;
+  margin: 0px;
+  padding: 14px 8px 11px;
+  background-color: #fff;
+  color: #aaa;
+  font-size: 1.0em;
+  position: fixed;
+  box-shadow: 0px 0px 2px #999;
+}
+body header a {
+  font-size: 1.5em;
+  color: #111;
+  text-decoration: none;
+}
+body header #social-icons {
+  display: inline-block;
+  width: 68px;
+  float: right;
+  padding: 0px;
+  margin: 0px 12px;
+}
+body .top {
+  padding-top: 20px;
+}
+body #teacher {
+  background-image: url('/static/img/photo/teacher-dark.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #ecf0f1;
+  font-weight: bold;
+  text-align: center;
+}
+body #teacher h1 {
+  padding-top: 2.0em;
+  font-size: 4.0em;
+  font-weight: bold;
 }
 body .red {
   padding: 10px;
@@ -174,7 +143,7 @@ body #sponsors img {
 body .photo2 {
   color: #000;
   font-family: 'ubuntu';
-  background-image: url('/img/background/bubbles-bokeh2gs.jpg');
+  background-image: url('/static/img/background/bubbles-bokeh2gs.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -184,6 +153,7 @@ body .photo2 h1 {
   padding: 20px 10px 0px;
 }
 body footer {
+  height: 7px;
   font-size: 0.8em;
   font-family: 'lato';
   font-weight: normal;

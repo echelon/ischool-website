@@ -202,13 +202,26 @@ body {
 	}
 
 	footer {
-		font-size: 0.8em;
+		min-height: 40px;
+		font-size: 0.9em;
 		font-family: 'lato';
 		font-weight: normal;
 		padding: 0.8em;
 		/*background-color: #151515;*/
-		background-color: rgba(10, 10, 10, 0.7);
+		background-color: rgba(10, 10, 10, 0.8);
+		border-top: 1px solid rgba(250, 250, 250, 0.4);
 		color: #fff;
+
+		overflow: hidden;
+		position: relative;
+		div {
+			margin: 0.8em 0em 0.8em 1.7em;
+		}
+		b {
+			font-weight: normal;
+			display: inline-block;
+			width: 25px;
+		}
 
 	}
 }
@@ -223,3 +236,4 @@ p {
 	margin: 0px;
 }
 
+@import "responsive.less";
