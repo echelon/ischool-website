@@ -115,14 +115,14 @@
     <script src="/static/js/lib/jquery.js"></script>
     <script src="/static/js/lib/less.min.js"></script>
     <script src="/static/js/main.js"></script>
+    {% block extraBody %}{% endblock %}
     <script type="text/javascript">
       less.watch();
       main();
       setTimeout(function() {
           window.location = window.location;
-        }, 1000 * 60 * 3);
+        }, 1000 * 60 * 3 * 900);
 
     </script>
-    {% block extraBody %}{% endblock %}
   </body>
 </html>
