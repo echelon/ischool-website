@@ -4,6 +4,7 @@ Temporary so I can use templates.
 Copyright 2013 Brandon Thomas <bt@brand.io>
 """
 
+import sys
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -35,5 +36,10 @@ def page_booking():
 	return render_template('booking.html')
 
 if __name__ == '__main__':
-	app.run()
+	port = 5000 if len(sys.argv) < 2 \
+			else int(sys.argv[1])
+	app.run(
+		port = port,
+		host = '0.0.0.0'
+	)
 

@@ -45,11 +45,20 @@
 	user-select: none;
 }
 
+html {
+	background-image: 
+		url('/static/img/travis-allen-face.jpg');
+	background-position: center;
+	background-size: 200px;
+	background-attachment: fixed;
+
+}
+
 body {
 	margin: 0px;
 	padding: 0px;
 	font-family: 'Quicksand';
-	background-image: url('/static/img/pattern/escheresque2.png');
+	background-image: url('/static/img/pattern/escheresque2l.png');
 
 	#photo {
 		z-index: 1;
@@ -113,6 +122,7 @@ body {
 
 	header {
 		font-family: 'raleway';
+		text-align: center;
 		display: none;
 		z-index: 5;
 		width: 100%;
@@ -129,14 +139,6 @@ body {
 			font-size: 1.5em;
 			color: #111;
 			text-decoration: none;
-		}
-
-		#social-icons {
-			display: inline-block;
-			width: 68px;
-			float: right;
-			padding: 0px;
-			margin: 0px 12px;
 		}
 	}
 
@@ -160,7 +162,6 @@ body {
 		}
 	}
 	
-
 	.red {
 		padding: 10px;
 		background-color: rgba(255, 0, 0, 0.2);
@@ -183,7 +184,6 @@ body {
 		img {
 			padding: 15px;
 		}
-
 	}
 
 	.photo2 {
@@ -203,13 +203,12 @@ body {
 
 	footer {
 		min-height: 40px;
-		font-size: 0.9em;
+		//font-size: 0.9em;
 		font-family: 'lato';
 		font-weight: normal;
 		padding: 0.8em;
 		/*background-color: #151515;*/
 		background-color: rgba(10, 10, 10, 0.8);
-		border-top: 1px solid rgba(250, 250, 250, 0.4);
 		color: #fff;
 
 		overflow: hidden;
@@ -223,6 +222,42 @@ body {
 			width: 25px;
 		}
 
+		ul {
+			width: 100%;
+			list-style: none;
+			padding: 0;
+			li {
+				float: left;
+				box-sizing: border-box; // Fixes padding + width issue
+				padding: 10px;
+				margin: 0;
+				border: 0;
+				width: 0%;
+				height: 160px;
+			}
+			li:first-child {
+				width: 70%;
+				display: table;
+				#contact {
+					height: 100%;
+					display: table-cell;
+					vertical-align: middle;
+				}
+			}
+			li:last-child {
+				width: 30%;
+				display: table;
+				#social {
+					height: 100%;
+					display: table-cell;
+					vertical-align: middle;
+					text-align: center;
+				}
+				img {
+					margin: 0.25em;
+				}
+			}
+		}
 	}
 }
 

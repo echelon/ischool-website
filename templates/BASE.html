@@ -43,11 +43,8 @@
         <a href="/">Home</a> | 
         <a href="/about">About</a> | 
         <a href="#">Blog</a> | 
-
-        <div id="social-icons">
-          <img src="/static/img/icons/facebook.png" />
-          <img src="/static/img/icons/twitter.png" />
-        </div>
+        <a href="#">Tour</a> | 
+        <a href="#">PD</a> 
       </header>
       {% endblock %}
 
@@ -67,18 +64,38 @@
 
 
         <footer>
-          <div>
-            <b><i class="icon-envelope-alt"></i></b>
-            info@ischoolinitiative.com
+          <ul>
+            <li>
+              <div id="contact">
+                <div>
+                  <b><i class="icon-envelope-alt"></i></b>
+                  info@ischoolinitiative.com
+                </div>
+                <div>
+                  <b><i class="icon-phone"></i></b>
+                  123&ndash;456&ndash;7890
+                </div>
+                <div>
+                  <b><i class="icon-th-large"></i></b>
+                  iSchool Initiative &copy; 2013 
+                </div>
+              </div>
+            </li>
+            <li>
+              <!-- Social icons from http://picons.me/ -->
+              <div id="social">
+                <a href="http://facebook.com"><img 
+                  src="/static/img/icons/facebook-picons2.png"></a>
+                <a href="http://twitter.com"><img 
+                  src="/static/img/icons/twitter-picons2.png"></a>
+              </div>
+            </li>
+          </ul>
+
+          <!--<div id="social-icons">
           </div>
-          <div>
-            <b><i class="icon-phone"></i></b>
-            123&ndash;456&ndash;7890
-          </div>
-          <div>
-            <b><i class="icon-th-large"></i></b>
-            iSchool Initiative &copy; 2013 
-          </div>
+
+-->
         </footer>
       </div>
     </div>
