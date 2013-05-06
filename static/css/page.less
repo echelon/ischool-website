@@ -25,28 +25,31 @@
 					PAGE-SPECIFIC ELEMENTS
    ============================================================= */
 
-.IndexPage #teacher {
-	background-image: url('/static/img/photo/teacher-dark-blur.jpg');
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;
-	color: @clouds;
-	font-weight: bold;
-	text-align: center;
-
-	h1 {
-		padding-top: 2.0em;
-		font-size: 4.0em;
+.IndexPage {
+	#teacher {
+		background-image: url('/static/img/photo/teacher-dark-blur.jpg');
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+		color: @clouds;
 		font-weight: bold;
-	}
-}
+		text-align: center;
 
-.IndexPage #sponsors {
-	text-align: center;
-	padding: 20px;
-	color: #555;
-	img {
-		padding: 15px;
+		h1 {
+			padding-top: 2.0em;
+			font-size: 4.0em;
+			font-weight: bold;
+		}
+	}
+
+	#sponsors {
+		background-color: rgba(255, 255, 255, 0.93);
+		text-align: center;
+		padding: 10px;
+		color: #999;
+		img {
+			padding: 15px;
+		}
 	}
 }
 
@@ -65,6 +68,26 @@
 	}
 	article#team {
 		background-color: rgba(0, 0, 0, 0.9);
+		//background-color: lighten(rgba(10, 20, 80, 0.9), 10%);
+		color: #fff;
+
+		#staffPortraits {
+			text-align: center;
+			.pho {
+				display: inline;
+				position: relative;
+				.name {
+					font-size: 1.5em;
+					position: absolute;
+					left: 7px;
+					bottom: 7px;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	article#board {
+		background-color: @alizarin;
 		color: #fff;
 	}
 }
