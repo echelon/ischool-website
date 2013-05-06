@@ -31,9 +31,16 @@ def page_tour():
 def page_pd():
 	return render_template('pd.html')
 
+@app.errorhandler(404)
+def page_404(e):
+	return render_template('404.html'), 404
+
+"""
+TODO: Later
 @app.route('/booking')
 def page_booking():
 	return render_template('booking.html')
+"""
 
 if __name__ == '__main__':
 	port = 5000 if len(sys.argv) < 2 \
