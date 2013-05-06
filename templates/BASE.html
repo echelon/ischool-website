@@ -17,7 +17,7 @@
 	<!-- 
       Web Design and Scripting
       Copyright (c) 2013 Brandon Thomas <bt@brand.io>
-      Some background images from SubtlePatterns.com 
+      Some background images from SubtlePatterns.com
 	-->
     <meta name="viewport" 
           content="width=device-width, initial-scale=1.0">
@@ -37,32 +37,36 @@
 
   </head>
   <body>
-    <div id="main">
-      {% block header %}
-      <header>
+    <div id="main" 
+         class="{% block pageClass %}TemplatePage{% endblock %}">
+      <nav id="topnav">
         <a href="/">Home</a> | 
         <a href="/about">About</a> | 
-        <a href="#">Blog</a> | 
-        <a href="#">Tour</a> | 
-        <a href="#">PD</a> 
-      </header>
-      {% endblock %}
+        <a href="/tour">Tour</a> | 
+        <a href="/pd">Training</a> |
+        <a href="#">Blog</a> 
+      </nav>
 
       {% block topAttention %}
         <!-- Topmost attention getter -->
       {% endblock %}
 
+      <article>
       {% block body %}
         <!-- Body content -->
       {% endblock %}
+      </article>
 
-      <div class="photo2">
-        <h1>Some Headline</h1>
+      <footer>
+        <nav id="footernav">
+          <a href="/">Home</a> | 
+          <a href="/about">About</a> | 
+          <a href="/tour">Tour</a> | 
+          <a href="/pd">Training</a> |
+          <a href="#">Blog</a> 
+        </nav>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec purus quis dolor sollicitudin porttitor. Proin at malesuada dui. Etiam tempor, urna eu imperdiet sagittis, magna enim feugiat felis, vitae auctor neque turpis at lorem. Nulla id auctor nibh. Aliquam erat volutpat. Quisque tincidunt vehicula turpis, non aliquet leo mattis eu.</p>
-        <p>Morbi mattis vestibulum ligula, nec vehicula felis accumsan ac. Aliquam at nisi a elit consectetur laoreet sit amet ut lectus. Sed ullamcorper risus vel ipsum pellentesque pretium feugiat sem volutpat. Morbi ultrices ultrices pretium. Phasellus aliquet vestibulum justo.</p>
-
-        <footer>
+        <div id="contactBit">
           <ul>
             <li>
               <div id="contact">
@@ -90,12 +94,8 @@
               </div>
             </li>
           </ul>
-
-          <!--<div id="social-icons">
-          </div>-->
-
-        </footer>
-      </div>
+        </div>
+      </footer>
     </div>
 
     <!-- NOTE: DEVELOPMENT ONLY -->
@@ -120,7 +120,6 @@
       setTimeout(function() {
           window.location = window.location;
         }, 1000 * 60 * 3 * 900);
-
     </script>
   </body>
 </html>

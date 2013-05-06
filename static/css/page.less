@@ -1,0 +1,70 @@
+/* ================================================================
+						COMMON ELEMENTS
+   ============================================================= */
+
+.IndexPage header {
+	background-image: 
+		url('/static/img/header/hands_raised2.jpg');
+}
+
+.AboutPage header {
+	background-image: 
+		url('/static/img/travis-sife.jpg');
+}
+
+.TourPage header {
+	background-image: 
+		url('/static/img/header/bus2012.jpg');
+	#logofont {
+		background-color: lighten(@silver, 20%);
+		color: darken(@midnightBlue, 10%);
+	}
+}
+
+/* ================================================================
+					PAGE-SPECIFIC ELEMENTS
+   ============================================================= */
+
+.IndexPage #teacher {
+	background-image: url('/static/img/photo/teacher-dark-blur.jpg');
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	color: @clouds;
+	font-weight: bold;
+	text-align: center;
+
+	h1 {
+		padding-top: 2.0em;
+		font-size: 4.0em;
+		font-weight: bold;
+	}
+}
+
+.IndexPage #sponsors {
+	text-align: center;
+	padding: 20px;
+	color: #555;
+	img {
+		padding: 15px;
+	}
+}
+
+.AboutPage {
+	article#about {
+		background-color: rgba(255, 255, 255, 0.93);
+		overflow: hidden;
+		img {
+			background-clip: text;
+			float: left;
+			padding: 10px;
+			max-width:100% !important;
+			height: auto;
+			display: block;
+		}
+	}
+	article#team {
+		background-color: rgba(0, 0, 0, 0.9);
+		color: #fff;
+	}
+}

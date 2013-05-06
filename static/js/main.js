@@ -4,14 +4,13 @@ var main = function() {
 
 	$(window).scroll(function(ev) {
 		var s = $(window).scrollTop();
-		//var t = $('#photo p');
-		var p = $('#photo').height();
+		var p = $('header').height();
 
 		if(s >= p) {
-			$('header').fadeIn();
+			$('nav#topnav').fadeIn();
 		}
 		else {
-			$('header').fadeOut();
+			$('nav#topnav').fadeOut();
 		}
 
 		//console.log(s, p);
@@ -27,14 +26,14 @@ var main = function() {
 var installVideo = function()
 {
 	var $script = $('<script src="https://www.youtube.com/iframe_api"></script>');
-	$('#photo').append($script);
+	$('header').append($script);
 }
 
 player = null;
 
 function onYouTubeIframeAPIReady() {
 	// Note: 'player' is the div id to attach to
-	$('#photo').on('click', install2);
+	$('header').on('click', install2);
 }
 
 var install2 = function() {
@@ -60,7 +59,7 @@ var onPlayerReady = function(ev) {
 
 	console.log('onplayerready');
 	var $player = $('#player'),
-		$photo = $('#photo');
+		$photo = $('header');
 
 	$photo.html($player);
 	$player.show();

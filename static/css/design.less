@@ -7,43 +7,7 @@
 
 //@import url(http://fonts.googleapis.com/css?family=Overlock|Droid+Sans:400,700|Lato:400,900|Oleo+Script|Ubuntu:300,400,700,300italic|Montserrat+Alternates);
 
-/**
- * Flat design colors!
- */
-
-@wetAsphault: #34495e;
-@midnightBlue: #2c3e50;
-@concrete: #95a5a6;
-@asbestos: #7f8c8d;
-@clouds: #ecf0f1;
-@silver: #bdc3c7;
-@alizarin: #e74c3c;
-@pomegranate: #c0392b;
-@orange: #f39c12;
-@sunflower: #f1c40f;
-@terquoise: #1abc9c;
-@greenSea: #16a085;
-@carrot: #e67e22;
-@pumpkin: #d35400;
-@peterRiver: #3498db;
-@belizeHole: #2980b9;
-
-/* ============================================================= *\
- * MAIN STYLES AND SUCH
- * ============================================================= */
-
-.box-shadow  {
-	box-shadow: 0px 0px 2px #999;
-}
-
-.no-select {
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
+@import "defs.less";
 
 html {
 	background-image: 
@@ -58,13 +22,12 @@ body {
 	margin: 0px;
 	padding: 0px;
 	font-family: 'Quicksand';
-	background-image: url('/static/img/pattern/escheresque2l.png');
+	background-image: url('/static/img/pattern/escheresque2d.png');
+	color: @midnightBlue;
 
-	#photo {
+	header {
 		z-index: 1;
 		max-width: 100%;
-		background-image: 
-			url('/static/img/header/hands_raised2.jpg');
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		background-size: cover;
@@ -95,7 +58,6 @@ body {
 
 	}
 
-
 	#logofont {
 		background-color: darken(@midnightBlue, 10%);
 		color: #f5f5f5;
@@ -122,17 +84,17 @@ body {
 		}
 	}
 
-	header {
+	nav#topnav {
 		font-family: 'raleway';
 		text-align: center;
 		display: none;
 		z-index: 5;
 		width: 100%;
 		margin: 0px;
-		padding: 14px 8px 11px;
-		background-color: #fff;
+		padding: 10px 8px 9px;
+		background-color: rgba(255, 255, 255, 0.95);
 		color: #aaa;
-		font-size: 1.0em;
+		font-size: 0.85em;
 		position: fixed;
 		.box-shadow;
 		//border-bottom: 1px solid #999;
@@ -144,51 +106,7 @@ body {
 		}
 	}
 
-	.top {
-		padding-top: 20px;
-	}
-
-	#teacher {
-		background-image: url('/static/img/photo/teacher-dark-blur.jpg');
-		background-size: cover;
-		background-position: center center;
-		background-repeat: no-repeat;
-		color: @clouds;
-		font-weight: bold;
-		text-align: center;
-
-		h1 {
-			padding-top: 2.0em;
-			font-size: 4.0em;
-			font-weight: bold;
-		}
-	}
-	
-	.red {
-		padding: 10px;
-		background-color: rgba(255, 0, 0, 0.2);
-		border-top: 3px solid rgba(255, 100, 100, 0.9);
-		border-bottom: 3px solid rgba(100, 100, 100, 0.5);
-	}
-
-	.blue {
-		background-color: rgba(0, 0, 255, 0.2);
-	}
-
-	.yellow {
-		background-color: rgba(255, 255, 0, 0.5);
-	}
-
-	#sponsors {
-		text-align: center;
-		padding: 20px;
-		color: #555;
-		img {
-			padding: 15px;
-		}
-	}
-
-	.photo2 {
+	footer {
 		color: #000;
 		font-family: 'ubuntu';
 		background-image: 
@@ -199,11 +117,28 @@ body {
 
 		h1 {
 			text-align: center;
-			padding: 20px 10px 0px;
+			padding: 7px;
+			font-size: 1.5em;
+			color: @alizarin;
+			text-shadow: 1px 1px #222;
 		}
-	}
 
-	footer {
+		nav {
+			text-align: center;
+			padding: 5px;
+			color: @wetAsphault;
+			letter-spacing: 0.3em;
+			a {
+				text-decoration: none;
+				font-family: raleway;
+				font-size: 1.2em;
+				color: @midnightBlue;
+				text-shadow: 1px 1px @silver;
+				letter-spacing: 0.07em;
+			}
+		}
+	} 
+	#contactBit {
 		min-height: 40px;
 		//font-size: 0.9em;
 		font-family: 'lato';
@@ -262,6 +197,21 @@ body {
 	}
 }
 
+article {
+	color: @midnightBlue;
+	font-size: 1.0em;
+	font-family: 'raleway';
+	h2 {
+		font-family: 'ubuntu';
+		text-align: center;
+		font-size: 2em;
+		padding: 8px 0px 5px;
+	}
+}
+img.circular {
+	.border-radius(50px);
+}
+
 h1, h2, h3 {
 	padding: 0px;
 	margin: 0px;
@@ -273,3 +223,5 @@ p {
 }
 
 @import "responsive.less";
+@import "page.less";
+
