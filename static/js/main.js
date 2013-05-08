@@ -3,6 +3,7 @@ var main = function()
 {
 	window.video = new VideoView();
 	window.topnav = new TopNavView();
+	window.button = new PlayButtonView();
 }
 
 var TopNavView = Backbone.View.extend({
@@ -34,7 +35,10 @@ var VideoView = Backbone.View.extend({
 
 	tagName: 'header',
 	videoId: 'WR3Focm44ck',
-	player: null, // YT video API access
+
+	player: null, // YT video class
+	playerEl: null, // YT video API to call playVideo() on
+
 	isYoutubeReady: false,
 	isInstalled: false,
 
@@ -60,8 +64,13 @@ var VideoView = Backbone.View.extend({
 	},
 
 	// Programmatic installation and play
+	// Also calls YT api to play
 	play: function() {
 		this._install();
+		if(!this.playerEl) {
+			return;
+		}
+		this.playerEl.playVideo();
 	},
 
 	// Install the Youtube Video
@@ -136,6 +145,7 @@ var VideoView = Backbone.View.extend({
 	},
 
 	_onPlayerReady: function(ev) {
+		this.playerEl = ev.target;
 	},
 
 	_onPlayerStateChange: function(ev) {
@@ -145,4 +155,18 @@ var VideoView = Backbone.View.extend({
 var onYouTubeIframeAPIReady = function() {
 	window.video.isYoutubeReady = true;
 }
+
+var PlayButtonView = Backbone.View.extend({
+	events: {
+		'click': 'click',
+	},
+	constructor: function() {
+		this.$el = $('#watchvid button');
+		this.delegateEvents();
+	},
+	click: function() {
+		$(window).scrollTop(0);
+		window.video.play();
+	},
+});
 
