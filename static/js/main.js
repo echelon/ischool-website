@@ -1,76 +1,152 @@
 
-var main = function() {
-	var END = 200;
+var main = function()
+{
+	window.video = new VideoView();
+	window.topnav = new TopNavView();
+	console.log('test test test');
+}
 
-	$(window).scroll(function(ev) {
-		var s = $(window).scrollTop();
-		var p = $('header').height();
+var TopNavView = Backbone.View.extend({
+	id: 'topnav',
 
-		if(s >= p) {
-			$('nav#topnav').fadeIn();
+	constructor: function() {
+		var that = this;
+		this.$el = $('nav#topnav');
+		$(window).scroll(function() { that.fade(); });
+	},
+
+	fade: function(ev) {
+		var a = $(window).scrollTop(),
+			b = $('header').height();
+		if(a >= b) {
+			this.$el.fadeIn();
 		}
 		else {
-			$('nav#topnav').fadeOut();
+			this.$el.fadeOut();
+		}
+	},
+});
+
+var VideoView = Backbone.View.extend({
+	$el: null,
+	$player: null,
+	$loader: null,
+	$ytScript: null,
+
+	tagName: 'header',
+	videoId: 'WR3Focm44ck',
+	player: null, // YT video API access
+	playerEl: null, // YT video API access
+	isYoutubeReady: false,
+
+	events: {
+		'click': 'install',
+	},
+
+	constructor: function() {
+		var that = this;
+	
+		this.$ytScript = $('<script></script>')
+							.attr('src', 
+								'https://www.youtube.com/iframe_api');
+		
+		this.$el = $(this.tagName);
+		this.$player = this.$el.find('#player');
+		this.$loader = this.$el.find('#loader');
+
+		this.$el.append(this.$ytScript);
+
+		$(window).on('resize', function() { that.fitVideo(); });
+		this.delegateEvents();
+	},
+
+	// Install the Youtube Video
+	install: function() {
+		var that = this;
+
+		// TODO: If not onYouTubeIframeAPIReady yet, then
+		// we need to show a 'loading' gif and continue to 
+		// poll for ready flag
+		this.undelegateEvents();
+
+		this.$el.html('')
+				.append(this.$loader)
+				.append(this.$player);
+
+		this.$loader.show();
+
+		this.install2();
+	},
+
+	install2: function() {
+		var that = this;
+
+		// Check to see if script has loaded
+		if(!this.isYoutubeReady) {
+			console.log('YT not yet loaded...');
+			that.$el.append(that.$ytScript);
+			setTimeout(function() {
+				that.install2();
+			}, 1000);
+			return;
 		}
 
-		//console.log(s, p);
-		//var perc = (s - 85)/END;
+		this.player = new YT.Player('player', {
+			width: '1',
+			height: '1',
+			videoId: this.videoId,
+			// https://developers.google.com/youtube/player_parameters
+			playerVars: {
+				autohide: 1,
+				autoplay: 1,
+				color: 'white',
+				controls: 1,
+				modestbranding: 1,
+				origin: 'http://localhost:7000',
+				rel: 0,
+				showinfo: 0,
+			},
+			events: {
+				'onReady': function(ev) {
+					that.onPlayerReady(ev);
+				},
+				'onStateChange': function(ev) {
+					that.onPlayerStateChange(ev);
+				},
+			}
+		});
 
-		//t.css('margin-left', perc*100);
-		//console.log(perc);
-	});
+		this.$el.html(this.$player);
+		this.$player.show();
 
-	installVideo();
-}
+		this.fitVideo();
+	},
 
-var installVideo = function()
-{
-	var $script = $('<script src="https://www.youtube.com/iframe_api"></script>');
-	$('header').append($script);
-}
+	fitVideo: function() {
+		this.$player.width(this.$el.width());
+		this.$player.height(this.$el.height());
+	},
 
-player = null;
-
-function onYouTubeIframeAPIReady() {
-	// Note: 'player' is the div id to attach to
-	$('header').on('click', install2);
-}
-
-var install2 = function() {
-	player = new YT.Player('player', {
-		width: '1',
-		height: '1',
-		videoId: 'WR3Focm44ck',
-		events: {
-			'onReady': onPlayerReady,
-			'onStateChange': onPlayerStateChange
+	// Call YT api to play
+	play: function() {
+		if(!this.playerEl) {
+			return;
 		}
-	});
-}
+		this.playerEl.playVideo();
+	},
 
+	onPlayerReady: function(ev) {
+		console.log('onPlayerReady');
+		this.playerEl = ev.target;
+		//this.play();
+	},
 
-var attached = false; 
-var onPlayerReady = function(ev) {
-	if(attached) {
-		ev.target.playVideo();
-		return;
-	}
-	attached = true;
+	onPlayerStateChange: function(ev) {
+		console.log('onPlayerStateChange');
+	},
+});
 
-	console.log('onplayerready');
-	var $player = $('#player'),
-		$photo = $('header');
-
-	$photo.html($player);
-	$player.show();
-	$photo.show();
-
-	$player.width($photo.width());
-	$player.height($photo.height());
-
-	ev.target.playVideo();
-}
-
-var onPlayerStateChange = function() {
+var onYouTubeIframeAPIReady = function() {
+	window.video.isYoutubeReady = true;
 }
 

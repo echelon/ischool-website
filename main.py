@@ -42,6 +42,12 @@ def page_booking():
 	return render_template('booking.html')
 """
 
+def cache_buster():
+	import random
+	return str(random.randint(500, 9000000))
+
+app.jinja_env.globals.update(cache_buster=cache_buster)
+
 if __name__ == '__main__':
 	port = 5000 if len(sys.argv) < 2 \
 			else int(sys.argv[1])

@@ -112,7 +112,9 @@
     </script>
     <script src="/static/js/lib/jquery.js"></script>
     <script src="/static/js/lib/less.min.js"></script>
-    <script src="/static/js/main.js"></script>
+    <script src="/static/js/lib/underscore-min.js"></script>
+    <script src="/static/js/lib/backbone-min.js"></script>
+    <script src="/static/js/main.js?{{ cache_buster() }}"></script>
     {% block extraBody %}{% endblock %}
     <script type="text/javascript">
       less.watch();

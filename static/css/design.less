@@ -7,6 +7,10 @@
 
 //@import url(http://fonts.googleapis.com/css?family=Overlock|Droid+Sans:400,700|Lato:400,900|Oleo+Script|Ubuntu:300,400,700,300italic|Montserrat+Alternates);
 
+/**
+ * TRY THESE PATTERNS: 'subtle gray'
+ */
+
 @import "defs.less";
 
 html {
@@ -55,7 +59,20 @@ body {
 				}
 			}
 		}
-
+		#loader {
+			display: none; // Javascript enables
+			height: 100%;
+			width: 100%;
+			position: relative;
+			img {
+				margin: auto;
+				position: absolute;
+				right: 0;
+				left: 0;
+				top: 0;
+				bottom: 0;
+			}
+		}
 	}
 
 	#logofont {
