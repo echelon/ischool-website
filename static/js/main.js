@@ -3,7 +3,6 @@ var main = function()
 {
 	window.video = new VideoView();
 	window.topnav = new TopNavView();
-	console.log('test test test');
 }
 
 var TopNavView = Backbone.View.extend({
@@ -36,11 +35,11 @@ var VideoView = Backbone.View.extend({
 	tagName: 'header',
 	videoId: 'WR3Focm44ck',
 	player: null, // YT video API access
-	playerEl: null, // YT video API access
 	isYoutubeReady: false,
+	isInstalled: false,
 
 	events: {
-		'click': 'install',
+		'click': '_install',
 	},
 
 	constructor: function() {
@@ -60,13 +59,17 @@ var VideoView = Backbone.View.extend({
 		this.delegateEvents();
 	},
 
-	// Install the Youtube Video
-	install: function() {
-		var that = this;
+	// Programmatic installation and play
+	play: function() {
+		this._install();
+	},
 
-		// TODO: If not onYouTubeIframeAPIReady yet, then
-		// we need to show a 'loading' gif and continue to 
-		// poll for ready flag
+	// Install the Youtube Video
+	_install: function() {
+		if(this.isInstalled) {
+			return;
+		}
+		this.isInstalled = true;
 		this.undelegateEvents();
 
 		this.$el.html('')
@@ -75,13 +78,17 @@ var VideoView = Backbone.View.extend({
 
 		this.$loader.show();
 
-		this.install2();
+		this._install2();
 	},
 
-	install2: function() {
+	// Install the Youtube Video
+	_install2: function() {
 		var that = this;
 
 		// Check to see if script has loaded
+		// If not onYouTubeIframeAPIReady yet, then
+		// we need to show a 'loading' gif and continue to 
+		// poll for ready flag
 		if(!this.isYoutubeReady) {
 			console.log('YT not yet loaded...');
 			that.$el.append(that.$ytScript);
@@ -108,41 +115,30 @@ var VideoView = Backbone.View.extend({
 			},
 			events: {
 				'onReady': function(ev) {
-					that.onPlayerReady(ev);
+					that._onPlayerReady(ev);
 				},
 				'onStateChange': function(ev) {
-					that.onPlayerStateChange(ev);
+					that._onPlayerStateChange(ev);
 				},
 			}
 		});
 
+		this.$player = $('#player'); // XXX: YT changes tag with ID! 
 		this.$el.html(this.$player);
 		this.$player.show();
 
-		this.fitVideo();
+		this._fitVideo();
 	},
 
-	fitVideo: function() {
+	_fitVideo: function() {
 		this.$player.width(this.$el.width());
 		this.$player.height(this.$el.height());
 	},
 
-	// Call YT api to play
-	play: function() {
-		if(!this.playerEl) {
-			return;
-		}
-		this.playerEl.playVideo();
+	_onPlayerReady: function(ev) {
 	},
 
-	onPlayerReady: function(ev) {
-		console.log('onPlayerReady');
-		this.playerEl = ev.target;
-		//this.play();
-	},
-
-	onPlayerStateChange: function(ev) {
-		console.log('onPlayerStateChange');
+	_onPlayerStateChange: function(ev) {
 	},
 });
 
