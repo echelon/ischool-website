@@ -21,13 +21,19 @@
 	}
 }
 
+.PdPage header {
+	background-image: 
+		url('/static/img/header/pd.jpg');
+}
+
 /* ================================================================
 					PAGE-SPECIFIC ELEMENTS
    ============================================================= */
 
 .IndexPage {
 	#teacher {
-		background-image: url('/static/img/photo/teacher-dark-blur.jpg');
+		background-image: 
+			url('/static/img/photo/teacher-dark-blur.jpg');
 		background-size: cover;
 		background-position: center center;
 		background-repeat: no-repeat;
@@ -56,7 +62,9 @@
 			background-color: #fff;
 			border: 0px;
 			color: darken(@silver, 40%);
-			
+		}
+		button:hover {
+			border: 1px solid @alizarin;
 		}
 	}
 
@@ -112,5 +120,82 @@
 		font-family: 'lato';
 		background-color: @alizarin;
 		color: #fff;
+
+		img#gary {
+			float: right;
+			padding: 10px;
+			max-height: 250px;
+		}
+	}
+}
+
+.TourPage {
+	article#about {
+		h2 { font-family: 'roboto slab'; }
+		background-color: @midnightBlue;
+		color: #fff;
+	}
+	article#tour2013 {
+		h2 { font-family: 'roboto slab'; }
+		background-color: @silver;
+		color: @midnightBlue;
+	}
+	article#schedule {
+		background-color: @midnightBlue;
+		min-height: 200px;
+		text-align: center;
+		button { 
+			cursor: pointer;
+			margin-top: 60px; // TODO FIXME
+			display: table-cell;
+			font-family: 'roboto slab'; 
+			font-size: 3em;
+			padding: 0.3em;
+			background-color: #fff;
+			border: 3px solid #fff;
+			color: darken(@silver, 40%);
+		}
+		button:hover {
+			border: 3px solid @alizarin;
+		}
+	}
+	article#tour2012 {
+		h2 { font-family: 'roboto slab'; }
+		background-color: @silver;
+	}
+}
+
+.PdPage {
+
+	article#intro {
+		h2 { font-family: 'roboto slab'; }
+		background-color: @silver;
+	}
+	article#types {
+		h2 { font-family: 'roboto slab'; }
+		background-color: @silver;
+	}
+	article#previous {
+		h2 { font-family: 'roboto slab'; }
+		background-color: @silver;
+	}
+	article#book {
+		background-color: @midnightBlue;
+		min-height: 200px;
+		text-align: center;
+		button { 
+			cursor: pointer;
+			margin-top: 60px; // TODO FIXME
+			display: table-cell;
+			font-family: 'roboto slab'; 
+			font-size: 3em;
+			padding: 0.3em;
+			background-color: #fff;
+			border: 3px solid #fff;
+			color: darken(@silver, 40%);
+		}
+		button:hover {
+			border: 3px solid @alizarin;
+		}
 	}
 }
