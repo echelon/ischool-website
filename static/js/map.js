@@ -1,3 +1,13 @@
+// Resize breakpoints -- may need to move to main.js
+BREAKPOINTS = {
+	PHONE_PORTRAIT: 479, // < 480
+	PHONE_LANDSCAPE: 599, // 480 - 599
+	TABLET_PORTRAIT: 768, // 600 - 768
+	TABLET_LANDSCAPE: 1024, // 769 - 1024
+	DESKTOP_REGULAR: 1280, // 1025 - 1280
+	// DESKTOP_HUGE >= 1281
+}
+
 /*
 	PLACE		  DATES				NAME
 	Atlanta, GA   6/15 - 6/16       DLR Tour Kick Off
@@ -12,18 +22,22 @@
 */
 
 function initialize() {
+	var c1 = new google.maps.LatLng(39.000, -95.000); // kansas
+	var c2 = new google.maps.LatLng(35.8490, -86.2272); // tenn
+	var c2 = new google.maps.LatLng(35.5608, -96.8461); // oklahoma
+
 	var mapOptions = {
 		center: new google.maps.LatLng(39.000, -95.000),
 		zoom: 4,
 		disableDefaultUI: true,
 		panControl: false,
-		zoomControl: false,
+		zoomControl: true, // XXX: False
 		mapTypeControl: false,
 		scaleControl: false,
 		streetViewControl: false,
 		overviewMapControl: false,
-		disableDoubleClickZoom: true,
-		scrollwheel: false,
+		disableDoubleClickZoom: false, // XXX: True
+		scrollwheel: true, // XXX: False
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 
@@ -72,14 +86,6 @@ function initialize() {
 	for(var x in places) {
 		var p = places[x];
 		places[x] = new google.maps.LatLng(p[0], p[1]);
-
-		var m = new google.maps.Marker({
-			position: places[x],
-			map: map,
-			title: 'title',
-		});
-
-		markers.push(m);
 		tourStops.push(places[x]);
 	}
 
@@ -101,6 +107,7 @@ function initialize() {
 	var direcDisp = new google.maps.DirectionsRenderer({
 		map: map,
 		suppressInfoWindows: false,
+		preserveViewport: true,
 		polylineOptions:{
 			strokeColor:'#000000',
 			strokeOpacity: 0.5,
@@ -109,8 +116,72 @@ function initialize() {
 	});
 
 	direc.route(request, function(resp, status) {
+    	if (status != google.maps.DirectionsStatus.OK) {
+			// TODO VISUAL ERROR PRINTED TO DOM?
+			console.log('Couldn\'t query Gmaps API.');
+			return;
+		}
 		direcDisp.setDirections(resp);
-	});
-}
 
+		// FIXME: NOT WORKING
+		for(var x in places) {
+			var m = new google.maps.Marker({
+				position: places[x],
+				map: map,
+				title: 'title',
+				draggable: false,
+				flat: true, // XXX: ???
+			});
+
+			markers.push(m);
+		}
+
+		sizeMap();
+	});
+
+	/**
+	 * Resize events code
+	 */
+	//google.maps.event.addListener(map, 'bounds_changed', function() {
+	var sizeMap = function() {
+		//var bounds = map.getBounds();
+		var width = $('#maps').width();
+
+		//map.setCenter(c1);
+
+		if(width <= BREAKPOINTS.PHONE_PORTRAIT) {
+			console.log('phone_portrait')
+			map.setZoom(4);
+			map.setCenter(c2);
+		}
+		else if(width <= BREAKPOINTS.PHONE_LANDSCAPE) {
+			console.log('phone_landscape')
+			map.setZoom(4);
+			map.setCenter(c2);
+		}
+		else if(width <= BREAKPOINTS.TABLET_PORTRAIT) {
+			console.log('tablet_portrait')
+			map.setZoom(4);
+			map.setCenter(c2);
+		}
+		else if(width <= BREAKPOINTS.TABLET_LANDSCAPE) {
+			console.log('tablet_landscape')
+			map.setCenter(c2);
+			map.setZoom(5);
+		}
+		else if(width <= BREAKPOINTS.DESKTOP_REGULAR) {
+			console.log('desktop_regular')
+			map.setCenter(c2);
+			map.setZoom(5);
+		}
+		else { // We're at width >= DESKTOP_HUGE
+			console.log('desktop_huge')
+			map.setCenter(c3);
+			map.setZoom(5);
+		}
+
+		console.log(width);
+	}
+	$(window).on('resize', sizeMap);
+}
 
