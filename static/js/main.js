@@ -59,7 +59,7 @@ var VideoView = Backbone.View.extend({
 
 		this.$el.append(this.$ytScript);
 
-		$(window).on('resize', function() { that.fitVideo(); });
+		$(window).on('resize', function() { that._fitVideo(); });
 		this.delegateEvents();
 	},
 
