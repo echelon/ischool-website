@@ -4,6 +4,57 @@
 
 {% block pageClass %}TourPage{% endblock %}
 
+{% block extraHead %}
+    <!-- XXX TEST -->
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAywYAfLDcvJj51_hA5_DuGzL7Vm7RyEz4&sensor=false"></script>
+{% endblock %}
+
+{% block extraBody %}
+  <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(39.000, -95.000),
+          zoom: 4,
+          disableDefaultUI: true,
+          panControl: false,
+          zoomControl: false,
+          mapTypeControl: false,
+          scaleControl: false,
+          streetViewControl: false,
+          overviewMapControl: false,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        // I believe removing the 'report error' link falls within
+        // Google's usage terms. If they tell us no, we can revert
+        // back. <http://stackoverflow.com/a/11625444>
+        var styleOptions = {
+          name: 'No Report Error',
+        };
+
+        var MAP_STYLE = [{
+            featureType: 'road',
+            elementType: 'all',
+            stylers: [
+                { visibility: 'on' }
+            ]
+        }];
+
+        var map = new google.maps.Map(
+            document.getElementById('maps'),
+            mapOptions);
+
+        var mapType = new google.maps.StyledMapType(MAP_STYLE, 
+            styleOptions);
+
+        map.mapTypes.set('No Report Error', mapType);
+        map.setMapTypeId('No Report Error');
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+{% endblock %}
+
 {% block topAttention %}
   <header>
     <span id="logofont">
@@ -36,9 +87,9 @@
   <p>Nulla commodo varius pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla tincidunt auctor lacus, ac auctor lectus gravida sit amet. Donec pharetra placerat nisl, quis interdum est egestas eu. Praesent in laoreet lacus. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean eget justo eros, sit amet ullamcorper sem. Nulla eu lectus ac tellus vulputate euismod. Nulla a erat vitae leo lobortis semper. Vivamus massa ante, placerat vitae tempor vitae, mattis quis eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst.</p>
 </article>
 
-<article id="maps">
+<div id="maps">
   <h2> Google Maps of Stops Goes Here </h2>
-</article>
+</div>
 
 <article id="schedule">
   <button>Schedule a Stop!</button>
