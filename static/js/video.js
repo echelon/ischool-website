@@ -1,5 +1,7 @@
 /**
  * Youtube Video in Header
+ * Copyright (c) 2013 Brandon Thomas <bt@brand.io>
+ * See more at http://brand.io
  */
 var install_video = function() {
 	window.video  = new VideoView();

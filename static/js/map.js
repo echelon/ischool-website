@@ -1,6 +1,8 @@
 /**
  * Google Maps Tour Stops
  * TODO: Backbone this stuff!
+ * Copyright (c) 2013 Brandon Thomas <bt@brand.io>
+ * See more at http://brand.io
  */
 
 // Resize breakpoints -- may need to move to main.js

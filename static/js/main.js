@@ -1,3 +1,8 @@
+/**
+ * Misc/main scripting
+ * Copyright (c) 2013 Brandon Thomas <bt@brand.io>
+ * See more at http://brand.io
+ */
 
 var install_nav = function() {
 	window.topnav = new TopNavView();
