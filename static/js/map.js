@@ -1,3 +1,8 @@
+/**
+ * Google Maps Tour Stops
+ * TODO: Backbone this stuff!
+ */
+
 // Resize breakpoints -- may need to move to main.js
 BREAKPOINTS = {
 	PHONE_PORTRAIT: 479, // < 480
@@ -149,8 +154,6 @@ function initialize() {
 		//var bounds = map.getBounds();
 		var width = $('#maps').width();
 
-		//map.setCenter(c1);
-
 		if(width <= BREAKPOINTS.PHONE_PORTRAIT) {
 			console.log('phone_portrait')
 			map.setZoom(4);
@@ -192,7 +195,6 @@ function initialize() {
 	}
 	$(window).on('resize', sizeMap);
 
-
 	//google.maps.event.addListener(map, 'center_changed', function() {
 	google.maps.event.addListener(map, 'dragend', function() {
 		console.log('changed center');
@@ -201,6 +203,5 @@ function initialize() {
 			//map.setCenter(center);
 		}, 400);
 	});
-
 }
 

@@ -115,13 +115,13 @@
     <script src="/static/js/lib/underscore-min.js"></script>
     <script src="/static/js/lib/backbone-min.js"></script>
     <script src="/static/js/main.js?{{ cache_buster() }}"></script>
-    {% block extraBody %}{% endblock %}
     <script type="text/javascript">
       less.watch();
-      main();
+      install_nav();
       setTimeout(function() {
           window.location = window.location;
         }, 1000 * 60 * 3);
     </script>
+    {% block extraBody %}{% endblock %}
   </body>
 </html>
