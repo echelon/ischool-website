@@ -24,20 +24,22 @@ BREAKPOINTS = {
 function initialize() {
 	var c1 = new google.maps.LatLng(39.000, -95.000); // kansas
 	var c2 = new google.maps.LatLng(35.8490, -86.2272); // tenn
-	var c2 = new google.maps.LatLng(35.5608, -96.8461); // oklahoma
+	var c3 = new google.maps.LatLng(35.5608, -96.8461); // oklahoma
+
+	var center = c1;
 
 	var mapOptions = {
 		center: new google.maps.LatLng(39.000, -95.000),
 		zoom: 4,
 		disableDefaultUI: true,
 		panControl: false,
-		zoomControl: true, // XXX: False
+		zoomControl: false,
 		mapTypeControl: false,
 		scaleControl: false,
 		streetViewControl: false,
 		overviewMapControl: false,
-		disableDoubleClickZoom: false, // XXX: True
-		scrollwheel: true, // XXX: False
+		disableDoubleClickZoom: true,
+		scrollwheel: false,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 
@@ -153,35 +155,52 @@ function initialize() {
 			console.log('phone_portrait')
 			map.setZoom(4);
 			map.setCenter(c2);
+			center = c2;
 		}
 		else if(width <= BREAKPOINTS.PHONE_LANDSCAPE) {
 			console.log('phone_landscape')
 			map.setZoom(4);
 			map.setCenter(c2);
+			center = c2;
 		}
 		else if(width <= BREAKPOINTS.TABLET_PORTRAIT) {
 			console.log('tablet_portrait')
 			map.setZoom(4);
 			map.setCenter(c2);
+			center = c2;
 		}
 		else if(width <= BREAKPOINTS.TABLET_LANDSCAPE) {
 			console.log('tablet_landscape')
-			map.setCenter(c2);
 			map.setZoom(5);
+			map.setCenter(c2);
+			center = c2;
 		}
 		else if(width <= BREAKPOINTS.DESKTOP_REGULAR) {
 			console.log('desktop_regular')
-			map.setCenter(c2);
 			map.setZoom(5);
+			map.setCenter(c2);
+			center = c2;
 		}
 		else { // We're at width >= DESKTOP_HUGE
 			console.log('desktop_huge')
-			map.setCenter(c3);
 			map.setZoom(5);
+			map.setCenter(c3);
+			center = c3;
 		}
 
 		console.log(width);
 	}
 	$(window).on('resize', sizeMap);
+
+
+	//google.maps.event.addListener(map, 'center_changed', function() {
+	google.maps.event.addListener(map, 'dragend', function() {
+		console.log('changed center');
+		setTimeout(function() {
+			map.panTo(center);
+			//map.setCenter(center);
+		}, 400);
+	});
+
 }
 
