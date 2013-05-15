@@ -174,43 +174,42 @@ function initialize()
 		var width = $('#maps').width();
 
 		if(width <= BREAKPOINTS.PHONE_PORTRAIT) {
-			console.log('phone_portrait')
+			//console.log('phone_portrait')
 			map.setZoom(4);
 			map.setCenter(c2);
 			center = c2;
 		}
 		else if(width <= BREAKPOINTS.PHONE_LANDSCAPE) {
-			console.log('phone_landscape')
+			//console.log('phone_landscape')
 			map.setZoom(4);
 			map.setCenter(c2);
 			center = c2;
 		}
 		else if(width <= BREAKPOINTS.TABLET_PORTRAIT) {
-			console.log('tablet_portrait')
+			//console.log('tablet_portrait')
 			map.setZoom(4);
 			map.setCenter(c2);
 			center = c2;
 		}
 		else if(width <= BREAKPOINTS.TABLET_LANDSCAPE) {
-			console.log('tablet_landscape')
+			//console.log('tablet_landscape')
 			map.setZoom(5);
 			map.setCenter(c2);
 			center = c2;
 		}
 		else if(width <= BREAKPOINTS.DESKTOP_REGULAR) {
-			console.log('desktop_regular')
+			//console.log('desktop_regular')
 			map.setZoom(5);
 			map.setCenter(c2);
 			center = c2;
 		}
 		else { // We're at width >= DESKTOP_HUGE
-			console.log('desktop_huge')
+			//console.log('desktop_huge')
 			map.setZoom(5);
 			map.setCenter(c3);
 			center = c3;
 		}
-
-		console.log(width);
+		//console.log(width);
 	}
 	$(window).on('resize', sizeMap);
 
@@ -244,18 +243,48 @@ function initialize()
 				travelMode: google.maps.DirectionsTravelMode.DRIVING,
 			}, 
 			function(resp, status) {
-				console.log('queried!');
 				if (status != google.maps.DirectionsStatus.OK) {
 					// TODO: VISUAL ERROR PRINTED TO DOM?
 					console.log('Couldn\'t query Gmaps API.');
 					return;
 				}
-				console.log('subroute done');
 				visualize(resp, false);
 				sizeMap();
 			}
 		);
 	}
+
+
+
+	// Trying to get labels working...
+	// COPIED CODE
+	// http://www.geocodezip.com/v3_GoogleEx_directions-waypointsE.html
+	var gmarkers = [];
+	var infowindow = new google.maps.InfoWindow({ 
+		size: new google.maps.Size(150,50)
+	});
+	function createMarker(latlng, label, html, color) {
+		var contentString = '<b>'+label+'</b><br>'+html;
+		var marker = new google.maps.Marker({
+			position: latlng,
+			draggable: true, 
+			map: map,
+			//shadow: iconShadow,
+			//icon: getMarkerImage(color),
+			//shape: iconShape,
+			title: label,
+			//zIndex: Math.round(latlng.lat()*-100000)<<5
+			});
+			marker.myname = label;
+			gmarkers.push(marker);
+
+		google.maps.event.addListener(marker, 'click', function() {
+			infowindow.setContent(contentString); 
+			infowindow.open(map,marker);
+			});
+	}
+
+
 
 	var ROUTE = null;
 
@@ -263,22 +292,17 @@ function initialize()
 	var visualize = function(response, reset) 
 	{
 		var merge_copyrights = function(copyright) {
+			// TODO
 		}
 
 		var merge_asdf = function() {
 		}
 
-		console.log('VISUALIZE()');
-
 		var route = response.routes[0];
-		console.log(route);
-		console.log(route.copyrights);
 
 		route.overview_polyline = null;
 		route.overview_path = null;
 		route.waypoint_order = null;
-
-		console.log(route);
 
 		if(reset || !ROUTE) {
 			ROUTE = response;
@@ -288,10 +312,13 @@ function initialize()
 
 		for(var i = 0; i < route.legs.length; i++) {
 			ROUTE.routes[0].legs.push(route.legs[i]);
+
+			createMarker(route.legs[i].start_location, "waypoint"+i,
+					route.legs[i].start_address,"yellow");
 		}
 
 		direcDisp.setDirections(ROUTE);
-
+		console.log(ROUTE);
 	}
 
 	for(var i = 0; i < tourBits.length; i++) {
