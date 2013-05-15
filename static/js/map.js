@@ -28,7 +28,8 @@ BREAKPOINTS = {
 	Melvil, NY    10/21 - 10/22     Eastern Suffolk Boces
 */
 
-function initialize() {
+function initialize() 
+{
 	var c1 = new google.maps.LatLng(39.000, -95.000); // kansas
 	var c2 = new google.maps.LatLng(35.8490, -86.2272); // tenn
 	var c3 = new google.maps.LatLng(35.5608, -96.8461); // oklahoma
@@ -79,14 +80,25 @@ function initialize() {
 
 	// XXX: Only allowed to have 8 waypoints in Google Maps free API
 	var places = {
-		atl: [33.7489, -84.3881],
+		atl: [33.7489, -84.3881], // #1
 		arkansas: [34.8000, -92.2000],
 		austin: [30.2669, -97.7428],
 		belton: [31.0558, -97.4642],
 		sanan: [29.4239, -98.4933],
-		washdc: [38.8900, -77.0300],
-		willva: [37.2749, -76.7083],
-		melny: [40.7933, -73.4156],
+		washdc: [38.8900, -77.0300], // #6 (F)
+		willva: [37.2749, -76.7083],// #7 (G)
+		melny: [40.7933, -73.4156], // #8 (H)
+		//
+		// TEST DATA ONLY:
+		wisconsin: [44.5000, -89.5000], // #9
+		nebraska: [41.2324, -98.4160],
+		newmexico: [35.6869, -105.9372],
+		iowa: [42.0546, -93.3718],
+		oklahoma: [35.5608, -96.8461],
+		indiana: [40.0066, -86.2914],
+		michigan: [43.6867, -85.0102],
+		northdakota: [46.8083, -100.7833],
+		utah: [39.5000, -111.5000], // #17
 	};
 
 	var tourStops = [];
@@ -98,19 +110,27 @@ function initialize() {
 		tourStops.push(places[x]);
 	}
 
-	// Build Stops
-	var stops = [];
-	for(var i = 0; i < tourStops.length - 2; i++) {
-		stops.push({location: tourStops[i+1]});
+
+	var tourStopsCopy= tourStops.slice(0);
+	var tourBits = []
+	while(tourStopsCopy.length) {
+		tourBits.push(tourStopsCopy.slice(0, 8));
+		for(var i = 0; i < 8; i++) {
+			tourStopsCopy.shift();
+		}
 	}
 
-	var request = {
-		origin: tourStops[0],
-		destination: tourStops[tourStops.length-1],
-		waypoints: stops,
-		optimizeWaypoints: false,
-		travelMode: google.maps.DirectionsTravelMode.DRIVING,
-	};
+	// Balance the last two legs. 
+	// Last leg must have at least 3 stops.
+	if(tourBits.length >= 2) {
+		var xl = tourBits[tourBits.length-2];
+		var yl = tourBits[tourBits.length-1];
+		if(yl.length < 3) {
+			for(var i = 0; i < 3; i++) {
+				yl.unshift(xl.pop());
+			}
+		}
+	}
 
 	var direc = new google.maps.DirectionsService();
 	var direcDisp = new google.maps.DirectionsRenderer({
@@ -124,34 +144,25 @@ function initialize() {
 		},
 	});
 
-	direc.route(request, function(resp, status) {
+	/*direc.route(request2, function(resp, status) {
     	if (status != google.maps.DirectionsStatus.OK) {
 			// TODO VISUAL ERROR PRINTED TO DOM?
 			console.log('Couldn\'t query Gmaps API.');
 			return;
 		}
-		direcDisp.setDirections(resp);
-
-		// FIXME: NOT WORKING
-		for(var x in places) {
-			var m = new google.maps.Marker({
-				position: places[x],
-				map: map,
-				title: 'title',
-				draggable: false,
-				flat: true, // XXX: ???
-			});
-
-			markers.push(m);
-		}
-
 		sizeMap();
-	});
+		console.log('route2');
+		//direcDisp.setDirections(resp);
+		visualize(resp, false);
+
+	});*/
+
 
 	/**
 	 * Resize events code
 	 */
-	//google.maps.event.addListener(map, 'bounds_changed', function() {
+	//google.maps.event.addListener(map, 
+	//'bounds_changed', function() {
 	var sizeMap = function() {
 		//var bounds = map.getBounds();
 		var width = $('#maps').width();
@@ -197,7 +208,8 @@ function initialize() {
 	}
 	$(window).on('resize', sizeMap);
 
-	//google.maps.event.addListener(map, 'center_changed', function() {
+	//google.maps.event.addListener(map, 
+	//'center_changed', function() {
 	google.maps.event.addListener(map, 'dragend', function() {
 		console.log('changed center');
 		setTimeout(function() {
@@ -205,5 +217,81 @@ function initialize() {
 			//map.setCenter(center);
 		}, 400);
 	});
+
+
+	var querySubroute = function(subroute, i) 
+	{
+		var direc = new google.maps.DirectionsService(),
+			start = subroute[0],
+			end = subroute[subroute.length-1],
+			waypoints = subroute.slice(1, -1);
+
+		for(var i = 0; i < waypoints.length; i++) {
+			waypoints[i] = {location: waypoints[i]};
+		}
+
+		direc.route({
+				origin: start,
+				destination: end,
+				waypoints: waypoints,
+				optimizeWaypoints: false,
+				travelMode: google.maps.DirectionsTravelMode.DRIVING,
+			}, 
+			function(resp, status) {
+				console.log('queried!');
+				if (status != google.maps.DirectionsStatus.OK) {
+					// TODO: VISUAL ERROR PRINTED TO DOM?
+					console.log('Couldn\'t query Gmaps API.');
+					return;
+				}
+				console.log('subroute done');
+				visualize(resp, false);
+				sizeMap();
+			}
+		);
+	}
+
+	var ROUTE = null;
+
+	// Work in progress route concatenation
+	var visualize = function(response, reset) 
+	{
+		var merge_copyrights = function(copyright) {
+		}
+
+		var merge_asdf = function() {
+		}
+
+		console.log('VISUALIZE()');
+
+		var route = response.routes[0];
+		console.log(route);
+		console.log(route.copyrights);
+
+		route.overview_polyline = null;
+		route.overview_path = null;
+		route.waypoint_order = null;
+
+		console.log(route);
+
+		if(reset || !ROUTE) {
+			ROUTE = response;
+			direcDisp.setDirections(ROUTE);
+			return;
+		}
+
+		for(var i = 0; i < route.legs.length; i++) {
+			ROUTE.routes[0].legs.push(route.legs[i]);
+		}
+
+		direcDisp.setDirections(ROUTE);
+
+	}
+
+	for(var i = 0; i < tourBits.length; i++) {
+		querySubroute(tourBits[i]);
+	}
+
+
 }
 
