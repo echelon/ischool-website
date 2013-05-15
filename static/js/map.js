@@ -1,6 +1,7 @@
 /**
  * Google Maps Tour Stops
  * TODO: Backbone this stuff!
+ * TODO: Organize and cleanup!
  * Copyright (c) 2013 Brandon Thomas <bt@brand.io>
  * See more at http://brand.io
  */
@@ -90,15 +91,15 @@ function initialize()
 		melny: [40.7933, -73.4156], // #8 (H)
 		//
 		// TEST DATA ONLY:
-		wisconsin: [44.5000, -89.5000], // #9
-		nebraska: [41.2324, -98.4160],
-		newmexico: [35.6869, -105.9372],
-		iowa: [42.0546, -93.3718],
-		oklahoma: [35.5608, -96.8461],
-		indiana: [40.0066, -86.2914],
-		michigan: [43.6867, -85.0102],
-		northdakota: [46.8083, -100.7833],
-		utah: [39.5000, -111.5000], // #17
+		wisconsin: [44.5000, -89.5000], // #9 I
+		nebraska: [41.2324, -98.4160], // J
+		newmexico: [35.6869, -105.9372], // K
+		iowa: [42.0546, -93.3718], // L
+		oklahoma: [35.5608, -96.8461], // M
+		indiana: [40.0066, -86.2914], // N
+		michigan: [43.6867, -85.0102], // O
+		northdakota: [46.8083, -100.7833], // P
+		utah: [39.5000, -111.5000], // Q #17
 	};
 
 	var tourStops = [];
@@ -112,15 +113,18 @@ function initialize()
 
 
 	var tourStopsCopy= tourStops.slice(0);
-	var tourBits = []
+	var tourBits = [];
+
+	// Build the tour "legs" to query.
+	tourBits.push(_.first(tourStopsCopy, 8));
+	tourStopsCopy = _.rest(tourStopsCopy, 8);
 	while(tourStopsCopy.length) {
-		tourBits.push(tourStopsCopy.slice(0, 8));
-		for(var i = 0; i < 8; i++) {
-			tourStopsCopy.shift();
-		}
+		var f = _.last(_.last(tourBits))
+		tourBits.push([f].concat(_.first(tourStopsCopy, 7)));
+		tourStopsCopy = _.rest(tourStopsCopy, 7);
 	}
 
-	// Balance the last two legs. 
+	// Balance the last two "legs". 
 	// Last leg must have at least 3 stops.
 	if(tourBits.length >= 2) {
 		var xl = tourBits[tourBits.length-2];
@@ -130,7 +134,9 @@ function initialize()
 				yl.unshift(xl.pop());
 			}
 		}
+		//yl.unshift(_.last(xl));
 	}
+
 
 	var direc = new google.maps.DirectionsService();
 	var direcDisp = new google.maps.DirectionsRenderer({
@@ -291,7 +297,5 @@ function initialize()
 	for(var i = 0; i < tourBits.length; i++) {
 		querySubroute(tourBits[i]);
 	}
-
-
 }
 
