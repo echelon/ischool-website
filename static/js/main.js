@@ -6,6 +6,41 @@
 
 var install_nav = function() {
 	window.topnav = new TopNavView();
+
+	install_resize_helper(); // TODO MOVE CALL ELSEHWERE
+}
+
+// Jump to the element nearest the top of the window 
+// when browser window resizes
+var install_resize_helper = function() {
+	var $goto = null; 
+	$(window).on('scroll', function() {
+		var top = $(window).scrollTop(),
+			closest = 99999;
+		$('#main, section').children().each(function(i) {
+			var elTop = $(this).offset().top,
+				dif = Math.abs(top - elTop);
+			if($(this).attr('id') == 'topnav') {
+				return;
+			}
+			if(dif < closest) {
+				closest = dif;
+				$goto = $(this);
+			}
+		});
+	})
+	.on('resize', function() {
+		var off = 0;
+		if($goto) {
+			off = $goto.offset().top;
+			if(off < 10) {
+				$(window).scrollTop(off);
+				return;
+			}
+			// Good enough to get nav out of way...
+			$(window).scrollTop(off - $('#topnav').height());
+		}
+	});
 }
 
 var TopNavView = Backbone.View.extend({

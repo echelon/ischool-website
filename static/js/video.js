@@ -146,8 +146,13 @@ var PlayButtonView = Backbone.View.extend({
 		this.delegateEvents();
 	},
 	click: function() {
-		$(window).scrollTop(0);
-		window.video.play();
+		$.smoothScroll({
+			offset: 0,
+			afterScroll: function() {
+				window.video.play();
+			},
+		});
+		return false;
 	},
 });
 
