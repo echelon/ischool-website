@@ -31,9 +31,10 @@
     <link href="/static/css/font-awesome.min.css" rel="stylesheet">
     <!--<link href="/static/css/design.css" rel="stylesheet">
     <link href="/static/css/responsive.css" rel="stylesheet">-->
-    <link href="/static/css/design.less" rel="stylesheet/less">
+    <link href="/static/css/design.less?{{ cache_buster() }}" 
+          rel="stylesheet/less">
     <link href="/static/img/favicon.png" rel="shortcut icon">
-
+    
     {% block extraHead %}{% endblock %}
 
   </head>
@@ -45,7 +46,7 @@
         <a href="/about">About</a> | 
         <a href="/tour">Tour</a> | 
         <a href="/pd">Training</a> |
-        <a href="http://tumblr.com">Blog</a> 
+        <a href="/blog">Blog</a> <!-- blog -->
       </nav>
 
       {% block topAttention %}
@@ -64,7 +65,7 @@
           <a href="/about">About</a> | 
           <a href="/tour">Tour</a> | 
           <a href="/pd">Training</a> |
-          <a href="http://tumblr.com">Blog</a> 
+          <a href="/blog">Blog</a>  <!-- tumblr -->
         </nav>
 
         <div id="contactBit">

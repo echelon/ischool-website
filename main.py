@@ -5,7 +5,7 @@ Copyright 2013 Brandon Thomas <bt@brand.io>
 """
 
 import sys
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
 
@@ -13,6 +13,13 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 1
 
 """
 APPLICATION COMPONENTS
+"""
+
+"""
+# XXX: Not working --
+with app.test_request_context():
+	app.add_url_rule('/favicon.ico',
+        redirect_to=url_for('static', filename='img/favicon.ico'))
 """
 
 @app.route('/')
