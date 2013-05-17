@@ -52,6 +52,9 @@ function initialize()
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 
+	// New post-Google IO design
+	google.maps.visualRefresh = true;
+
 	// I believe removing the 'report error' link falls within
 	// Google's usage terms. If they tell us no, we can revert
 	// back. <http://stackoverflow.com/a/11625444>
@@ -134,7 +137,7 @@ function initialize()
 				yl.unshift(xl.pop());
 			}
 		}
-		//yl.unshift(_.last(xl));
+		// FIXME: yl.unshift(_.last(xl));
 	}
 
 
@@ -142,6 +145,7 @@ function initialize()
 	var direcDisp = new google.maps.DirectionsRenderer({
 		map: map,
 		suppressInfoWindows: false,
+		suppressMarkers: true,
 		preserveViewport: true,
 		polylineOptions:{
 			strokeColor:'#000000',
@@ -149,20 +153,6 @@ function initialize()
 			strokeWeight: 10,
 		},
 	});
-
-	/*direc.route(request2, function(resp, status) {
-    	if (status != google.maps.DirectionsStatus.OK) {
-			// TODO VISUAL ERROR PRINTED TO DOM?
-			console.log('Couldn\'t query Gmaps API.');
-			return;
-		}
-		sizeMap();
-		console.log('route2');
-		//direcDisp.setDirections(resp);
-		visualize(resp, false);
-
-	});*/
-
 
 	/**
 	 * Resize events code
@@ -254,37 +244,11 @@ function initialize()
 		);
 	}
 
-
-
 	// Trying to get labels working...
-	// COPIED CODE
-	// http://www.geocodezip.com/v3_GoogleEx_directions-waypointsE.html
-	var gmarkers = [];
-	var infowindow = new google.maps.InfoWindow({ 
-		size: new google.maps.Size(150,50)
+	var infoWindow = new google.maps.InfoWindow({ 
+		content: '<h1><b>Title</b></h1>Text String Goes Here',
+		disableAutoPan: true,
 	});
-	function createMarker(latlng, label, html, color) {
-		var contentString = '<b>'+label+'</b><br>'+html;
-		var marker = new google.maps.Marker({
-			position: latlng,
-			draggable: true, 
-			map: map,
-			//shadow: iconShadow,
-			//icon: getMarkerImage(color),
-			//shape: iconShape,
-			title: label,
-			//zIndex: Math.round(latlng.lat()*-100000)<<5
-			});
-			marker.myname = label;
-			gmarkers.push(marker);
-
-		google.maps.event.addListener(marker, 'click', function() {
-			infowindow.setContent(contentString); 
-			infowindow.open(map,marker);
-			});
-	}
-
-
 
 	var ROUTE = null;
 
@@ -300,9 +264,36 @@ function initialize()
 
 		var route = response.routes[0];
 
+		console.log(response);
+
 		route.overview_polyline = null;
 		route.overview_path = null;
 		route.waypoint_order = null;
+
+		// Make markers
+		for(var i = 0; i < route.legs.length; i++) {
+			var mark = new google.maps.Marker({
+				position: route.legs[i].start_location,
+				draggable: false,
+				clickable: true,
+				flat: true,
+				map: map,
+				title: 'this is the onhover tooltip title' + i,
+				zIndex: 90000, // render above result markers
+				visible: true,
+			});
+
+			markers.push(mark);
+
+			google.maps.event.addListener(mark, 'click', 
+					function(event) {
+				infoWindow.setContent(mark.getTitle());
+				//infoWindow.setContent('<h1>Foo</h1>Bar');
+				infoWindow.setPosition(event.latLng);
+				infoWindow.open(map);
+			});
+
+		}
 
 		if(reset || !ROUTE) {
 			ROUTE = response;
@@ -310,15 +301,12 @@ function initialize()
 			return;
 		}
 
+		// Merge the result sets
 		for(var i = 0; i < route.legs.length; i++) {
 			ROUTE.routes[0].legs.push(route.legs[i]);
-
-			createMarker(route.legs[i].start_location, "waypoint"+i,
-					route.legs[i].start_address,"yellow");
 		}
 
 		direcDisp.setDirections(ROUTE);
-		console.log(ROUTE);
 	}
 
 	for(var i = 0; i < tourBits.length; i++) {

@@ -38,7 +38,7 @@ var install_resize_helper = function() {
 				return;
 			}
 			// Good enough to get nav out of way...
-			$(window).scrollTop(off - $('#topnav').height());
+			$(window).scrollTop(off - $('#topnav').outerHeight());
 		}
 	});
 }
