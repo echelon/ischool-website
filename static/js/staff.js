@@ -4,10 +4,19 @@
  * See more at http://brand.io
  * TODO: Rename staff.js team.js
  */
-var install_team = function() {
+var install_team = function() 
+{
+	var animate_random = function() {
+		if(window.team.where({hover: true}).length) {
+			console.log('hovering exists');
+			return;
+		}
+		window.team.animateRandom();
+	};
+
 	window.team = new Persons();
-	$('#staffPortraits .person')
-	.each(function() {
+
+	$('#staffPortraits .person').each(function() {
 		var person = new Person({
 				name: $(this).find('.name').html(),
 				role: $(this).find('.role').html(),
@@ -25,15 +34,10 @@ var install_team = function() {
 	})
 	.promise()
 	.done(function() {
+		setInterval(animate_random, 2000);
+		animate_random();
 	});
 }
-
-var PersonFullView = Backbone.View.extend({
-	$el: null,
-	model: null,
-	initialize: function() {
-	},
-});
 
 var PersonIconView = Backbone.View.extend({
 	$el: null,
@@ -51,26 +55,42 @@ var PersonIconView = Backbone.View.extend({
 		this.syncAnimation();
 	},
 	mouseEnter: function() {
-		window.team.hoverNone(); // XXX: Not necessary?
+		window.team.animateNone();
+		window.team.hoverNone();
+		this.model.set('animating', true);
 		this.model.set('hover', true);
 	},
 	mouseLeave: function() {
-		window.team.hoverNone(); // XXX: Not necessary?
+		window.team.animateNone();
+		window.team.hoverNone();
+		this.model.set('animating', false);
 		this.model.set('hover', false);
 	},
 	click: function() {
-		console.log('showFullView');
+		// TODO CLICK VIEW
 	},
 	syncAnimation: function() {
-		if(this.model.get('hover')) {
+		if(this.model.get('animating')) {
 			this.$el.find('.animated').show();
+			this.$el.find('.name').show();
 			this.$el.find('.static').css({display: 'none'});
+			this.$el.find('.role').css({display: 'none'});
 		}
 		else {
 			this.$el.find('.static').show();
+			this.$el.find('.role').show();
 			this.$el.find('.animated').css({display: 'none'});
+			this.$el.find('.name').css({display: 'none'});
 		}
 	}
+});
+
+// TODO: Person view
+var PersonFullView = Backbone.View.extend({
+	$el: null,
+	model: null,
+	initialize: function() {
+	},
 });
 
 var Person = Backbone.Model.extend({
@@ -83,6 +103,7 @@ var Person = Backbone.Model.extend({
 		imgCur: 'static',
 		selected: false,
 		hover: false,
+		animating: false,
 	},
 
 	initialize: function() {
@@ -93,6 +114,9 @@ var Person = Backbone.Model.extend({
 	select: function() {
 		this.team.deselectAll();
 		this.set('selected', true);
+		// TODO: Model triggers should enforce data state integrity
+		// 		 Doing this will decouple view state and model 
+		//		 state...
 		//this.trigger('selected:change');
 	},
 });
@@ -100,27 +124,23 @@ var Person = Backbone.Model.extend({
 var Persons = Backbone.Collection.extend({
 	model: Person,
 	initialize: function() {
-		//this.trigger('foo:change');
 	},
-
-	/*select: function(n) {
-		if(typeof(n) != 'number') {
-			return;
-		}
-		if(n < 0 || n >= this.models.length) {
-			return;
-		}
+	animateNone: function() {
 		for(var i = 0; i < this.models.length; i++) {
-			this.models[i].set('selected', false);
+			this.models[i].set('animating', false);
 		}
-	},*/
-
+	},
+	animateRandom: function() {
+		var idx = Math.floor(Math.random()*this.models.length);
+		this.animateNone();
+		this.models[idx].set('animating', true);
+	},
 	hoverNone: function() {
 		for(var i = 0; i < this.models.length; i++) {
 			this.models[i].set('hover', false);
 		}
 	},
-
+	// TODO: Unused 
 	// TODO: Use underscore
 	deselectAll: function() {
 		for(var i = 0; i < this.models.length; i++) {
@@ -128,5 +148,4 @@ var Persons = Backbone.Collection.extend({
 		}
 	},
 });
-
 
