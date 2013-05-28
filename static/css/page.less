@@ -99,11 +99,15 @@
 		background-color: rgba(0, 0, 0, 0.96);
 		//background-color: lighten(rgba(10, 20, 80, 0.9), 10%);
 		color: #fff;
+		padding: 0em 0em 1em; // FIXME:padding on top def'd elsewhere
 
 		#staffPortraits {
 			text-align: center;
-			.pho {
-				display: inline;
+			.person {
+				width: 250px !important;
+				height: 166px !important;
+				cursor: pointer;
+				display: inline-block;
 				position: relative;
 				.name {
 					font-size: 1.5em;
@@ -111,6 +115,15 @@
 					left: 7px;
 					bottom: 7px;
 					font-weight: bold;
+				}
+				.role {
+					display: none;
+				}
+				.about {
+					display: none;
+				}
+				.animated {
+					display: none;
 				}
 			}
 		}
