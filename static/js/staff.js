@@ -8,7 +8,6 @@ var install_team = function()
 {
 	var animate_random = function() {
 		if(window.team.where({hover: true}).length) {
-			console.log('hovering exists');
 			return;
 		}
 		window.team.animateRandom();
