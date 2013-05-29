@@ -104,19 +104,19 @@
 			padding: 0px;
 			text-align: center;
 			.active {
-				border: 2px solid rgba(255, 255, 255, 0.4);
-				padding: 2px;
+				background-color: @alizarin;
 			}
 			.inactive {
-				padding: 4px;
-				border: 0px;
+				background-color: none;
 			}
 			.person {
+				.border-radius(60px);
 				width: 250px !important;
 				height: 166px !important;
 				cursor: pointer;
 				display: inline-block;
 				position: relative;
+				padding: 4px;
 				.role, .name {
 					font-size: 1.5em;
 					position: absolute;
@@ -134,7 +134,7 @@
 					display: none;
 				}
 				img {
-					.border-radius(25%);
+					.border-radius(60px);
 				}
 			}
 		}
