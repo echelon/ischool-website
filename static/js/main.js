@@ -6,7 +6,6 @@
 
 var install_nav = function() {
 	window.topnav = new TopNavView();
-
 }
 
 var TopNavView = Backbone.View.extend({

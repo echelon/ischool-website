@@ -8,6 +8,15 @@ var install_dev_mode = function() {
 	install_resize_helper();
 	install_dev_keybindings();
 	install_todo_hide();
+	install_refresh_timer();
+};
+
+// Chrome on my system consumes my RAM. Overflow somewhere?
+var install_refresh_timer = function() {
+	var minutes = 10;
+	setTimeout(function() {
+		window.location = window.location;
+	}, 1000 * 60 * minutes);
 };
 
 // On keypress, toggle things like less watch mode. 
