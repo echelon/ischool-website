@@ -117,14 +117,17 @@
         };
     </script>
     <script src="/static/js/lib/jquery.js"></script>
+    <script src="/static/js/lib/jquery.easing.js"></script>
     <script src="/static/js/lib/jquery.smooth-scroll.min.js"></script>
     <script src="/static/js/lib/less.min.js"></script>
     <script src="/static/js/lib/underscore-min.js"></script>
     <script src="/static/js/lib/backbone-min.js"></script>
     <script src="/static/js/main.js?{{ cache_buster() }}"></script>
+    <script src="/static/js/dev.js?{{ cache_buster() }}"></script>
     <script type="text/javascript">
       //less.watch();
       install_nav();
+      install_dev_mode();
       setTimeout(function() {
           window.location = window.location;
         }, 1000 * 60 * 10); // TODO/XXX: DEV ONLY
