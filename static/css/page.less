@@ -31,6 +31,12 @@
    ============================================================= */
 
 .IndexPage {
+	article#about {
+		background-color: rgba(255, 255, 255, 0.98);
+		color: @wetAsphault;
+		padding: 2em 0em 0em; // FIXME! Bad <p> def.
+		font-size: 1.1em;
+	}
 	#teacher {
 		background-image: 
 			url('/static/img/photo/teacher-dark-blur.jpg');
@@ -217,3 +223,17 @@
 		}
 	}
 }
+
+// TODO only
+article#todo {
+	h2 {
+		text-decoration: underline;
+	}
+	background-color: #ff0;
+	color: #222;
+	li {
+		font-size: 1.3em;
+		padding-bottom: 0.5em;
+	}
+}
+
