@@ -5,10 +5,12 @@
  */
 
 var install_dev_mode = function() {
-	install_resize_helper();
-	install_dev_keybindings();
-	install_todo_hide();
-	install_refresh_timer();
+	$(function() {
+		install_resize_helper();
+		install_dev_keybindings();
+		install_todo_hide();
+		install_refresh_timer();
+	});
 };
 
 // Chrome on my system consumes my RAM. Overflow somewhere?
