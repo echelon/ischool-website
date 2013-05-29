@@ -10,8 +10,10 @@ var install_nav = function() {
 	install_resize_helper(); // TODO MOVE CALL ELSEHWERE
 }
 
-// Jump to the element nearest the top of the window 
-// when browser window resizes
+// Jump to the element nearest the top of the browser pane 
+// when browser window resizes. This aids in my personal
+// development (building/testing responsive design), but 
+// doesn't do much else for others.
 var install_resize_helper = function() {
 	var $goto = null; 
 	$(window).on('scroll', function() {

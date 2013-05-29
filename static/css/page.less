@@ -97,12 +97,20 @@
 		h2 { font-family: 'krona one'; }
 		font-family: 'arvo';
 		background-color: rgba(0, 0, 0, 0.96);
-		//background-color: lighten(rgba(10, 20, 80, 0.9), 10%);
 		color: #fff;
 		padding: 0em 0em 1em; // FIXME:padding on top def'd elsewhere
 
 		#staffPortraits {
+			padding: 0px;
 			text-align: center;
+			.active {
+				border: 2px solid rgba(255, 255, 255, 0.4);
+				padding: 2px;
+			}
+			.inactive {
+				padding: 4px;
+				border: 0px;
+			}
 			.person {
 				width: 250px !important;
 				height: 166px !important;
@@ -124,6 +132,9 @@
 				}
 				.animated {
 					display: none;
+				}
+				img {
+					.border-radius(25%);
 				}
 			}
 		}

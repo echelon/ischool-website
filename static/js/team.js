@@ -74,12 +74,16 @@ var PersonIconView = Backbone.View.extend({
 			this.$el.find('.name').show();
 			this.$el.find('.static').css({display: 'none'});
 			this.$el.find('.role').css({display: 'none'});
+			this.$el.removeClass('inactive');
+			this.$el.addClass('active');
 		}
 		else {
 			this.$el.find('.static').show();
 			this.$el.find('.role').show();
 			this.$el.find('.animated').css({display: 'none'});
 			this.$el.find('.name').css({display: 'none'});
+			this.$el.removeClass('active');
+			this.$el.addClass('inactive');
 		}
 	}
 });
