@@ -50,15 +50,8 @@
 
 	article#watchvid {
 		min-height: 200px;
-		text-align: center;
 		background-color: @alizarin;
 		button { 
-			cursor: pointer;
-			margin-top: 60px; // TODO FIXME
-			display: table-cell;
-			font-family: 'roboto slab'; 
-			font-size: 3em;
-			padding: 0.3em;
 			background-color: #fff;
 			border: 0px;
 			color: darken(@silver, 40%);
@@ -165,28 +158,14 @@
 		color: @midnightBlue;
 	}
 	article#schedule {
-		.no-select;
-		background-color: @midnightBlue;
 		min-height: 300px;
-		#schedule-inner {
-			height: 300px; // XXX: MUST MATCH ABOVE
-			width: 100%;
-			.display-box;
-			.box-center;
-			padding: 0;
-			margin: 0;
-			button { 
-				cursor: pointer;
-				font-family: 'roboto slab'; 
-				font-size: 3em;
-				padding: 0.3em;
-				background-color: #fff;
-				border: 3px solid #fff;
-				color: darken(@silver, 40%);
-			}
-			button:hover {
-				border: 3px solid @alizarin;
-			}
+		background-color: @midnightBlue;
+		button {
+			background-color: #fff;
+			color: darken(@silver, 25%);
+		}
+		button:hover {
+			border: 3px solid @alizarin;
 		}
 	}
 	article#tour2012 {
@@ -226,22 +205,15 @@
 		background-color: @silver;
 	}
 	article#book {
-		background-color: @midnightBlue;
 		min-height: 200px;
-		text-align: center;
+		background-color: rgba(0, 0, 0, 0.9);
 		button { 
-			cursor: pointer;
-			margin-top: 60px; // TODO FIXME
-			display: table-cell;
-			font-family: 'roboto slab'; 
-			font-size: 3em;
-			padding: 0.3em;
-			background-color: #fff;
-			border: 3px solid #fff;
-			color: darken(@silver, 40%);
+			border: 3px solid @alizarin;
+			background-color: @alizarin;
+			color: #fff;
 		}
 		button:hover {
-			border: 3px solid @alizarin;
+			border: 3px solid #fff;
 		}
 	}
 }
