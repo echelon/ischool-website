@@ -2,6 +2,11 @@
 """
 Temporary so I can use templates.
 Copyright 2013 Brandon Thomas <bt@brand.io>
+TODO: Static site compile tool
+	* Compile and compress LESS
+	* Compile and compress assets
+	* Deploy
+	* Write .htaccess to allow nice urls
 """
 
 import sys
