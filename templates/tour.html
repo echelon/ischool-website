@@ -5,7 +5,6 @@
 {% block pageClass %}TourPage{% endblock %}
 
 {% block extraHead %}
-    <!-- XXX TEST -->
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAywYAfLDcvJj51_hA5_DuGzL7Vm7RyEz4&sensor=false"></script>
 {% endblock %}
@@ -38,9 +37,7 @@
 {% block body %}
 <article id="about">
   <h2>About the Tour</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut nisi odio, nec rutrum dolor. Quisque accumsan porta ligula nec vulputate. Fusce in erat tortor. Suspendisse ultrices interdum tortor eu rutrum. Sed sollicitudin metus eros, eu sodales justo. Phasellus et leo vitae elit adipiscing placerat tincidunt at diam. Quisque sed neque lacus. Suspendisse et elit purus, vel sollicitudin lacus. Cras vulputate quam ac lacus interdum porttitor. Nullam vulputate tellus sit amet dui egestas tempus. Nulla ut velit eget ligula molestie gravida. Nunc auctor pulvinar sem, id ornare risus vestibulum quis. Praesent sed enim aliquam nisl tempor commodo. Quisque malesuada scelerisque nulla, quis cursus felis sagittis vel.</p>
-
-  <p>Nulla commodo varius pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla tincidunt auctor lacus, ac auctor lectus gravida sit amet. Donec pharetra placerat nisl, quis interdum est egestas eu. Praesent in laoreet lacus. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean eget justo eros, sit amet ullamcorper sem. Nulla eu lectus ac tellus vulputate euismod. Nulla a erat vitae leo lobortis semper. Vivamus massa ante, placerat vitae tempor vitae, mattis quis eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst.</p>
+  <p>Join the iSchool Initiative on our ambitious mission to reform education throughout the United States. The Digital Learning Revolution Tour is an educational conference on wheels. This tour is the culmination of what we preach as mobile learners, as it gives us the ability to extend our reach beyond our back yard and affect the lives of students across the country. For six months, iSchool Initiative will travel to educational conferences, schools, and communities to bring excitement around mobile learning and showcase other engaging technology made for the classroom.</p>
 </article>
 
 <article id="tour2013">
@@ -48,6 +45,10 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut nisi odio, nec rutrum dolor. Quisque accumsan porta ligula nec vulputate. Fusce in erat tortor. Suspendisse ultrices interdum tortor eu rutrum. Sed sollicitudin metus eros, eu sodales justo. Phasellus et leo vitae elit adipiscing placerat tincidunt at diam. Quisque sed neque lacus. Suspendisse et elit purus, vel sollicitudin lacus. Cras vulputate quam ac lacus interdum porttitor. Nullam vulputate tellus sit amet dui egestas tempus. Nulla ut velit eget ligula molestie gravida. Nunc auctor pulvinar sem, id ornare risus vestibulum quis. Praesent sed enim aliquam nisl tempor commodo. Quisque malesuada scelerisque nulla, quis cursus felis sagittis vel.</p>
 
   <p>Nulla commodo varius pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla tincidunt auctor lacus, ac auctor lectus gravida sit amet. Donec pharetra placerat nisl, quis interdum est egestas eu. Praesent in laoreet lacus. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean eget justo eros, sit amet ullamcorper sem. Nulla eu lectus ac tellus vulputate euismod. Nulla a erat vitae leo lobortis semper. Vivamus massa ante, placerat vitae tempor vitae, mattis quis eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst.</p>
+  <h2>Documentary</h2>
+  <p>iSchool Initiative will be filming a documentary throughout our tour featuring the school districts and teachers we will be working with. We will be filming many of the presentations and posting them online for the schools we visit to access as well.</p>
+  <blockquote>"The documentary will tell the compelling story of the iSchool Initiative's tour while providing an overview of the Digital Learning Revolution. It will also demonstrate the stark contrast between the traditional, outdated forms of classroom learning and the highly-engaging and effective approaches afforded by the iPad." - Joseph East</blockquote>
+
 </article>
 
 <div id="maps">
@@ -55,9 +56,11 @@
 </div>
 
 <article id="schedule">
-  <button>Schedule a Stop!</button>
+  <div class="spacer"></div>
+  <div id="schedule-inner">
+    <button>Schedule a Stop!</button>
+  </div>
 </article>
-
 
 <article id="tour2012">
   <h2>Tour 2012</h2>
@@ -65,5 +68,14 @@
 
   <p>Nulla commodo varius pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla tincidunt auctor lacus, ac auctor lectus gravida sit amet. Donec pharetra placerat nisl, quis interdum est egestas eu. Praesent in laoreet lacus. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean eget justo eros, sit amet ullamcorper sem. Nulla eu lectus ac tellus vulputate euismod. Nulla a erat vitae leo lobortis semper. Vivamus massa ante, placerat vitae tempor vitae, mattis quis eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst.</p>
 </article>
+
+<article id="tour2012">
+  <h2>Small Photo Gallery</h2>
+  <p>A small gallery of past tour photos will go here. It'll look like a seamless tile, kind of like <a href="#">this example (TODO)</a></p>
+</article>
+
+<div id="ending">
+  <img src="/static/img/dlrtour.png">
+</div>
 
 {% endblock body %}

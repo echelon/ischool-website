@@ -32,6 +32,24 @@
 	user-select: none;
 }
 
+.display-box {
+	display: box; // w3c
+	display: -ms-flexbox; // ie10
+	display: -moz-box; // ff4+ (todo: confirm)
+	display: -webkit-box; // versions?
+}
+
+.box-center {
+	box-pack: center;
+	box-align: center;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	-ms-flex-pack: center;
+	-ms-flex-align: center;
+}
+
 .border-radius(@rad) {
   -webkit-border-radius: @rad;
   -moz-border-radius: @rad;

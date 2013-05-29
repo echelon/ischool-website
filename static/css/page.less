@@ -165,22 +165,28 @@
 		color: @midnightBlue;
 	}
 	article#schedule {
+		.no-select;
 		background-color: @midnightBlue;
-		min-height: 200px;
-		text-align: center;
-		button { 
-			cursor: pointer;
-			margin-top: 60px; // TODO FIXME
-			display: table-cell;
-			font-family: 'roboto slab'; 
-			font-size: 3em;
-			padding: 0.3em;
-			background-color: #fff;
-			border: 3px solid #fff;
-			color: darken(@silver, 40%);
-		}
-		button:hover {
-			border: 3px solid @alizarin;
+		min-height: 300px;
+		#schedule-inner {
+			height: 300px; // XXX: MUST MATCH ABOVE
+			width: 100%;
+			.display-box;
+			.box-center;
+			padding: 0;
+			margin: 0;
+			button { 
+				cursor: pointer;
+				font-family: 'roboto slab'; 
+				font-size: 3em;
+				padding: 0.3em;
+				background-color: #fff;
+				border: 3px solid #fff;
+				color: darken(@silver, 40%);
+			}
+			button:hover {
+				border: 3px solid @alizarin;
+			}
 		}
 	}
 	article#tour2012 {
@@ -190,6 +196,15 @@
 
 	div#maps {
 		height: 500px;
+	}
+	div#ending {
+		background-color: rgba(255, 255, 255, 0.93);
+		text-align: center;
+		padding: 10px;
+		color: #999;
+		img {
+			padding: 15px;
+		}
 	}
 }
 
