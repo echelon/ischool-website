@@ -5,7 +5,9 @@ Copyright 2013 Brandon Thomas <bt@brand.io>
 """
 
 import sys
+import os
 from flask import Flask, render_template, url_for
+from flask import send_from_directory
 
 app = Flask(__name__)
 
@@ -37,6 +39,15 @@ def page_tour():
 @app.route('/pd')
 def page_pd():
 	return render_template('pd.html')
+
+@app.route('/<filename>.html')
+def page_html_file(filename):
+	# TODO/FIXME: Verify can't serve content outside of dir!
+	# XXX XXX : NEVER EVER PUT INTO PRODUCTION ANYWHERE
+	filename = '%s.html' % filename
+	return send_from_directory(
+			os.path.join(app.root_path, 'static', 'pages'),
+                               filename)
 
 @app.errorhandler(404)
 def page_404(e):
