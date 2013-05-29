@@ -8,32 +8,79 @@ var install_nav = function() {
 	window.topnav = new TopNavView();
 
 	install_resize_helper(); // TODO MOVE CALL ELSEHWERE
-	install_less_watch_keybinding(); // TODO MOVE CALL ELSEHWERE
+	install_dev_keybindings(); // TODO MOVE CALL ELSEHWERE
 }
 
-// On keypress, toggle less watching. 
+// On keypress, toggle things like less watch mode. 
 // *ONLY* for development!
-var install_less_watch_keybinding = function() {
+var install_dev_keybindings = function() {
+	var freeze = null;
 	$(window).on('keypress', function(ev) {
-		if(ev.which == 119) { // 'w' key
-			if(less.watchMode) {
-				console.log('Toggling LESS watch mode: OFF.');
-				less.unwatch();
-			}
-			else {
-				console.log('Toggling LESS watch mode: ON.');
-				less.watch();
-			}
-		}
-		else if(ev.which == 114) { // 'r' key
-			console.log('Refressh LESS.');
-			less.refresh();
-		}
-		else if(ev.which == 117) { // 'u' key
-			console.log('Unwatch LESS.');
-			less.unwatch();
+		switch(String.fromCharCode(ev.which)) {
+			case 'f':
+				if(!freeze) {
+					console.log('Freeze window');
+					freeze = new Freeze($(window).scrollTop());
+				}
+				break;
+
+			case 'w':
+				if(!less.watchMode) {
+					console.log('Watch LESS.');
+					less.watch();
+				}
+				break;
+
+			case 'r':
+				console.log('Refressh LESS.');
+				less.refresh();
+				break;
+
+			case 'u':
+				if(less.watchMode) {
+					console.log('Unwatch LESS.');
+					less.unwatch();
+				}
+				if(freeze) {
+					console.log('Unfreeze Window');
+					freeze.unfreeze();
+					freeze = null;
+				}
+				break;
+
+			default:
+				break;
 		}
 	});
+}
+
+// Freeze scrolling when called.
+// XXX: Care enough to unbind events before deleting!
+var Freeze = function(pos) {
+	var that = this,
+		returnScroll = function() {
+			$(window).scrollTop(that.position);
+		};
+
+	// Bind scrolling
+	this.freeze = function(pos) {
+		if(typeof pos !== 'undefined') {
+			this.position = pos;
+		}
+		this.unfreeze();
+		$(window).on('scroll', returnScroll);
+	};
+
+	// Unbind scrolling
+	// XXX: Always call before deleting 'this'
+	this.unfreeze = function() {
+		$(window).off('scroll', '', returnScroll);
+	};
+
+	this.position = typeof pos !== 'undefined' ? pos : 0;
+
+	// Call on init!
+	this.freeze();
 }
 
 // Jump to the element nearest the top of the browser pane 
