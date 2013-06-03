@@ -42,11 +42,11 @@
     <div id="main" 
          class="{% block pageClass %}TemplatePage{% endblock %}">
       <nav id="topnav">
-        <a href="/">Home</a> | 
-        <a href="/about">About</a> | 
-        <a href="/tour">Tour</a> | 
-        <a href="/pd">Training</a> |
-        <a href="/blog">Blog</a> <!-- blog -->
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/tour">Tour</a>
+        <a href="/pd">Training</a>
+        <a href="/blog">Blog</a>
       </nav>
 
       {% block topAttention %}
@@ -86,6 +86,23 @@
                 <div>
                   <b><i class="icon-th-large"></i></b>
                   iSchool Initiative &copy; 2013 
+                </div>
+                <div>
+                  <!-- XXX: Responsive Debug -->
+                  <b><i class="icon-th-large"></i></b> 
+                  Responsive Mode:
+                  <span id="dev-responsive-smartphone-portrait">
+                    Smartphone Portrait</span>
+                  <span id="dev-responsive-smartphone-landscape">
+                    Smartphone Landscape</span>
+                  <span id="dev-responsive-tablet-portrait">
+                    Tablet Portrait</span>
+                  <span id="dev-responsive-tablet-landscape">
+                    Tablet Landscape</span>
+                  <span id="dev-responsive-desktop-regular">
+                    Desktop Regular</span>
+                  <span id="dev-responsive-desktop-huge">
+                    Desktop Huge</span>
                 </div>
               </div>
             </li>
