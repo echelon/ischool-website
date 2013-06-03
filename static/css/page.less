@@ -79,30 +79,21 @@
 }
 
 .AboutPage {
+	header {
+		height: 170px !important;
+		background-position: right top !important;
+	}
 	article#about {
 		color: #fff;
-		h2 { 
-			font-family: 'open sans'; 
-		}
 		background-image: 
-			url('/static/img/test/school-sign.jpg');
+			url('/filter?gaussian=3&multiply=0.5&file=/static/img/test/schoolbus-top.jpg');
 		background-repeat: no-repeat;
 		background-position: center center;
 		background-size: cover;
 		background-attachment: fixed;
-
-		height: auto;
-		//background-color: rgba(255, 255, 255, 1.0);
-		overflow: hidden;
 		padding: 2.0em 0em 0px 0em;
-		img#travis-about-photo {
-			background-clip: text;
-			float: left;
-			padding: 10px;
-			max-width:100% !important;
-			height: auto;
-			display: block;
-		}
+		font-family: 'Bryant Alternate'; 
+		font-size: 1.4em;
 		img#floating-team {
 			display: block;
 			margin: auto;
@@ -111,7 +102,8 @@
 	}
 	article#team {
 		h2 { font-family: 'krona one'; }
-		font-family: 'arvo';
+		//font-family: 'arvo';
+		font-family: 'Bryant Alternate'; 
 		background-color: rgba(0, 0, 0, 0.96);
 		color: #fff;
 		padding: 0em 0em 1em; // FIXME:padding on top def'd elsewhere
@@ -157,7 +149,8 @@
 	}
 	article#board {
 		h2 { font-family: 'roboto slab'; }
-		font-family: 'lato';
+		//font-family: 'lato';
+		font-family: 'Bryant Alternate'; 
 		background-color: @alizarin;
 		color: #fff;
 

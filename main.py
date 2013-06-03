@@ -76,6 +76,10 @@ def page_image_filter():
 		kern = int(request.args['gaussian'])
 		im = im.filter(Gaussian(kern))
 
+	if 'multiply' in request.args:
+		f = float(request.args['multiply'])
+		im = im.point(lambda p: p * f)
+
 	return serve_pil_image(im)
 
 @app.errorhandler(404)
