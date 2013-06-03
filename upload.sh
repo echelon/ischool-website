@@ -1,2 +1,2 @@
 #!/bin/bash 
-rsync -zrp . isiglobal@isimobile.com:/home/isiglobal/isi.isimobile.com/flaskapp
+rsync -zrpv --exclude-from=exclude.txt . isiglobal@isimobile.com:/home/isiglobal/isi.isimobile.com/flaskapp
