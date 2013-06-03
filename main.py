@@ -69,7 +69,10 @@ def page_image_filter():
 			filename = filename[1:]
 		return os.path.join(FLASK_PATH, filename)
 
-	fn = get_fullpath(request.args['file'])
+	fn = '/static/img/favicon.png'
+	fn = fn if 'file' not in request.args else request.args['file']
+	fn = get_fullpath(fn)
+
 	im = Image.open(fn)
 
 	if 'gaussian' in request.args:
