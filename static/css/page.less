@@ -197,17 +197,19 @@
 		margin: 0;
 		padding: 0em 0em 1.5em;
 		ul {
-			width: 100%;
-			list-style: none;
+			// Consider table display: 
+			// http://stackoverflow.com/a/7985973
 			.display-box;
-			overflow: hidden;
+			list-style: none;
+			width: 100%;
 			padding: 0;
 			margin: 0;
+			font-size: 1.3em;
 			li {
+				.box-flex;
+				width: 0; // XXX: Fix for flexbox % render
 				padding: 0;
 				margin: 0;
-				width: 33%;
-				overflow: hidden;
 				text-align: center;
 				img.photo {
 					width: 75%;
@@ -225,12 +227,6 @@
 		font-family: 'Bryant Alternate'; 
 		background-color: @alizarin;
 		color: #fff;
-
-		img#gary {
-			float: right;
-			padding: 10px;
-			max-height: 250px;
-		}
 	}
 }
 

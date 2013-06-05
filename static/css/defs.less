@@ -34,19 +34,19 @@
 	user-select: none;
 }
 
-.display-box {
-	display: box; // w3c
-	display: -ms-flexbox; // ie10
-	display: -moz-box; // ff4+ (todo: confirm)
-	display: -webkit-box; // versions?
-}
-
 /* Places border and padding inside box; 
    Fixes width = 100% + padding overflow. */
 .border-box {
 	-webkit-box-sizing: border-box; // webkit 4
 	-moz-box-sizing: border-box; // all ff
 	box-sizing: border-box; // ie8, webkit 10
+}
+
+.display-box {
+	display: box; // w3c
+	display: -ms-flexbox; // ie10
+	display: -moz-box; // ff4+ (todo: confirm)
+	display: -webkit-box; // versions?
 }
 
 .box-center {
@@ -58,6 +58,16 @@
 	-moz-box-align: center;
 	-ms-flex-pack: center;
 	-ms-flex-align: center;
+}
+
+.box-flex {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	box-flex: 1;
+
+    /*-webkit-flex-basis: auto;
+    -moz-flex-basis: auto;
+    flex-basis: auto;*/
 }
 
 .border-radius(@rad) {
