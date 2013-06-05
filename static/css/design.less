@@ -34,49 +34,35 @@ body {
 	color: @midnightBlue;
 
 	header {
-		z-index: 1;
-		max-width: 100%;
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-		background-size: cover;
-		background-position: center center;
-		overflow: hidden;
-		position: relative; // For children
 
-		#textbit {
-			height: 100%;
-			width: 100%;
-			display: table;
-			margin-top: -2.0em;
-			#textwrap {
-				display: table-cell;
-				vertical-align: middle;
-				padding: 0px 5%;
-				.text {
-					font-family: 'Ubuntu';
-					text-align: right;
-					font-size: 3.2em;
-					font-weight: bold;
-					background-color: @alizarin;
-					color: #f5f5f5;
-					margin: 0.2em 1.3em 0.2em 0px;
-				}
-			}
+	}
+
+	nav#topnav {
+		font-family: 'Bryant Alternate';
+		font-weight: lighter;
+		text-align: center;
+		z-index: 5;
+		width: 100%;
+		.border-box;
+		margin: 0;
+		padding: 7px 8px 9px;
+		background-color: rgba(255, 255, 255, 0.97);
+		color: @silver;
+		font-size: 0.95em;
+		.box-shadow;
+		a {
+			font-size: 1.7em;
+			color: #111;
+			text-decoration: none;
+			padding: 0px 0.4em;
 		}
-		#loader {
-			display: none; // Javascript enables
-			height: 100%;
-			width: 100%;
-			position: relative;
-			img {
-				margin: auto;
-				position: absolute;
-				right: 0;
-				left: 0;
-				top: 0;
-				bottom: 0;
-			}
-		}
+	}
+	nav#topnav.fixed {
+		position: fixed;
+		top: 0;
+	}
+	#topnavwrap {
+		width: 100%;
 	}
 
 	#logofont {
@@ -102,28 +88,6 @@ body {
 			font-size: 1.00em;
 			font-family: 'philosopher';
 			letter-spacing: 0.03em;
-		}
-	}
-
-	nav#topnav {
-		font-family: 'Bryant Alternate';
-		font-weight: lighter;
-		text-align: center;
-		display: none;
-		z-index: 5;
-		width: 100%;
-		margin: 0px;
-		padding: 7px 8px 9px;
-		background-color: rgba(255, 255, 255, 0.97);
-		color: @silver;
-		font-size: 0.95em;
-		position: fixed;
-		.box-shadow;
-		a {
-			font-size: 1.7em;
-			color: #111;
-			text-decoration: none;
-			padding: 0px 0.4em;
 		}
 	}
 

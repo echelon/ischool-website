@@ -40,17 +40,23 @@
   <body>
     <div id="main" 
          class="{% block pageClass %}TemplatePage{% endblock %}">
-      <nav id="topnav">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/tour">Tour</a>
-        <a href="/pd">Training</a>
-        <a href="/blog">Blog</a>
-      </nav>
-
       {% block topAttention %}
-        <!-- Topmost attention getter -->
+        <header>
+          <!-- Topmost attention getter -->
+        </header>
       {% endblock %}
+
+      {% block nav %}
+      <div id="topnavwrap">
+        <nav id="topnav">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/tour">Tour</a>
+          <a href="/pd">Training</a>
+          <a href="/blog">Blog</a>
+        </nav>
+      </div>
+      {% endblock nav %}
 
       <section>
       {% block body %}

@@ -14,22 +14,39 @@ var TopNavView = Backbone.View.extend({
 	constructor: function() {
 		var that = this;
 		this.$el = $('nav#topnav');
+		this.$wrap = $('#topnavwrap');
 		$(window).scroll(function() { that.fade(); });
 	},
 
 	fade: function(ev) {
 		var a = $(window).scrollTop(),
-			b = $('header').height();
-		// TODO/FIXME: 
-		// I should only trigger when thresholds are passed, 
-		// perhaps fire NoOps otherwise. Or does jQuery do this 
-		// automatically when fadeIn()/fadeOut() calls are stacked?
+			b = this.$wrap.position().top;
+				
+		// Necessary to prevent jumpiness @ threshold point
+		// I'm continually firing this because font load/changes
+		// may alter height.
+		this.$wrap.height(this.$el.outerHeight());
+
 		if(a >= b) {
-			this.$el.fadeIn();
+			this.fix();
 		}
 		else {
-			this.$el.fadeOut();
+			this.unfix();
 		}
+	},
+
+	fix: function() {
+		if(this.$el.hasClass('fixed')) {
+			return;
+		}
+		this.$el.addClass('fixed');
+	},
+
+	unfix: function() {
+		if(!this.$el.hasClass('fixed')) {
+			return;
+		}
+		this.$el.removeClass('fixed');
 	},
 });
 

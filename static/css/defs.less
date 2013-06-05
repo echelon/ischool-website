@@ -2,6 +2,8 @@
  * Flat design colors!
  */
 
+// TODO: Check features: http://caniuse.com/
+
 @wetAsphault: #34495e;
 @midnightBlue: #2c3e50;
 @concrete: #95a5a6;
@@ -37,6 +39,14 @@
 	display: -ms-flexbox; // ie10
 	display: -moz-box; // ff4+ (todo: confirm)
 	display: -webkit-box; // versions?
+}
+
+/* Places border and padding inside box; 
+   Fixes width = 100% + padding overflow. */
+.border-box {
+	-webkit-box-sizing: border-box; // webkit 4
+	-moz-box-sizing: border-box; // all ff
+	box-sizing: border-box; // ie8, webkit 10
 }
 
 .box-center {

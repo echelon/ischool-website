@@ -31,6 +31,53 @@
    ============================================================= */
 
 .IndexPage {
+
+	header {
+		z-index: 1;
+		max-width: 100%;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+		background-position: center center;
+		//overflow: hidden;
+		position: relative; // For children
+
+		#textbit {
+			height: 100%;
+			width: 100%;
+			display: table;
+			margin-top: -2.0em;
+			#textwrap {
+				display: table-cell;
+				vertical-align: middle;
+				padding: 0px 5%;
+				.text {
+					font-family: 'Ubuntu';
+					text-align: right;
+					font-size: 3.2em;
+					font-weight: bold;
+					background-color: @alizarin;
+					color: #f5f5f5;
+					margin: 0.2em 1.3em 0.2em 0px;
+				}
+			}
+		}
+		#loader {
+			display: none; // Javascript enables
+			height: 100%;
+			width: 100%;
+			position: relative;
+			img {
+				margin: auto;
+				position: absolute;
+				right: 0;
+				left: 0;
+				top: 0;
+				bottom: 0;
+			}
+		}
+	}
+
 	article#about {
 		background-color: rgba(255, 255, 255, 0.98);
 		color: @wetAsphault;
@@ -80,20 +127,17 @@
 
 .AboutPage {
 	header {
-		height: 0px !important;
-		//background-position: right top !important;
-	}
-	article#about {
 		//color: #fff;
 		color: @clouds;
 		background-image: 
 			url('/filter?gaussian=3&multiply=0.5&file=/static/img/test/schoolbus-top.jpg');
 		background-repeat: no-repeat;
-		background-position: center center;
-		background-size: cover;
+		background-position: center center !important;
+		background-size: cover !important;
 		background-attachment: fixed;
 		padding: 2.0em 0em 0px 0em;
 		font-family: 'Bryant Alternate'; 
+		text-align: justify;
 		font-size: 1.4em;
 		p { padding: 0em 4.0em 1.2em; }
 		img#floating-team {
