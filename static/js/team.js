@@ -4,6 +4,9 @@
  * See more at http://brand.io
  * TODO: Rename staff.js team.js
  */
+
+var TEAM_CONTAINER = '#staffPortraits';
+
 var install_team = function() 
 {
 	var animate_random = function() {
@@ -15,7 +18,7 @@ var install_team = function()
 
 	window.team = new Persons();
 
-	$('#staffPortraits .person').each(function() {
+	$(TEAM_CONTAINER + ' .person').each(function() {
 		var person = new Person({
 				name: $(this).find('.name').html(),
 				role: $(this).find('.role').html(),
@@ -29,10 +32,12 @@ var install_team = function()
 				el: $(this),
 			});
 
+		person.iconView = iconView;
 		window.team.add(person);
 	})
 	.promise()
 	.done(function() {
+		window.team.shuffle();
 		setInterval(animate_random, 2000);
 		animate_random();
 	});
@@ -41,6 +46,7 @@ var install_team = function()
 var PersonIconView = Backbone.View.extend({
 	$el: null,
 	model: null,
+	detached: false,
 	events: {
 		click: 'click',
 		mouseenter: 'mouseEnter',
@@ -52,6 +58,21 @@ var PersonIconView = Backbone.View.extend({
 			that.syncAnimation(); 
 		});
 		this.syncAnimation();
+	},
+	detach: function() {
+		if(this.detached) {
+			return;
+		}
+		this.$el.detach();
+		this.detached = true;
+	},
+	reattach: function() {
+		// Obviously changes order of views
+		if(!this.detached) {
+			this.detach()
+		}
+		this.$el.appendTo(TEAM_CONTAINER);
+		this.detached = false;
 	},
 	mouseEnter: function() {
 		window.team.animateNone();
@@ -107,6 +128,7 @@ var PersonFullView = Backbone.View.extend({
 });
 
 var Person = Backbone.Model.extend({
+	iconView: null, // set by installer
 	defaults: {
 		name: 'Unnamed Person',
 		role: 'Employee',
@@ -159,6 +181,13 @@ var Persons = Backbone.Collection.extend({
 		for(var i = 0; i < this.models.length; i++) {
 			this.models[i].set('selected', false);
 		}
+	},
+	// Randomly sort the team members
+	shuffle: function() {
+		var team = _.shuffle(this.models);
+		_.each(team, function(el, i, li) {
+			el.iconView.reattach();
+		});
 	},
 });
 
