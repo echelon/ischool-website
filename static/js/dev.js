@@ -46,6 +46,11 @@ var install_dev_keybindings = function() {
 				less.refresh();
 				break;
 
+			case 't':
+				console.log('Show TODO.');
+				show_focus_todo();
+				break;
+
 			case 'u':
 				if(less.watchMode) {
 					console.log('Unwatch LESS.');
@@ -107,6 +112,12 @@ var install_todo_hide = function() {
 			easing: 'easeInExpo',
 		});
 	});
+}
+
+var show_focus_todo = function() {
+	$('#todo').show();
+	$(window).scrollTop(10000000000000000);
+	$(window).scrollTop($('#todo').position().top);
 }
 
 // Freeze scrolling when called.
