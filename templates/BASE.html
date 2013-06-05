@@ -40,6 +40,9 @@
   <body>
     <div id="main" 
          class="{% block pageClass %}TemplatePage{% endblock %}">
+      {% block header %}
+        <!-- Replaces topAttention -->
+      {% endblock header %}
       {% block topAttention %}
         <header>
           <!-- Topmost attention getter -->

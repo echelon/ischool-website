@@ -24,6 +24,9 @@
 {% endblock todo %}
 
 {% block topAttention %}
+{% endblock topAttention %}
+
+{% block header %}
   <header>
     <!--<h2>History of the iSchool Initiative</h2>-->
     <!--<img src="/static/img/people/travis.jpg" id="travis-about-photo" class="circular">-->
@@ -32,13 +35,21 @@
     <p>Since its inception, the iSchool Initiative team has expanded to 11 full-time team members and made appearances at many prestigious events worldwide, including a recent invitation to a White House Data Initiative. iSchool Initiative continues to support the movement for change in education as a leader of the Digital Learning Revolution.</p>
     <img src="/static/img/floating/team.png" id="floating-team">
   </header>
-{% endblock topAttention %}
+{% endblock header %}
 
 {% block body %}
 <article id="team">
   <h2>Meet Our Team</h2>
   
   <div id="staffPortraits">
+
+    <div class="person inactive">
+      <img src="/static/img/people/arvin-bushes.jpg" class="static">
+      <img src="/static/img/people/arvin-bushes.gif" class="animated">
+      <div class="name">Arvin</div>
+      <div class="role">Awesome Possum</div>
+    </div>
+
     <div class="person inactive">
       <img src="/static/img/people/michael.png" class="static">
       <img src="/static/img/people/michael.gif" class="animated">
@@ -95,13 +106,6 @@
     </div>
 
     <div class="person inactive">
-      <img src="/static/img/people/ken150.jpg" class="static">
-      <img src="/static/img/people/ken150.gif" class="animated">
-      <div class="name">Arvin</div>
-      <div class="role">Practical Joker</div>
-    </div>
-
-    <div class="person inactive">
       <img src="/static/img/people/michael.png" class="static">
       <img src="/static/img/people/michael.gif" class="animated">
       <div class="name">Emily</div>
@@ -123,8 +127,8 @@
     </div>
 
     <div class="person inactive">
-      <img src="/static/img/people/ken150.jpg" class="static">
-      <img src="/static/img/people/ken150.gif" class="animated">
+      <img src="/static/img/people/arvin-bushes.jpg" class="static">
+      <img src="/static/img/people/arvin-bushes.gif" class="animated">
       <div class="name">Slav</div>
       <div class="role">Artistic Genius</div>
     </div>
