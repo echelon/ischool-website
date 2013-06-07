@@ -213,7 +213,6 @@ function initialize()
 		}, 400);
 	});
 
-
 	var querySubroute = function(subroute, i) 
 	{
 		var direc = new google.maps.DirectionsService(),
