@@ -227,6 +227,18 @@
 }
 
 .TourPage {
+	header {
+
+		position: relative;
+		div#maps {
+			height: 500px;
+		}
+		div#maplogo {
+			position: absolute;
+			right: 1.0em;
+			top: 1.0em;
+		}
+	}
 	article#about {
 		h2 { font-family: 'roboto slab'; }
 		background-color: @midnightBlue;
@@ -251,10 +263,6 @@
 	article#tour2012 {
 		h2 { font-family: 'roboto slab'; }
 		background-color: @silver;
-	}
-
-	header#maps {
-		height: 500px;
 	}
 	div#ending {
 		background-color: rgba(255, 255, 255, 0.93);
