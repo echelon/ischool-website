@@ -2,7 +2,6 @@
  * Team Profiles Animation 
  * Copyright (c) 2013 Brandon Thomas <bt@brand.io>
  * See more at http://brand.io
- * TODO: Rename staff.js team.js
  */
 
 var TEAM_CONTAINER = '#staffPortraits';
