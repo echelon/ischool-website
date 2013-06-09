@@ -16,9 +16,12 @@ import Image, ImageFilter # PIL
 from StringIO import StringIO
 from flask import Flask, render_template, url_for, request
 from flask import send_from_directory, send_file
+#from flask_frozen import Freezer
 
 app = Flask(__name__)
 
+app.config['FREEZER_DEFAULT_MIMETYPE'] = 'text/html'
+app.config['FREEZER_DESTINATION'] = 'build'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 1
 app.config['DEV_MACHINE'] = False
 
@@ -26,6 +29,8 @@ FLASK_PATH = os.path.dirname(os.path.abspath(__file__))
 
 if getpass.getuser() in ['brandon']:
 	app.config['DEV_MACHINE'] = True
+
+#freezer = Freezer(app)
 
 """
 APPLICATION COMPONENTS
@@ -129,12 +134,20 @@ def cache_buster():
 
 app.jinja_env.globals.update(cache_buster=cache_buster)
 
-if __name__ == '__main__':
-	port = 5000 if len(sys.argv) < 2 \
-			else int(sys.argv[1])
+def main(port=5000):
 	app.run(
 		port = port,
 		host = '0.0.0.0',
 		use_reloader = True,
 	)
+
+if __name__ == '__main__':
+	"""
+	if len(sys.argv) > 1 and sys.argv[1] == 'build':
+		app.config['DEV_MACHINE'] = False
+		freezer.freeze()
+		freezer.serve(debug=True)
+	"""
+	port = 5000 if len(sys.argv) < 2 else int(sys.argv[1])
+	main(port=port)
 
