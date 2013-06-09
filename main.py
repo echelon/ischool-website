@@ -9,18 +9,23 @@ TODO: Static site compile tool
 	* Write .htaccess to allow nice urls
 """
 
-import sys
 import os
+import sys
+import getpass
 import Image, ImageFilter # PIL
+from StringIO import StringIO
 from flask import Flask, render_template, url_for, request
 from flask import send_from_directory, send_file
-from StringIO import StringIO
 
 app = Flask(__name__)
 
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 1
+app.config['DEV_MACHINE'] = False
 
 FLASK_PATH = os.path.dirname(os.path.abspath(__file__))
+
+if getpass.getuser() in ['brandon']:
+	app.config['DEV_MACHINE'] = True
 
 """
 APPLICATION COMPONENTS

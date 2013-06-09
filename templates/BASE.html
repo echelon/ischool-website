@@ -27,11 +27,17 @@
 
     <title>{% block title %}iSchool{% endblock %}</title>
 
+    <!-- TODO: Final version: Compile all of this! -->
     <link href="/static/css/yui-reset.css" rel="stylesheet">
     <link href="/static/css/font-awesome.min.css" rel="stylesheet">
-    <!-- TODO: Final version: Use compiled CSS, not LESS! -->
-    <link href="/static/css/design.less?{{ cache_buster() }}" 
-          rel="stylesheet/less">
+
+    {% if config.DEV_MACHINE %}
+        <link href="/static/less/design.less?{{ cache_buster() }}" 
+              rel="stylesheet/less">
+    {% else %}
+        <link href="/static/less/design.out.css" rel="stylesheet">
+    {% endif %}
+
     <link href="/static/img/favicon.png" rel="shortcut icon">
     
     {% block extraHead %}{% endblock %}
@@ -138,29 +144,32 @@
       </footer>
       {% block todo %}{% endblock todo %}
     </div>
-    <!-- NOTE: DEVELOPMENT ONLY -->
-    <script type="text/javascript">
-        less = {
-            env: "development",
-            async: false,
-            fileAsync: false,
-            poll: 1000,
-            functions: {},
-            dumpLineNumbers: "comments",
-            relativeUrls: false,
-        };
-    </script>
+    {%if config.DEV_MACHINE %}
+      <script type="text/javascript">
+          less = {
+              env: "development",
+              async: false,
+              fileAsync: false,
+              poll: 1000,
+              functions: {},
+              dumpLineNumbers: "comments",
+              relativeUrls: false,
+          };
+      </script>
+      <script src="/static/js/lib/less.min.js"></script>
+    {% endif %}
     <script src="/static/js/lib/jquery.js"></script>
     <script src="/static/js/lib/jquery.easing.js"></script>
     <script src="/static/js/lib/jquery.smooth-scroll.min.js"></script>
-    <script src="/static/js/lib/less.min.js"></script>
     <script src="/static/js/lib/underscore-min.js"></script>
     <script src="/static/js/lib/backbone-min.js"></script>
-    <script src="/static/js/main.js?{{ cache_buster() }}"></script>
-    <script src="/static/js/dev.js?{{ cache_buster() }}"></script>
+    <script src="/static/js/main.js{% if config.DEV_MACHINE 
+        %}?{{ cache_buster() }}{% endif %}"></script>
+      <script src="/static/js/dev.js{% if config.DEV_MACHINE
+        %}?{{ cache_buster() }}{% endif %}"></script>
     <script type="text/javascript">
       install_nav();
-      install_dev_mode();
+      {% if config.DEV_MACHINE %}install_dev_mode();{% endif %}
     </script>
     {% block extraBody %}{% endblock %}
   </body>
