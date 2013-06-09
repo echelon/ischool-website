@@ -4,14 +4,26 @@
  * See more at http://brand.io
  */
 
-var STATS_CONTAINER = '#stats';
+// TODO: Set as function of time
+// TODO: Decimal and thousands-place comma formatting
+// TODO: Don't freeze browser
+// TODO: Install and run after maps is constructed (fire event)
+// TODO: Now is probably the time to consider AMD and js compiling
+
+var STATS_CONTAINER = '#stats ul';
 
 var install_counter = function() {
+	var counterIncrement = function() {
+		window.stats.each(function(stat, i) {
+			stat.increment();
+		});
+	}
+
 	window.stats = new Stats([
 		{number: 10, description: 'states'},
 		{number: 23, description: 'stops'},
-		{number: 25000, description: 'miles'},
-		{number: 200000, description: 'students reached'},
+		{number: 25000, add: 5, description: 'miles'},
+		{number: 200000, add: 597, description: 'students reached'},
 	]);
 
 	window.stats.each(function(stat, i) {
@@ -21,12 +33,18 @@ var install_counter = function() {
 
 	console.log('stats models created');
 	console.log(window.stats.length);
+
+	setInterval(function() { counterIncrement(); }, 1500);
 };
 
 var StatView = Backbone.View.extend({
 	initialize: function() {
+		var that = this;
 		this.$el = $('<li>');
 		this.update();
+		this.model.on('change', function() { 
+			that.update();
+		});
 	},
 	update: function() {
 		var that = this;
@@ -41,7 +59,7 @@ var StatView = Backbone.View.extend({
 		var num = format(this.model.get('number')),
 			desc = this.model.get('description');
 
-		this.$el.html(num + ' ' + desc);
+		this.$el.html('<p>' + num + '</p><p>' + desc + '</p>');
 	},
 });
 
@@ -49,11 +67,18 @@ var Stat = Backbone.Model.extend({
 	view: null,
 	defaults: {
 		number: 0,
+		add: 0,
 		decimals: 0,
 		description: 'things',
 	},
 	initialize: function() {
 	},
+	increment: function() {
+		// TODO: Should be a function of time!!
+		var n = this.get('number');
+		var a = this.get('add');
+		this.set('number', n + a );
+	}
 });
 
 var Stats = Backbone.Collection.extend({

@@ -235,7 +235,36 @@
 		}
 		div#stats {
 			position: absolute;
-			top: 1.0em;
+			bottom: 1.0em;
+			left: 0.0em;
+			font-size: 1.5em;
+			font-weight: bold;
+			width: 100%;
+			color: #fff;
+			ul {
+				// Consider table display: 
+				// http://stackoverflow.com/a/7985973
+				.display-box;
+				list-style: none;
+				width: 100%;
+				padding: 0;
+				margin: 0;
+				li {
+					.box-flex;
+					width: 0; // XXX: Fix for flexbox % render
+					padding: 0 0.2em;
+					margin: 0;
+					text-align: center;
+					p {
+						padding: 0;
+						margin: 0;
+						background-color: rgba(0, 0, 0, 0.5);
+					}
+				}
+				li:last-child {
+					width: 33%;
+				}
+			}
 		}
 		div#overlay {
 			position: absolute;
