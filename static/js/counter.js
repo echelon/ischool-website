@@ -22,7 +22,7 @@ var install_counter = function() {
 	window.stats = new Stats([
 		{number: 10, description: 'states'},
 		{number: 23, description: 'stops'},
-		{number: 25000, add: 5, description: 'miles'},
+		{number: 25000, add: 0.05, places: 2, description: 'miles'},
 		{number: 200000, add: 597, description: 'students reached'},
 	]);
 
@@ -49,9 +49,24 @@ var StatView = Backbone.View.extend({
 	update: function() {
 		var that = this;
 		var format = function(num) {
-			var decimals = that.model.get('decimals');
-			if(decimals) {
-				num = num.toFixed(decimals);
+			var places = that.model.get('places'),
+				decimal = false;
+			if(places) {
+				num = num.toFixed(places);
+				decimal = num.toString().split('.');
+				num = decimal[0];
+				decimal = decimal[1];
+			}
+			else {
+				num = num.toString();
+			}
+
+			// Commas for thousands places
+			// http://stackoverflow.com/a/2901298
+			num = num.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+			if(decimal !== false) {
+				num = num + '.' + decimal;
 			}
 			return num;
 		};
@@ -68,7 +83,7 @@ var Stat = Backbone.Model.extend({
 	defaults: {
 		number: 0,
 		add: 0,
-		decimals: 0,
+		places: 0,
 		description: 'things',
 	},
 	initialize: function() {
