@@ -1,5 +1,7 @@
 *~
+*pyc
 static/img/*
 static/font/*
 build/*
+output_build/*
 *.out.css

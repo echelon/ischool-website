@@ -1,12 +1,7 @@
 #!/usr/bin/env python
 """
-Temporary so I can use templates.
+iSchool Initiative Website
 Copyright 2013 Brandon Thomas <bt@brand.io>
-TODO: Static site compile tool
-	* Compile and compress LESS
-	* Compile and compress assets
-	* Deploy
-	* Write .htaccess to allow nice urls
 """
 
 import os
@@ -16,12 +11,13 @@ import Image, ImageFilter # PIL
 from StringIO import StringIO
 from flask import Flask, render_template, url_for, request
 from flask import send_from_directory, send_file
-#from flask_frozen import Freezer
+
+# -------------
+# CONFIGURATION
+# -------------
 
 app = Flask(__name__)
 
-app.config['FREEZER_DEFAULT_MIMETYPE'] = 'text/html'
-app.config['FREEZER_DESTINATION'] = 'build'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 1
 app.config['DEV_MACHINE'] = False
 
@@ -30,18 +26,16 @@ FLASK_PATH = os.path.dirname(os.path.abspath(__file__))
 if getpass.getuser() in ['brandon']:
 	app.config['DEV_MACHINE'] = True
 
-#freezer = Freezer(app)
-
-"""
-APPLICATION COMPONENTS
-"""
-
 """
 # XXX: Not working --
 with app.test_request_context():
 	app.add_url_rule('/favicon.ico',
         redirect_to=url_for('static', filename='img/favicon.ico'))
 """
+
+# -------------
+# WEBSITE PAGES
+# -------------
 
 @app.route('/')
 def page_index():
@@ -58,6 +52,18 @@ def page_tour():
 @app.route('/pd')
 def page_pd():
 	return render_template('pd.html')
+
+@app.route('/booking')
+def page_booking():
+	return render_template('booking.html')
+
+@app.errorhandler(404)
+def page_404(e):
+	return render_template('404.html'), 404
+
+# -----------------
+# DEVELOPMENT TOOLS
+# -----------------
 
 @app.route('/<filename>.html')
 def page_html_file(filename):
@@ -95,30 +101,14 @@ def page_image_filter():
 
 	return serve_pil_image(im)
 
-@app.errorhandler(404)
-def page_404(e):
-	return render_template('404.html'), 404
-
-"""
-TODO: Later
-@app.route('/booking')
-def page_booking():
-	return render_template('booking.html')
-"""
-
-
 def serve_pil_image(pil_img, quality=90):
 	"""
 	Serve a PIL image to the browser.
 	From: http://stackoverflow.com/a/10170635
 	"""
-	print 'one'
 	img_io = StringIO()
-	print 'two'
 	pil_img.save(img_io, 'JPEG', quality=quality)
-	print 'three'
 	img_io.seek(0)
-	print 'four'
 	return send_file(img_io, mimetype='image/jpeg')
 
 class Gaussian(ImageFilter.Filter):
@@ -142,12 +132,6 @@ def main(port=5000):
 	)
 
 if __name__ == '__main__':
-	"""
-	if len(sys.argv) > 1 and sys.argv[1] == 'build':
-		app.config['DEV_MACHINE'] = False
-		freezer.freeze()
-		freezer.serve(debug=True)
-	"""
 	port = 5000 if len(sys.argv) < 2 else int(sys.argv[1])
 	main(port=port)
 
