@@ -4,4 +4,5 @@ static/img/*
 static/font/*
 build/*
 output_build/*
+output/*
 *.out.css

@@ -7,63 +7,70 @@ Copyright 2013 Brandon Thomas <bt@brand.io>
 import os
 import glob
 import shutil
+import hashlib
 import warnings
 from main import *
 from flask_frozen import Freezer
 
-BUILD_DIR = 'output_build'
+BUILD_DIR = './output/build'
+OUTPUT_DIR = './output/final'
 
 app.config['FREEZER_DEFAULT_MIMETYPE'] = 'text/html'
 app.config['FREEZER_DESTINATION'] = BUILD_DIR
 app.config['FREEZER_DESTINATION_IGNORE'] = ['/filter']
 app.config['DEV_MACHINE'] = False
 
-class BuildDir(object):
+class Directory(object):
 	"""
-	Build Directory Management
-	TODO: Make class reusable (Rename Directory, don't keep static)
+	Directory Management
 	"""
-	buildDir = os.path.join(os.getcwd(), BUILD_DIR)
+	def __init__(self, _dir):
+		self.directory = os.path.abspath(_dir)
 
-	@classmethod
-	def wildcard(cls, extension):
-		return os.path.join(cls.buildDir, '*.%s' % extension)
+	def join(self, path):
+		return os.path.join(self.directory, path)
 
-	@classmethod
-	def glob(cls, search, fullPath=True):
-		results = glob.glob(os.path.join(cls.buildDir, search))
+	def wildcard(self, extension):
+		return os.path.join(self.directory, '*.%s' % extension)
+
+	def glob(self, search, fullPath=True):
+		results = glob.glob(os.path.join(self.directory, search))
 		if fullPath:
 			return results
 		return [os.path.basename(x) for x in results]
 
-	@classmethod
-	def exglob(cls, search, fullPath=True):
+	def exglob(self, search, fullPath=True):
 		out = []
-		match = cls.glob(search, fullPath)
-		for f in os.listdir(cls.buildDir):
+		match = self.glob(search, fullPath)
+		for f in os.listdir(self.directory):
 			if fullPath:
-				f = os.path.join(cls.buildDir, f)
+				f = os.path.join(self.directory, f)
 			if f not in match:
 				out.append(f)
 		return out
 
-	@classmethod
-	def make(cls):
+	def mkdir(self, subdirectory=False):
 		try:
-			os.makedirs(cls.buildDir)
+			os.makedirs(self.directory)
 		except:
-			print 'failure to mkdir'
 			pass
 
 	@classmethod
-	def cleanup(cls):
-		for _file in os.listdir(cls.buildDir):
-			_file = os.path.join(cls.buildDir, _file)
+	def cleanup(self):
+		for _file in os.listdir(self.directory):
+			_file = os.path.join(self.directory, _file)
 			try:
 				if os.path.isfile(_file):
 					os.unlink(_file)
 			except:
 				pass
+
+buildDir = Directory(BUILD_DIR)
+outputDir = Directory(OUTPUT_DIR)
+
+def make_directories():
+	buildDir.mkdir()
+	outputDir.mkdir()
 
 def generate_static_html():
 	with warnings.catch_warnings():
@@ -71,20 +78,54 @@ def generate_static_html():
 		freezer = Freezer(app, with_static_files=False)
 		freezer.freeze()
 
-def move_html_files():
-	files = BuildDir.exglob('*html')
+def add_html_extensions():
+	files = buildDir.exglob('*html')
 	for f in files:
 		os.rename(f, f+'.html')
 
+def build_is_newer():
+	def file_hash(f):
+		with open(f, 'r') as _f:
+			return hashlib.sha1(_f.read()).hexdigest()
+
+	filesNew = buildDir.glob('*html', False)
+	filesOld = outputDir.glob('*html', False)
+	filesNew.sort()
+	filesOld.sort()
+
+	if filesNew != filesOld:
+		return True
+
+	for f in filesNew:
+		a = file_hash(buildDir.join(f))
+		b = file_hash(outputDir.join(f))
+		if a != b:
+			return True
+
+	return False
+
+def copy_html_files():
+	filesNew = buildDir.glob('*html')
+	for f in filesNew:
+		shutil.copy2(f, outputDir.directory)
+
 def copy_htaccess():
 	f = os.path.join(os.path.abspath('.'), '.htaccess')
-	shutil.copy2(f, BuildDir.buildDir)
+	shutil.copy2(f, outputDir.directory)
 
 def build():
-	print 'Generating static HTML...'
+	print 'Make build directories...'
+	make_directories()
+
+	print 'Building static HTML...'
 	generate_static_html()
-	print 'Copying files & Changing file extensions...'
-	move_html_files()
+	add_html_extensions()
+
+	if build_is_newer():
+		print 'Copying HTML files...'
+		copy_html_files()
+
+	print 'Copying .htaccess...'
 	copy_htaccess()
 
 if __name__ == '__main__':

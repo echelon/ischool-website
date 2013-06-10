@@ -1,5 +1,6 @@
 .git/
 .git-bak/
 output_build/
+output/
 *~
 *pyc

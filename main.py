@@ -120,7 +120,9 @@ class Gaussian(ImageFilter.Filter):
 
 def cache_buster():
 	import random
-	return str(random.randint(500, 9000000))
+	if not app.config['DEV_MACHINE']:
+		return ''
+	return '?%s' % str(random.randint(500, 9000000))
 
 app.jinja_env.globals.update(cache_buster=cache_buster)
 

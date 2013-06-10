@@ -32,7 +32,7 @@
     <link href="/static/css/font-awesome.min.css" rel="stylesheet">
 
     {% if config.DEV_MACHINE %}
-        <link href="/static/less/design.less?{{ cache_buster() }}" 
+        <link href="/static/less/design.less{{ cache_buster() }}" 
               rel="stylesheet/less">
     {% else %}
         <link href="/static/less/design.out.css" rel="stylesheet">
@@ -163,10 +163,9 @@
     <script src="/static/js/lib/jquery.smooth-scroll.min.js"></script>
     <script src="/static/js/lib/underscore-min.js"></script>
     <script src="/static/js/lib/backbone-min.js"></script>
-    <script src="/static/js/main.js{% if config.DEV_MACHINE 
-        %}?{{ cache_buster() }}{% endif %}"></script>
-    <script src="/static/js/dev.js{% if config.DEV_MACHINE
-        %}?{{ cache_buster() }}{% endif %}"></script>
+
+    <script src="/static/js/main.js{{ cache_buster() }}"></script>
+    <script src="/static/js/dev.js{{ cache_buster() }}"></script>
     <script type="text/javascript">
       install_nav();
       {% if config.DEV_MACHINE %}install_dev_mode();{% endif %}

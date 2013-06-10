@@ -10,10 +10,8 @@
 {% endblock %}
 
 {% block extraBody %}
-  <script src="/static/js/map.js{% if config.DEV_MACHINE 
-        %}?{{ cache_buster() }}{% endif %}"></script>
-  <script src="/static/js/counter.js{% if config.DEV_MACHINE 
-        %}?{{ cache_buster() }}{% endif %}"></script>
+  <script src="/static/js/map.js{{ cache_buster() }}"></script>
+  <script src="/static/js/counter.js{{ cache_buster() }}"></script>
   <script type="text/javascript">
      google.maps.event.addDomListener(window, 'load', initialize);
      $(function() { install_counter() });
