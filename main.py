@@ -23,7 +23,7 @@ app.config['DEV_MACHINE'] = False
 
 FLASK_PATH = os.path.dirname(os.path.abspath(__file__))
 
-if getpass.getuser() in ['brandon']:
+if getpass.getuser() in ['brandon', 'isiglobal']:
 	app.config['DEV_MACHINE'] = True
 
 """

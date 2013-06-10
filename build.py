@@ -16,6 +16,7 @@ BUILD_DIR = 'output_build'
 app.config['FREEZER_DEFAULT_MIMETYPE'] = 'text/html'
 app.config['FREEZER_DESTINATION'] = BUILD_DIR
 app.config['FREEZER_DESTINATION_IGNORE'] = ['/filter']
+app.config['DEV_MACHINE'] = False
 
 class BuildDir(object):
 	"""
