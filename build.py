@@ -124,6 +124,8 @@ def build():
 	if build_is_newer():
 		print 'Copying HTML files...'
 		copy_html_files()
+	else:
+		print 'Files didn\'t change.'
 
 	print 'Copying .htaccess...'
 	copy_htaccess()
