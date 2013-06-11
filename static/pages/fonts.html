@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Font Test</title>
+    <link href="/static/less/fonts.less" rel="stylesheet/less">
+    <link href="/static/less/test-font.less" rel="stylesheet/less">
+  </head>
+  <body>
+    <div id="main"></div>
+    <script src="/static/js/lib/jquery.js"></script>
+    <script src="/static/js/lib/underscore-min.js"></script>
+    <script src="/static/js/lib/backbone-min.js"></script>
+    <script type="text/javascript">
+        less = {
+            env: "development",
+            async: false,
+            fileAsync: false,
+            poll: 1000,
+            functions: {},
+            dumpLineNumbers: "comments",
+            relativeUrls: false,
+        };
+    </script>
+    <script src="/static/js/lib/less.min.js"></script>
+    <script src="/static/js/test-font.js"></script>
+    <script type="text/javascript">
+      install_test_font();
+    </script>
+  </body>
+</html>

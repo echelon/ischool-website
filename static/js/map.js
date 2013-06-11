@@ -94,7 +94,7 @@ function initialize()
 		melny: [40.7933, -73.4156], // #8 (H)
 		//
 		// TEST DATA ONLY:
-		wisconsin: [44.5000, -89.5000], // #9 I
+		/*wisconsin: [44.5000, -89.5000], // #9 I
 		nebraska: [41.2324, -98.4160], // J
 		newmexico: [35.6869, -105.9372], // K
 		iowa: [42.0546, -93.3718], // L
@@ -102,7 +102,7 @@ function initialize()
 		indiana: [40.0066, -86.2914], // N
 		michigan: [43.6867, -85.0102], // O
 		northdakota: [46.8083, -100.7833], // P
-		utah: [39.5000, -111.5000], // Q #17
+		utah: [39.5000, -111.5000], // Q #17*/
 	};
 
 	var tourStops = [];
