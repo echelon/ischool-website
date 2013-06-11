@@ -12,14 +12,18 @@ function print_status() {
 	echo ''
 }
 
-echo 'Compiling LESS...'
-lessc --yui-compress static/less/design.less > static/less/design.out.css
 
 print_status 'Running build script'
 python build.py
 
+print_status 'Compiling LESS'
+lessc --yui-compress static/less/design.less > output/final/static/design.out.css
+
 print_status 'Running rsync to isi.isimobile.com'
 rsync . isiglobal@isimobile.com:/home/isiglobal/isi.isimobile.com/flaskapp
+
+print_status 'Restarting Python on isi.isimobile.com'
+ssh -n -f isiglobal@isimobile.com "sh -c 'touch isi.isimobile.com/tmp/restart.txt'"
 
 print_status 'Running rsync /output/final/ -> staging.isimobile.com'
 rsync ./output/final/ isiglobal@isimobile.com:/home/isiglobal/staging.isimobile.com

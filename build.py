@@ -88,15 +88,7 @@ def build_is_newer():
 		with open(f, 'r') as _f:
 			return hashlib.sha1(_f.read()).hexdigest()
 
-	filesNew = buildDir.glob('*html', False)
-	filesOld = outputDir.glob('*html', False)
-	filesNew.sort()
-	filesOld.sort()
-
-	if filesNew != filesOld:
-		return True
-
-	for f in filesNew:
+	for f in buildDir.glob('*html', False):
 		a = file_hash(buildDir.join(f))
 		b = file_hash(outputDir.join(f))
 		if a != b:
