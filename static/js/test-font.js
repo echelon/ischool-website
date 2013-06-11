@@ -14,12 +14,6 @@ var install_test_font = function() {
 			(new FontTest({
 				hFont: fontA,
 				pFont: fontB,
-				hBold: false,
-			})).view.attach();
-			(new FontTest({
-				hFont: fontA,
-				pFont: fontB,
-				hBold: true,
 			})).view.attach();
 		}
 	}
@@ -46,38 +40,29 @@ var FontTest = Backbone.Model.extend({
 var FontTestView = Backbone.View.extend({
 	model: null,
 	initialize: function(model) {
-		this.$el = $('<div><h1></h1><p></p></div>');
+		this.$el = $('<div><h1 class="one"></h1><h1 class="two"></h1><p class="bigger"></p><p></p></div>');
 		this.update();
 	},
 	update: function() {
 		this.removeClasses();
-		var heading = this.model.get('hText') + ' (' + 
+		var headingA = this.model.get('hText'),
+			headingB = headingA + ' (' + 
 					this.model.get('hFont') + ' &amp; ' +
 					this.model.get('pFont') + ')';
 
-		this.$el.find('h1')
+		this.$el.find('h1.one')
 			.css({fontFamily: this.model.get('hFont')})
-			.html(heading);
+			.html(headingA);
+
+		this.$el.find('h1.two')
+			.css({fontFamily: this.model.get('hFont')})
+			.html(headingB);
 
 		this.$el.find('p')
 			.css({fontFamily: this.model.get('pFont')})
 			.html(this.model.get('pText'));
-
-		var weight = 'normal';
-		if(this.model.get('hBold')) {
-			weight = 'bold';
-		}
-		this.$el.find('h1').css({fontWeight: weight});
 	},
 	removeClasses: function() {
-		this.$el.find('h1').css({fontFamily: ''});
-		this.$el.find('h1').removeAttr('class');
-		this.$el.find('h1').attr('class', '');
-		this.$el.find('h1')[0].className = '';
-		this.$el.find('p').css({fontFamily: ''});
-		this.$el.find('p').removeAttr('class');
-		this.$el.find('p').attr('class', '');
-		this.$el.find('p')[0].className = '';
 	},
 	attach: function() {
 		$('#main').append(this.$el);
