@@ -1,15 +1,16 @@
 /* ================================================================
+					   EXTERNALLY DEFINED 
+   ============================================================= */
+
+@import "page-about.less";
+
+/* ================================================================
 						COMMON ELEMENTS
    ============================================================= */
 
 .IndexPage header {
 	background-image: 
 		url('/static/img/header/hands_raised2.jpg');
-}
-
-.AboutPage header {
-	background-image: 
-		url('/static/img/header/orange-backdrop.jpg');
 }
 
 .TourPage header {
@@ -118,111 +119,6 @@
 		img {
 			padding: 15px;
 		}
-	}
-}
-
-.AboutPage {
-	header {
-		//color: #fff;
-		color: @clouds;
-		background-image: 
-			url('/filter?gaussian=3&multiply=0.5&file=/static/img/test/schoolbus-top.jpg');
-		background-repeat: no-repeat;
-		background-position: center bottom !important;
-		background-size: cover;
-		background-attachment: fixed;
-		padding: 2.0em 0em 0px 0em;
-		font-family: 'Bryant Alternate'; 
-		text-align: justify;
-		font-size: 1.2em;
-		p { padding: 0em 4.0em 1.2em; }
-		img#floating-team {
-			display: block;
-			margin: auto;
-			height: 350px;
-		}
-	}
-	article#team {
-		h2 { font-family: 'krona one'; }
-		//font-family: 'arvo';
-		font-family: 'Bryant Alternate'; 
-		background-color: rgba(0, 0, 0, 0.96);
-		color: #fff;
-		padding: 0em 0em 1em; // FIXME:padding on top def'd elsewhere
-
-		#staffPortraits {
-			padding: 0px;
-			text-align: center;
-			.active {
-				background-color: @alizarin;
-			}
-			.inactive {
-				background-color: none;
-			}
-			.person {
-				.border-radius(20px);
-				width: 250px !important;
-				height: 166px !important;
-				cursor: pointer;
-				display: inline-block;
-				position: relative;
-				padding: 4px;
-				.role, .name {
-					font-size: 1.5em;
-					position: absolute;
-					left: 7px;
-					bottom: 7px;
-					font-weight: bold;
-				}
-				.role {
-					display: none;
-				}
-				.about {
-					display: none;
-				}
-				.animated {
-					display: none;
-				}
-				img {
-					.border-radius(20px);
-				}
-			}
-		}
-	}
-	article#board {
-		margin: 0;
-		padding: 0em 0em 1.5em;
-		ul {
-			// Consider table display: 
-			// http://stackoverflow.com/a/7985973
-			.display-box;
-			list-style: none;
-			width: 100%;
-			padding: 0;
-			margin: 0;
-			font-size: 1.3em;
-			li {
-				.box-flex;
-				width: 0; // XXX: Fix for flexbox % render
-				padding: 0;
-				margin: 0;
-				text-align: center;
-				img.photo {
-					width: 75%;
-					max-width: 250px;
-					.border-radius(20px);
-				}
-				p {
-					margin: 0;
-					padding: 0.5em; 
-				}
-			}
-		}
-		h2 { font-family: 'roboto slab'; }
-		//font-family: 'lato';
-		font-family: 'Bryant Alternate'; 
-		background-color: @alizarin;
-		color: #fff;
 	}
 }
 

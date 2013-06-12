@@ -19,7 +19,7 @@ var VideoView = Backbone.View.extend({
 	$ytScript: null,
 
 	tagName: 'header',
-	videoId: 'WR3Focm44ck',
+	videoId: '0RcjojbuwxM', // TODO: Pull from HTML
 
 	player: null, // YT video class
 	playerEl: null, // YT video API to call playVideo() on
@@ -33,11 +33,10 @@ var VideoView = Backbone.View.extend({
 
 	constructor: function() {
 		var that = this;
-	
 		this.$ytScript = $('<script></script>')
 							.attr('src', 
 								'https://www.youtube.com/iframe_api');
-		
+
 		this.$el = $(this.tagName);
 		this.$player = this.$el.find('#player');
 		this.$loader = this.$el.find('#loader');
