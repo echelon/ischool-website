@@ -17,7 +17,7 @@ print_status 'Running build script'
 python build.py
 
 print_status 'Compiling LESS'
-lessc --yui-compress static/less/design.less > output/final/static/design.out.css
+lessc --yui-compress static/less/main.less > output/final/static/design.out.css
 
 print_status 'Running rsync to isi.isimobile.com'
 rsync . isiglobal@isimobile.com:/home/isiglobal/isi.isimobile.com/flaskapp

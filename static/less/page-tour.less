@@ -1,0 +1,83 @@
+.TourPage {
+	font-family: 'Bryant Alternate'; 
+	header {
+		/*background-image: 
+			url('/static/img/header/bus2012.jpg');*/
+		position: relative;
+		div#maps {
+			height: 500px;
+		}
+		div#stats {
+			position: absolute;
+			top: 1.0em;
+			left: 0.0em;
+			font-size: 1.5em;
+			font-weight: bold;
+			width: 100%;
+			color: #fff;
+			ul {
+				// Consider table display: 
+				// http://stackoverflow.com/a/7985973
+				.display-box;
+				list-style: none;
+				width: 100%;
+				padding: 0;
+				margin: 0;
+				li {
+					.box-flex;
+					width: 0; // XXX: Fix for flexbox % render
+					padding: 0 0.2em;
+					margin: 0;
+					text-align: center;
+					p {
+						padding: 0;
+						margin: 0;
+						background-color: rgba(0, 0, 0, 0.5);
+					}
+				}
+				li:last-child {
+					width: 33%;
+				}
+			}
+		}
+		div#overlay {
+			position: absolute;
+			right: 1.0em;
+			bottom: 1.0em;
+		}
+	}
+	article#about {
+		background-color: @midnightBlue;
+		color: #fff;
+	}
+	article#tour2013 {
+		h2 { font-family: 'roboto slab'; }
+		background-color: @silver;
+		color: @midnightBlue;
+	}
+	article#schedule {
+		min-height: 300px;
+		background-color: @midnightBlue;
+		button {
+			background-color: #fff;
+			color: darken(@silver, 25%);
+		}
+		button:hover {
+			border: 3px solid @alizarin;
+		}
+	}
+	article#tour2012 {
+		h2 { font-family: 'roboto slab'; }
+		background-color: @silver;
+	}
+	div#ending {
+		background-color: rgba(255, 255, 255, 0.93);
+		text-align: center;
+		padding: 10px;
+		color: #999;
+		img {
+			padding: 15px;
+		}
+	}
+}
+
