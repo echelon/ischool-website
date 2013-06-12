@@ -46,6 +46,7 @@ var install_counter = function() {
 			description: 'miles'},
 		{number: reach, 
 			numberFinal: expectedReach, 
+			fraction: true,
 			dateBegin: new Date(2013, 5, 0),
 			dateEnd: new Date(2013, 9, 30),
 			description: 'people reached'},
@@ -72,8 +73,12 @@ var StatView = Backbone.View.extend({
 		var that = this;
 		var format = function(num) {
 			var places = that.model.get('places'),
+				fraction = that.model.get('fraction'),
 				decimal = false;
-			if(places) {
+			if(places || fraction) {
+				if(!places) {
+					places = 3;
+				}
 				num = num.toFixed(places);
 				decimal = num.toString().split('.');
 				num = decimal[0];
@@ -88,9 +93,24 @@ var StatView = Backbone.View.extend({
 			// http://stackoverflow.com/a/2901298
 			num = num.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-			if(decimal !== false) {
+			if(fraction) {
+				fraction = '';
+				decimal = parseFloat(decimal)/1000;
+				if(decimal >= 0.75) {
+					fraction = '&frac34;';
+				}
+				else if(decimal >= 0.50) {
+					fraction = '&frac12;';
+				}
+				else if(decimal > 0.25) {
+					fraction = '&frac14;';
+				}
+				num = num + '' + fraction;	
+			}
+			else if(decimal !== false) {
 				num = num + '.' + decimal;
 			}
+
 			return num;
 		};
 
@@ -108,6 +128,7 @@ var Stat = Backbone.Model.extend({
 		numberFinal: 0,
 		isInterpolated: false,
 		places: 0,
+		fraction: false,
 		description: 'things',
 		dateBegin: new Date(Date.UTC(2001, 0, 0)),
 		dateEnd: new Date(Date.UTC(2054, 0, 0)),
