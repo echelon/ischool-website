@@ -1,0 +1,88 @@
+/*
+	Core styles define how the page behaves before it's styled.
+    Copyright (c) 2013 Brandon Thomas <bt@brand.io>
+	See more at http://brand.io
+*/
+
+html {
+	background-image: 
+		url('/static/img/travis-allen-face.jpg'); // Easter egg
+	background-position: center;
+	background-size: 200px;
+	background-attachment: fixed;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Bryant Alternate';
+	color: @midnightBlue;
+	background-image: url('/static/img/pattern/escheresque2d.png'); // TODO REMOVE?
+
+	header {
+		// Common defs?
+	}
+}
+
+article {
+	color: @midnightBlue;
+	font-size: 1.2em;
+	font-family: 'Bryant Alternate'; 
+	h1, h2, h3, h4 {
+		font-family: 'Bryant Alternate'; 
+		font-weight: bold;
+		text-align: center;
+	}
+	h1 {
+		font-size: 2.3em;
+		padding: 0.6em 0em 0.4em;
+	}
+	h2 {
+		font-size: 2em;
+		padding: 0.6em 0em 0.4em;
+	}
+	h3 {
+		font-size: 1.5em;
+		padding: 0.6em 0em 0.4em;
+	}
+	p, blockquote {
+		padding: 0.0em 1.5em 1.7em;
+	}
+	ul {
+		list-style: disc;
+		padding: 10px 10px 10px 30px;
+	}
+}
+
+.buttonBlock {
+	.no-select;
+	.display-box;
+	.box-center;
+	width: 100%;
+	button { 
+		cursor: pointer;
+		font-family: 'roboto slab'; 
+		font-size: 3em;
+		padding: 0.3em;
+		border: 3px solid #fff;
+	}
+	button:hover {
+		border: 3px solid #000;
+	}
+
+}
+
+img.circular {
+	.border-radius(50px);
+}
+
+h1, h2, h3 {
+	padding: 0px;
+	margin: 0px;
+}
+
+p {
+	padding: 8px;
+	margin: 0px;
+}
+
