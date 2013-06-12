@@ -53,6 +53,10 @@ def page_tour():
 def page_pd():
 	return render_template('pd.html')
 
+@app.route('/test')
+def page_test():
+	return render_template('test.html')
+
 @app.route('/booking')
 def page_booking():
 	return render_template('booking.html')

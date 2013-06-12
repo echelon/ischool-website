@@ -13,44 +13,73 @@ html {
 }
 
 body {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	font-family: 'Bryant Alternate';
-	color: @midnightBlue;
-	background-image: url('/static/img/pattern/escheresque2d.png'); // TODO REMOVE?
-
+	color: #fff;
+	background-color: @carrot;
+	//background-image: url('/static/img/pattern/escheresque2d.png'); // TODO REMOVE?
 	header {
 		// Common defs?
 	}
 }
 
+p, blockquote {
+	margin: 0;
+	padding: @tPadding/@h5-size
+			 @hPadding/@h5-size
+			 @bPadding/@h5-size;
+}
+
+h1, h2, h3, h4, h5 {
+	margin: 0;
+	font-weight: normal;
+}
+
+h1 {
+	font-size: 2.3em;
+	padding: @tPadding/@h1-size
+			 @hPadding/@h1-size
+			 @bPadding/@h1-size;
+}
+
+h2 {
+	font-size: 2.0em;
+	padding: @tPadding/@h2-size
+			 @hPadding/@h2-size
+			 @bPadding/@h2-size;
+}
+
+h3 {
+	font-size: 1.5em;
+	padding: @tPadding/@h3-size
+			 @hPadding/@h3-size
+			 @bPadding/@h3-size;
+}
+
+h4 {
+	font-size: 1.2em;
+	padding: @tPadding/@h4-size
+			 @hPadding/@h4-size
+			 @bPadding/@h4-size;
+}
+
+h5 {
+	font-size: 1.0em;
+	padding: @tPadding/@h5-size
+			 @hPadding/@h5-size
+			 @bPadding/@h5-size;
+}
+
 article {
 	color: @midnightBlue;
-	font-size: 1.2em;
-	font-family: 'Bryant Alternate'; 
-	h1, h2, h3, h4 {
-		font-family: 'Bryant Alternate'; 
-		font-weight: bold;
+	background-color: @clouds;
+	h1, h2, h3, h4, h5 {
 		text-align: center;
-	}
-	h1 {
-		font-size: 2.3em;
-		padding: 0.6em 0em 0.4em;
-	}
-	h2 {
-		font-size: 2em;
-		padding: 0.6em 0em 0.4em;
-	}
-	h3 {
-		font-size: 1.5em;
-		padding: 0.6em 0em 0.4em;
-	}
-	p, blockquote {
-		padding: 0.0em 1.5em 1.7em;
 	}
 	ul {
 		list-style: disc;
-		padding: 10px 10px 10px 30px;
+		padding: 10px 10px 10px 30px; // TODO: No!!
 	}
 }
 
@@ -69,20 +98,9 @@ article {
 	button:hover {
 		border: 3px solid #000;
 	}
-
 }
 
 img.circular {
 	.border-radius(50px);
-}
-
-h1, h2, h3 {
-	padding: 0px;
-	margin: 0px;
-}
-
-p {
-	padding: 8px;
-	margin: 0px;
 }
 
