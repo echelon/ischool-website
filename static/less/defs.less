@@ -37,6 +37,24 @@
 @h4-size: 1.2em;
 @h5-size: 1.0em;
 
+
+.padding-divide(@padding, @divisor) {
+	padding: @padding/@divisor;
+}
+
+.padding-divide(@vertical, @horizontal, @divisor) {
+	padding: @vertical/@divisor @horizontal/@divisor;
+}
+
+.padding-divide(@top, @horizontal, @bottom, @divisor) {
+	padding: @top/@divisor @horizontal/@divisor @bottom/@divisor;
+}
+
+.padding-divide(@top, @right, @bottom, @left, @divisor) {
+	padding: @top/@divisor @right/@divisor 
+			 @bottom/@divisor @left/@divisor;
+}
+
 .box-shadow  {
 	box-shadow: 0px 0px 2px #999;
 }

@@ -37,43 +37,34 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-	font-size: 2.3em;
-	padding: @tPadding/@h1-size
-			 @hPadding/@h1-size
-			 @bPadding/@h1-size;
+	.padding-divide(@tPadding, @hPadding, @bPadding, @h1-size);
+	font-size: @h1-size;
 }
 
 h2 {
-	font-size: 2.0em;
-	padding: @tPadding/@h2-size
-			 @hPadding/@h2-size
-			 @bPadding/@h2-size;
+	.padding-divide(@tPadding, @hPadding, @bPadding, @h2-size);
+	font-size: @h2-size;
 }
 
 h3 {
-	font-size: 1.5em;
-	padding: @tPadding/@h3-size
-			 @hPadding/@h3-size
-			 @bPadding/@h3-size;
+	.padding-divide(@tPadding, @hPadding, @bPadding, @h3-size);
+	font-size: @h3-size;
 }
 
 h4 {
-	font-size: 1.2em;
-	padding: @tPadding/@h4-size
-			 @hPadding/@h4-size
-			 @bPadding/@h4-size;
+	.padding-divide(@tPadding, @hPadding, @bPadding, @h4-size);
+	font-size: @h4-size;
 }
 
 h5 {
-	font-size: 1.0em;
-	padding: @tPadding/@h5-size
-			 @hPadding/@h5-size
-			 @bPadding/@h5-size;
+	.padding-divide(@tPadding, @hPadding, @bPadding, @h5-size);
+	font-size: @h5-size;
 }
 
 article {
 	color: @midnightBlue;
 	background-color: @clouds;
+	//padding: TODO
 	h1, h2, h3, h4, h5 {
 		text-align: center;
 	}
