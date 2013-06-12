@@ -96,38 +96,41 @@
                   <b><i class="icon-th-large"></i></b>
                   iSchool Initiative &copy; 2013 
                 </div>
-                <div id="dev-responsive">
-                  <span id="dev-responsive-smartphone-portrait">
-                    <b><i class="icon-mobile-phone"></i></b>
-                    <span class="text">Responsive Mode:
-                      Smartphone Portrait</span>
-                  </span>
-                  <span id="dev-responsive-smartphone-landscape">
-                    <b><i class="icon-mobile-phone"></i></b>
-                    <span class="text">Responsive Mode:
-                    Smartphone Landscape</span>
-                  </span>
-                  <span id="dev-responsive-tablet-portrait">
-                    <b><i class="icon-tablet"></i></b>
-                    <span class="text">Responsive Mode:
-                    Tablet Portrait</span>
-                  </span>
-                  <span id="dev-responsive-tablet-landscape">
-                    <b><i class="icon-tablet"></i></b>
-                    <span class="text">Responsive Mode:
-                    Tablet Landscape</span>
-                  </span>
-                  <span id="dev-responsive-desktop-regular">
-                    <b><i class="icon-laptop"></i></b>
-                    <span class="text">Responsive Mode:
-                    Desktop Regular</span>
-                  </span>
-                  <span id="dev-responsive-desktop-huge">
-                    <b><i class="icon-desktop"></i></b>
-                    <span class="text">Responsive Mode:
-                    Desktop Huge</span>
-                  </span>
-                </div>
+
+                {% if config.DEV_MACHINE %}
+                  <div id="dev-responsive">
+                    <span id="dev-responsive-smartphone-portrait">
+                      <b><i class="icon-mobile-phone"></i></b>
+                      <span class="text">Responsive Mode:
+                        Smartphone Portrait</span>
+                    </span>
+                    <span id="dev-responsive-smartphone-landscape">
+                      <b><i class="icon-mobile-phone"></i></b>
+                      <span class="text">Responsive Mode:
+                      Smartphone Landscape</span>
+                    </span>
+                    <span id="dev-responsive-tablet-portrait">
+                      <b><i class="icon-tablet"></i></b>
+                      <span class="text">Responsive Mode:
+                      Tablet Portrait</span>
+                    </span>
+                    <span id="dev-responsive-tablet-landscape">
+                      <b><i class="icon-tablet"></i></b>
+                      <span class="text">Responsive Mode:
+                      Tablet Landscape</span>
+                    </span>
+                    <span id="dev-responsive-desktop-regular">
+                      <b><i class="icon-laptop"></i></b>
+                      <span class="text">Responsive Mode:
+                      Desktop Regular</span>
+                    </span>
+                    <span id="dev-responsive-desktop-huge">
+                      <b><i class="icon-desktop"></i></b>
+                      <span class="text">Responsive Mode:
+                      Desktop Huge</span>
+                    </span>
+                  </div>
+                {% endif %}
               </div>
             </li>
             <li>

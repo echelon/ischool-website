@@ -4,7 +4,7 @@
  * See more at http://brand.io
  */
 
-var TEAM_CONTAINER = '#staffPortraits';
+var TEAM_CONTAINER = '#teamPortraits';
 
 var install_team = function() 
 {

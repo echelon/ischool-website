@@ -149,8 +149,8 @@ function initialize()
 		preserveViewport: true,
 		polylineOptions:{
 			strokeColor:'#000000',
-			strokeOpacity: 0.5,
-			strokeWeight: 10,
+			strokeOpacity: 0.2,
+			strokeWeight: 4,
 		},
 	});
 
@@ -277,21 +277,21 @@ function initialize()
 				clickable: true,
 				flat: true,
 				map: map,
-				title: 'this is the onhover tooltip title' + i,
+				//title: 'this is the onhover tooltip title' + i,
+				title: 'Tour Stop', // TODO Actual Title
 				zIndex: 90000, // render above result markers
 				visible: true,
 			});
 
 			markers.push(mark);
 
-			google.maps.event.addListener(mark, 'click', 
+			/*google.maps.event.addListener(mark, 'click', 
 					function(event) {
 				infoWindow.setContent(mark.getTitle());
 				//infoWindow.setContent('<h1>Foo</h1>Bar');
 				infoWindow.setPosition(event.latLng);
 				infoWindow.open(map);
-			});
-
+			});*/
 		}
 
 		if(reset || !ROUTE) {
