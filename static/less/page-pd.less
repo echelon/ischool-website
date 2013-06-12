@@ -3,7 +3,12 @@
 		background-image: 
 			url('/static/img/photo/ipad_group.jpg');
 	}
-	article#intro {
+	// TODO: Make a common block definition
+	article {
+		background-color: #fff;
+		color: @wetAsphault;
+	}
+	article#students {
 		h2 { font-family: 'roboto slab'; }
 		background-color: @silver;
 		img {
@@ -11,9 +16,10 @@
 			padding: 0.2em 1.5em 0.2em 0.9em;
 		}
 	}
-	article#types {
-		h2 { font-family: 'roboto slab'; }
-		background-color: @silver;
+	article#different {
+		h2 { font-family: 'raleway'; }
+		background-color: @clouds;
+		color: @midnightBlue;
 	}
 	article#previous {
 		h2 { font-family: 'roboto slab'; }

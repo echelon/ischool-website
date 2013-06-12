@@ -15,15 +15,40 @@ var STATS_CONTAINER = '#stats ul';
 var install_counter = function() {
 	var counterIncrement = function() {
 		window.stats.each(function(stat, i) {
-			stat.increment();
+			stat.view.update();
 		});
 	}
 
+	// 19 states last year + 7 completely new states this year
+	var states = 19 + 7;
+
+	// 22 stops last year + 22 planned stops this year
+	var stops = 22 + 22;
+
+	// 6985 miles last year
+	var miles = 6985;
+	var expectedMiles = miles + miles;
+
+	// 12-15k educators last year
+	// 13k attend ISTE each year
+	var reach = 12000;
+	var expectedReach = reach + 13000 + 400000;
+
+	// XXX: Javascript months and days are zero-indexed !!
 	window.stats = new Stats([
-		{number: 10, description: 'states'},
-		{number: 23, description: 'stops'},
-		{number: 25000, add: 0.05, places: 2, description: 'miles'},
-		{number: 200000, add: 597, description: 'students reached'},
+		{number: states, description: 'states'},
+		{number: stops, description: 'stops'},
+		{number: miles, 
+			numberFinal: expectedMiles, 
+			places: 3, 
+			dateBegin: new Date(2013, 5, 0),
+			dateEnd: new Date(2013, 9, 30),
+			description: 'miles'},
+		{number: reach, 
+			numberFinal: expectedReach, 
+			dateBegin: new Date(2013, 5, 0),
+			dateEnd: new Date(2013, 9, 30),
+			description: 'people reached'},
 	]);
 
 	window.stats.each(function(stat, i) {
@@ -31,11 +56,8 @@ var install_counter = function() {
 		stat.view.$el.appendTo(STATS_CONTAINER);
 	});
 
-	console.log('stats models created');
-	console.log(window.stats.length);
-
 	setInterval(function() { counterIncrement(); }, 1500);
-};
+}; 
 
 var StatView = Backbone.View.extend({
 	initialize: function() {
@@ -58,6 +80,7 @@ var StatView = Backbone.View.extend({
 				decimal = decimal[1];
 			}
 			else {
+				num = num.toFixed(places);
 				num = num.toString();
 			}
 
@@ -71,7 +94,7 @@ var StatView = Backbone.View.extend({
 			return num;
 		};
 
-		var num = format(this.model.get('number')),
+		var num = format(this.model.getNumber()),
 			desc = this.model.get('description');
 
 		this.$el.html('<p>' + num + '</p><p>' + desc + '</p>');
@@ -82,20 +105,43 @@ var Stat = Backbone.Model.extend({
 	view: null,
 	defaults: {
 		number: 0,
-		add: 0,
+		numberFinal: 0,
+		isInterpolated: false,
 		places: 0,
 		description: 'things',
+		dateBegin: new Date(Date.UTC(2001, 0, 0)),
+		dateEnd: new Date(Date.UTC(2054, 0, 0)),
 	},
 	initialize: function() {
+		if(this.get('numberFinal')) {
+			this.set('isInterpolated', true);
+		}
 	},
-	increment: function() {
-		// TODO: Should be a function of time!!
-		var n = this.get('number');
-		var a = this.get('add');
-		this.set('number', n + a );
-	}
+	// Get the number per the current datetime interpolation
+	getNumber: function() {
+		if(!this.get('isInterpolated')) {
+			return this.get('number');
+		}
+		var n0 = this.get('number'),
+			nf = this.get('numberFinal'),
+			d0 = this.get('dateBegin'),
+			df = this.get('dateEnd'),
+			now = Date.now(),
+			nd = nf - n0;
+
+		d0 = d0.getTime() / 1000;
+		df = df.getTime() / 1000;
+		now = now / 1000;
+
+		if(now > df) {
+			return nf;
+		}
+
+		return n0 + ((now-d0)/(df-d0)) * nd;
+	},
 });
 
 var Stats = Backbone.Collection.extend({
 	model: Stat,
 });
+
