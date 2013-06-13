@@ -117,7 +117,7 @@ var StatView = Backbone.View.extend({
 		var num = format(this.model.getNumber()),
 			desc = this.model.get('description');
 
-		this.$el.html('<p>' + num + '</p><p>' + desc + '</p>');
+		this.$el.html('<p class="number">' + num + '</p><p>' + desc + '</p>');
 	},
 });
 

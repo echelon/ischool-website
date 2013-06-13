@@ -8,13 +8,20 @@
 			height: 500px;
 		}
 		div#stats {
+			.border-box;
+			.box-shadow;
 			position: absolute;
-			top: 1.0em;
-			left: 0.0em;
+			padding: 0.5em 1em;
+			top: 0;
+			left: 0;
 			font-size: 1.5em;
-			font-weight: bold;
+			.number {
+				font-weight: normal;
+			}
+			font-weight: lighter;
 			width: 100%;
-			color: #fff;
+			color: @midnightBlue;
+			background-color: #fff;
 			ul {
 				// Consider table display: 
 				// http://stackoverflow.com/a/7985973
@@ -32,7 +39,6 @@
 					p {
 						padding: 0;
 						margin: 0;
-						background-color: rgba(0, 0, 0, 0.5);
 					}
 				}
 				li:last-child {
