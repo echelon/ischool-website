@@ -1,6 +1,7 @@
 {% extends "BASE.html" %}
 {% block title %}iSchool &mdash; Tour Page {% endblock %}
 {% block pageClass %}TourPage{% endblock %}
+{% set pageName = 'TourPage' %}
 
 
 {% block extraHead %}
@@ -45,6 +46,8 @@
 
   <article id="become">
     <h2>Become a Tour Stop</h2>
+    <img src="/static/img/icons/tour/vector_map.png" 
+         id="vectormap">
     <p>iSchool Initiative DLR Tour stops are an opportunity to enhance the knowledge and participation of your teachers, students, and community. Customize this conference on wheels to your specific needs to pursue your mobile dream.</p>
   </article>
 
@@ -52,9 +55,11 @@
     <button>Schedule Your Stop!</button>
   </article>
 
-  <article id="sponsors">
-    <h2>Our sponsors aren&lsquo;t just sponsors, they&lsquo;re partners in the cause.</h2>
+  <article id="sponsorsText">
 
+  <article id="sponsors">
+    <h2>Our sponsors aren&lsquo;t just sponsors,
+        <br>they&lsquo;re partners in the cause.</h2>
     <div id="otter">
       <h3>Otterbox</h3>
       <p>Otterbox is a purveyor of high quality, durable cases for mobile devices. We first encountered Otterbox on our 2012 DLR Tour. Stopping by their headquarters in beautiful Fort Collins, Colorado, we uncovered a company that is about far more than manufacturing cases. In truth, Otterbox cares deeply about empowering youth and giving back to the community that fostered its growth. Working with Nancy Richardson (wife of founder Kurt Richardson) and her team at Ottercares, iSchool Initiative has begun a partnership to protect the mobile device investments schools are making across the country.</p>

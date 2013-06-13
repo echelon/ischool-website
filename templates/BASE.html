@@ -53,10 +53,14 @@
       {% block nav %}
       <div id="topnavwrap">
         <nav id="topnav">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/tour">Tour</a>
-          <a href="/pd">Learning</a>
+          <a href="/"{% if pageName == 'IndexPage' %} 
+             class="cur"{% endif %}>Home</a>
+          <a href="/about"{% if pageName == 'AboutPage' %} 
+             class="cur"{% endif %}>About</a>
+          <a href="/tour"{% if pageName == 'TourPage' %} 
+             class="cur"{% endif %}>Tour</a>
+          <a href="/pd"{% if pageName == 'PdPage' %} 
+             class="cur"{% endif %}>Learning</a>
           <!--<a href="/blog">Blog</a>-->
         </nav>
       </div>
