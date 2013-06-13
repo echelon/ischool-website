@@ -1,24 +1,33 @@
 .AboutPage {
 	header {
 		padding: 2.0em 0em 0px 0em;
-		font-size: 1.3em;
-		color: @clouds;
-
-		background-image: 
-			url('/filter?gaussian=3&multiply=0.5&file=/static/img/test/schoolbus-top.jpg');
+		color: @midnightBlue;
+		.gradient-linear-bg(#fff, @clouds);
 		background-repeat: no-repeat;
 		background-position: center bottom;
 		background-size: cover;
 		background-attachment: fixed;
-
 		h1, h2 {
 			text-align: center;
+		}
+		h2 {
+			font-size: @h3-size;
+			padding-bottom: 1.5em;
 		}
 		img#floating-team {
 			display: block;
 			margin: auto;
 			height: 350px;
 		}
+	}
+
+	article#why {
+		background-color: #fff;
+		padding: 2.2em 1.5em 3.4em;
+	}
+	
+	article#journey {
+		padding: 2.2em 1.5em 3.4em;
 	}
 	
 	article#team {

@@ -55,6 +55,19 @@
 			 @bottom/@divisor @left/@divisor;
 }
 
+.gradient-linear-bg(@start, @end) {
+	// fallback & old webkit
+	background-color: @start;
+	background: -webkit-gradient(
+					linear, 0% 0%, 0% 100%, 
+					from(@start), to(@end));
+	// modern
+	background: -webkit-linear-gradient(top, @start, @end);
+	background: -moz-linear-gradient(top, @start, @end);
+	background: -ms-linear-gradient(top, @start, @end);
+	background: -o-linear-gradient(top, @start, @end);
+}
+
 .box-shadow  {
 	box-shadow: 0px 0px 5px #999;
 }
