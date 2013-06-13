@@ -10,7 +10,7 @@
 // TODO: Install and run after maps is constructed (fire event)
 // TODO: Now is probably the time to consider AMD and js compiling
 
-var STATS_CONTAINER = '#stats ul';
+var STATS_CONTAINER = '#stats tr';
 
 var install_counter = function() {
 	var counterIncrement = function() {
@@ -63,7 +63,7 @@ var install_counter = function() {
 var StatView = Backbone.View.extend({
 	initialize: function() {
 		var that = this;
-		this.$el = $('<li>');
+		this.$el = $('<td>');
 		this.update();
 		this.model.on('change', function() { 
 			that.update();

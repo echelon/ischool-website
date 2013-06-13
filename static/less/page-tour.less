@@ -15,24 +15,24 @@
 			top: 0;
 			left: 0;
 			font-size: 1.5em;
-			.number {
-				font-weight: normal;
-			}
-			font-weight: lighter;
 			width: 100%;
 			color: @midnightBlue;
 			background-color: #fff;
-			ul {
-				// Consider table display: 
-				// http://stackoverflow.com/a/7985973
-				.display-box;
-				list-style: none;
+			font-weight: lighter;
+			.number {
+				font-weight: normal;
+			}
+			table {
 				width: 100%;
 				padding: 0;
 				margin: 0;
-				li {
-					.box-flex;
-					width: 0; // XXX: Fix for flexbox width render
+				border: 0;
+				img.dlr-tour {
+					vertical-align: middle;
+					width: 300px;
+				}
+				td {
+					height: 100%;
 					padding: 0 0.2em;
 					margin: 0;
 					text-align: center;
@@ -41,15 +41,10 @@
 						margin: 0;
 					}
 				}
-				li:last-child {
+				/*li:last-child {
 					width: 33%;
-				}
+				}*/
 			}
-		}
-		div#overlay {
-			position: absolute;
-			right: 1.0em;
-			bottom: 1.0em;
 		}
 	}
 
