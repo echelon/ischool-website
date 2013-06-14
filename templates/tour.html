@@ -14,6 +14,7 @@
   <script src="/static/js/map.js{{ cache_buster() }}"></script>
   <script src="/static/js/counter.js{{ cache_buster() }}"></script>
   <script type="text/javascript">
+     install_stats_fixed();
      google.maps.event.addDomListener(window, 'load', initialize);
      $(function() { install_counter() });
    </script>
@@ -22,17 +23,19 @@
 
 {% block header %}
 <header>
-  <div id="maps">
-    <h2>Google Maps is Loading...</h2>
-  </div>
   <div id="stats">
+    <!-- This table is managed by counter javascript -->  
     <table>
       <tr>
         <td>
-          <img src="/static/img/logos/dlr_tour.png" class="dlr-tour">
+          <img src="/static/img/logos/dlr_tour.png" 
+               class="dlr-tour">
         </td>
       </tr>
     </table>
+  </div>
+  <div id="maps">
+    <h2>Google Maps is Loading...</h2>
   </div>
 </header>
 {% endblock header %}
@@ -69,7 +72,7 @@
       OMG, return of 1999 webdesign.  
       But I'm in a crunch...
     -->
-    <table>
+    <table id="bigLogos">
       <tr>
         <td class="logotd">
           <img src="/static/img/logos/tour_sponsors/promethean.png" class="logo">
@@ -88,14 +91,33 @@
       </tr>
     </table>
 
-    <!--<div id="other">
-      <h3>Other Sponsors</h3>
-      <ul>
-        <li>1 section shared with ISTE and iSi Mobile</li>
-        <li>1 Section on AirWatch and Kennesaw State University Coles College</li>
-        <li>1 special thanks from creserance, Ha&amp;W and...</li>
-      </ul>
-    </div>-->
+    <table id="smallLogos">
+      <tr>
+        <td>
+          <img src="/static/img/logos/tour_sponsors/isim.png">
+        </td>
+        <td>
+          <img src="/static/img/logos/tour_sponsors/iste.png">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="/static/img/logos/tour_sponsors/airwatch.png">
+        </td>
+        <td>
+          <img src="/static/img/logos/tour_sponsors/ksu.png">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="/static/img/logos/tour_sponsors/cres.png">
+        </td>
+        <td>
+          <img src="/static/img/logos/tour_sponsors/haw.png">
+        </td>
+      </tr>
+    </table>
+
   </article>
 
 {% endblock body %}

@@ -16,6 +16,8 @@ BREAKPOINTS = {
 	// DESKTOP_HUGE >= 1281
 }
 
+var GOOGLE_ICON_IMG = '/static/img/maps/pin.png';
+
 /*
 	PLACE		  DATES				NAME
 	Atlanta, GA   6/15 - 6/16       DLR Tour Kick Off
@@ -281,6 +283,8 @@ function initialize()
 				title: 'Tour Stop', // TODO Actual Title
 				zIndex: 90000, // render above result markers
 				visible: true,
+				icon: GOOGLE_ICON_IMG,
+  				//shadow: SHADOW_IMG,
 			});
 
 			markers.push(mark);
