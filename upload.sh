@@ -19,15 +19,33 @@ python build.py
 print_status 'Compiling LESS'
 lessc --yui-compress static/less/main.less > output/final/static/design.out.css
 
-print_status 'Running rsync to isi.isimobile.com'
-rsync . isiglobal@isimobile.com:/home/isiglobal/isi.isimobile.com/flaskapp
+#
+# DREAMHOST DYNAMIC
+#
 
-print_status 'Restarting Python on isi.isimobile.com'
-ssh -n -f isiglobal@isimobile.com "sh -c 'touch isi.isimobile.com/tmp/restart.txt'"
+#print_status 'Running rsync to isi.isimobile.com'
+#rsync . isiglobal@isimobile.com:/home/isiglobal/isi.isimobile.com/flaskapp
 
-print_status 'Running rsync /output/final/ -> staging.isimobile.com'
-rsync ./output/final/ isiglobal@isimobile.com:/home/isiglobal/staging.isimobile.com
+#print_status 'Restarting Python on isi.isimobile.com'
+#ssh -n -f isiglobal@isimobile.com "sh -c 'touch isi.isimobile.com/tmp/restart.txt'"
+
+#
+# DREAMHOST STATIC 
+#
+
+#print_status 'Running rsync /output/final/ -> staging.isimobile.com'
+#rsync ./output/final/ isiglobal@isimobile.com:/home/isiglobal/staging.isimobile.com
+
+#print_status 'Running rsync to staging.isimobile.com/static'
+#rsync ./static/ isiglobal@isimobile.com:/home/isiglobal/staging.isimobile.com/static
+
+#
+# GODADDY STATIC
+#
+
+print_status 'Running rsync /output/final/ -> staging.ischoolinitiative.org'
+rsync --rsync-path=~/bin/rsync ./output/final/ ischooltravis@ischoolinitiative.org:html/staging
 
 print_status 'Running rsync to staging.isimobile.com/static'
-rsync ./static/ isiglobal@isimobile.com:/home/isiglobal/staging.isimobile.com/static
+rsync --rsync-path=~/bin/rsync ./static/ ischooltravis@ischoolinitiative.org:html/staging/static
 
