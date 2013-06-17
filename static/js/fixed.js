@@ -69,7 +69,8 @@ var FixedElementView = Backbone.View.extend({
 				      left: '', // hackish reset fix
 				  });*/
 
-		$(window).scroll(function() { that.onScroll(); });
+		$(window).on('scroll', function() { that.onScroll(); });
+		$(window).on('resize', function() { that._resizeWrapper(); });
 
 		this.constructor.COUNTER++;
 	},
@@ -82,7 +83,7 @@ var FixedElementView = Backbone.View.extend({
 		// Necessary to prevent jumpiness @ threshold point
 		// I'm continually firing this because font load/changes
 		// may alter height.
-		this.$wrap.height(this.$el.outerHeight());
+		this._resizeWrapper();
 
 		if(this.$stop) {
 			c = this.$stop.position().top - this.$el.outerHeight();
@@ -110,6 +111,10 @@ var FixedElementView = Backbone.View.extend({
 			});
 		}
 		//this.$el.attr('data-state', this.state); // debug only
+	},
+
+	_resizeWrapper: function() {
+		this.$wrap.height(this.$el.outerHeight());
 	},
 },
 // STATIC STUFF

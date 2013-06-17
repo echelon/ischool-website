@@ -27,28 +27,74 @@
 
 	article#tour {
 		@height: 560px;
+		@media all and (max-width: @desktopRegular_andUnder) {
+			height: @height - 75px;
+		}
+		@media all and (max-width: @tabletLandscape_andUnder) {
+			height: @height - 150px;
+		}
+		@media all and (max-width: @tabletPortrait_andUnder) {
+			// Change flow
+			height: auto;
+		}
 		height: @height;
 		height: 560px;
 		overflow: hidden;
 		position: relative;
 		background-color: #fff;
 		img#tourLogo {
+			max-width: 700px;
+			width: 90%;
 			display: block;
 			margin: auto;
+			@media all and (max-width: @desktopRegular_andUnder) {
+				width: 80%;
+			}
+			@media all and (max-width: @tabletPortrait_andUnder) {
+				width: 70%;
+			}
 		}
 		img#busCutout {
 			position: absolute;
 			bottom: 0px;
 			left: -80px;
+			width: 60%;
 			max-width: 750px;
+			@media all and (max-width: @desktopRegular_andUnder) {
+				width: 55%;
+			}
+			@media all and (max-width: @tabletPortrait_andUnder) {
+				// Change flow
+				padding: 2.0em 1.0em 1.0em;
+				position: relative;
+				display: block;
+				margin: auto;
+				left: 0;
+				bottom: 0;
+			}
 		}
 		.text {
 			position: absolute;
 			top: @height/2 - 50px;
 			right: 0;
 			max-width: 550px;
+			width: 45%;
 			padding: 0em 1.5em;
 			text-size: 1.3em;
+			@media all and (max-width: @desktopRegular_andUnder) {
+				top: (@height - 150px)/2 - 50px;
+			}
+			@media all and (max-width: @tabletPortrait_andUnder) {
+				// Change flow
+				position: relative;
+				display: block;
+				margin: auto;
+				width: auto;
+				left: 0;
+				top: 0;
+				padding: 0;
+				text-size: 1.4em;
+			}
 		}
 	}
 
