@@ -1,9 +1,44 @@
+RewriteEngine On
 ErrorDocument 404 /404.html
 
-# Redirect URLs to not have the .html extension
-RewriteEngine On
+# XXX: Apache docs are unclear on mod_rewrite!
+# Rewrite rules re-run in iterations up to 10 times until no 
+# rewrite rule is matched or input and final URLs match. Thus the
+# [L] flag doesn't push the URL to Apache, but merely exits the
+# iteration!
+
+# Remove Trailing Slashes
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)/$ $1?noredirect=$1 [R=301,L]
+
+
+# Remove .html from the URL
+RewriteCond %{THE_REQUEST} ^GET\ (.*)\.html\ HTTP
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_FILENAME} !404
+RewriteRule (.*)\.html$ $1 [R=301]
+
+# Map vanity URLs without the '.html' to the underlying html file
 RewriteCond %{REQUEST_URI} !/(static|img)/
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !404
 RewriteCond %{REQUEST_FILENAME}\.html -f
-RewriteRule ^(.*)$ $1.html
+RewriteRule ^(.*)$ $1.html [L]
+
+# RewriteRule
+# First argument is URL-path, eg. 
+# http://foo.com/path/to/file.html => /path/to/file.html
+# Second...
+
+ 
+# TODO:
+# /about/team/ -> about
+# /media/ -> TODO
+# /media/gallery/ -> TODO
+# /services/donate-to-educate/ -> TODO
+# /media/press/ -> ???
+# /about/dlr-tour -> /tour
+# /services/ -> /pd
+# /services/educational-applications/ -> ???
+# /about/advisors -> /about
