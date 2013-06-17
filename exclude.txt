@@ -2,5 +2,6 @@
 .git-bak/
 output_build/
 output/
+static/img/ASSET_ORIGINAL
 *~
 *pyc

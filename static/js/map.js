@@ -16,7 +16,7 @@ BREAKPOINTS = {
 	// DESKTOP_HUGE >= 1281
 }
 
-var GOOGLE_ICON_IMG = '/static/img/maps/pin.png';
+var GOOGLE_ICON_IMG = '/static/img/icons/maps/pin_18.png';
 
 /*
 	PLACE		  DATES				NAME
