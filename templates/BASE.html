@@ -34,11 +34,12 @@
     {% if config.DEV_MACHINE %}
         <link href="/static/less/main.less{{ cache_buster() }}" 
               rel="stylesheet/less">
+        <link href="/static/img/favicon_dev.png" rel="shortcut icon">
     {% else %}
         <link href="/static/design.out.css" rel="stylesheet">
+        <link href="/static/img/favicon.png" rel="shortcut icon">
     {% endif %}
 
-    <link href="/static/img/favicon.png" rel="shortcut icon">
     
     {% block extraHead %}{% endblock %}
 

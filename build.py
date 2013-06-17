@@ -12,6 +12,7 @@ import warnings
 from main import *
 from flask_frozen import Freezer
 
+STATIC_DIR = './static'
 BUILD_DIR = './output/build'
 OUTPUT_DIR = './output/final'
 
@@ -65,6 +66,7 @@ class Directory(object):
 			except:
 				pass
 
+staticDir = Directory(STATIC_DIR)
 buildDir = Directory(BUILD_DIR)
 outputDir = Directory(OUTPUT_DIR)
 
@@ -104,6 +106,10 @@ def copy_html_files():
 	for f in filesNew:
 		shutil.copy2(f, outputDir.directory)
 
+def copy_favicon():
+	f = staticDir.join('img/favicon.ico')
+	shutil.copy2(f, outputDir.directory)
+
 def copy_htaccess():
 	f = os.path.join(os.path.abspath('.'), '.htaccess')
 	shutil.copy2(f, outputDir.directory)
@@ -122,8 +128,9 @@ def build():
 	else:
 		print 'Files didn\'t change.'
 
-	print 'Copying .htaccess...'
+	print 'Copying .htaccess and favicon...'
 	copy_htaccess()
+	copy_favicon()
 
 if __name__ == '__main__':
 	build()
