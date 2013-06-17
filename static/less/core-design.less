@@ -19,6 +19,10 @@ body {
 	}
 }
 
+a {
+	color: @peterRiver;
+}
+
 p, blockquote {
 	margin: 0;
 	padding: @tPadding/@h5-size
@@ -60,6 +64,12 @@ article {
 	color: @midnightBlue;
 	background-color: @clouds;
 	//padding: TODO
+	a:link, a:visited {
+		color: @peterRiver;
+	}
+	a:hover, a:active {
+		color: @carrot;
+	}
 	h1, h2, h3, h4, h5 {
 		font-family:  'bryant alternate';
 		text-transform: uppercase;

@@ -42,6 +42,9 @@ var install_dev_keybindings = function() {
 				break;
 
 			case 'r':
+				if(ev.ctrlKey) {
+					break;
+				}
 				console.log('Refressh LESS.');
 				less.refresh();
 				break;
