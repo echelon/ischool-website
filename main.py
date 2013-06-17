@@ -61,10 +61,11 @@ def page_test():
 def page_booking():
 	return render_template('booking.html')
 
-@app.route('/404')
 @app.errorhandler(404)
+@app.route('/404')
 def page_404(e=None):
-	return render_template('404.html'), 404
+	#return render_template('404.html'), 404
+	return render_template('404.html')
 
 # -----------------
 # DEVELOPMENT TOOLS

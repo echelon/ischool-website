@@ -85,8 +85,11 @@ def add_html_extensions():
 
 def build_is_newer():
 	def file_hash(f):
-		with open(f, 'r') as _f:
-			return hashlib.sha1(_f.read()).hexdigest()
+		try:
+			with open(f, 'r') as _f:
+				return hashlib.sha1(_f.read()).hexdigest()
+		except:
+			return ''
 
 	for f in buildDir.glob('*html', False):
 		a = file_hash(buildDir.join(f))
