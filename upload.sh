@@ -43,11 +43,11 @@ lessc --yui-compress static/less/main.less > output/final/static/design.out.css
 # GODADDY STATIC STAGING
 #
 
-print_status 'Running rsync /output/final/ -> staging.ischoolinitiative.org'
-rsync --rsync-path=~/bin/rsync ./output/final/ ischooltravis@ischoolinitiative.org:html/staging
+#print_status 'Running rsync /output/final/ -> staging.ischoolinitiative.org'
+#rsync --rsync-path=~/bin/rsync ./output/final/ ischooltravis@ischoolinitiative.org:html/staging
 
-print_status 'Running rsync to staging.isimobile.com/static'
-rsync --rsync-path=~/bin/rsync ./static/ ischooltravis@ischoolinitiative.org:html/staging/static
+#print_status 'Running rsync to staging.isimobile.com/static'
+#rsync --rsync-path=~/bin/rsync ./static/ ischooltravis@ischoolinitiative.org:html/staging/static
 
 #
 # GODADDY STATIC FINAL DEPLOY
