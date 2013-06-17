@@ -1,16 +1,8 @@
 {% extends "BASE.html" %}
-{% block title %}iSchool &mdash; Not Found{% endblock %}
+{% set pageName = '404Page' %}
+{% set subtitle = 'Document Not Found' %}
 
-
-{% block todo %}
-<article id="todo">
-  <h2>TODO / Remaining for this page:</h2>
-  <ul>
-    <li>404 page isn't designed yet. 
-    But it needs a funny "gotcha". 
-    Perhaps Slav can draw something?</li>
-  </ul>
-</article>
-{% endblock todo %}
-
+{% block body %}
+  <h1>The document you were looking for could not be found.</h1>
+{% endblock body %}
 

@@ -25,7 +25,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{% block title %}iSchool{% endblock %}</title>
+    <title>{% block title %}iSchool Initiative{% endblock %}</title>
 
     <!-- TODO: Final version: Compile all of this! -->
     <link href="/static/css/yui-reset.css" rel="stylesheet">
@@ -44,8 +44,7 @@
 
   </head>
   <body>
-    <div id="main" 
-         class="{% block pageClass %}TemplatePage{% endblock %}">
+    <div id="main" class="{{ pageName }}">
       {% block header %}
         <!-- Replaces topAttention -->
       {% endblock header %}
