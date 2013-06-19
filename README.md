@@ -9,7 +9,7 @@ The iSchool Initiative Website (2013 Q3)
 
 This project goes to show that Brandon does webdesign (sometimes). 
 
-***Javascript Features** 
+**Javascript Features** 
 
 * Fixed elements, such as the navigational element, that can be bound
   to collapse on top of each other (see _Tour page_)
