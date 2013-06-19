@@ -1,15 +1,15 @@
 The iSchool Initiative Website (2013 Q3)
 ========================================
-**[ischoolinitiative.org](http://ischoolinitiative.org/)**
-
 [![](http://i.imgur.com/DFQpdTF.png)](http://ischoolinitiative.org/)
 [![](http://i.imgur.com/pG4XjXT.png)](http://ischoolinitiative.org/about)
 [![](http://i.imgur.com/dDZYRWw.png)](http://ischoolinitiative.org/tour)
 [![](http://i.imgur.com/FxgHLCs.png)](http://ischoolinitiative.org/pd)
 
+**[ischoolinitiative.org](http://ischoolinitiative.org/)**
+
 This project goes to show that Brandon does webdesign (sometimes). 
 
-** Javascript Features** 
+***Javascript Features** 
 
 * Fixed elements, such as the navigational element, that can be bound
   to collapse on top of each other (see _Tour page_)
