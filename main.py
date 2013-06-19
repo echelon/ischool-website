@@ -64,7 +64,8 @@ def page_booking():
 @app.errorhandler(404)
 @app.route('/404')
 def page_404(e=None):
-	#return render_template('404.html'), 404
+	if e:
+		return render_template('404.html'), 404
 	return render_template('404.html')
 
 # -----------------
