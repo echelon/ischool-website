@@ -21,6 +21,14 @@ var install_stats_fixed = function() {
 	});
 }
 
+var install_learning_fixed = function() {
+	window.learning_fixed = new FixedElementView({
+		selector: '#learningFixed',
+		stop: '#justBeforeNav',
+	});
+}
+
+
 var FixedElementView = Backbone.View.extend({
 	$el: null,		 // moving element
 	$wrap: null,	 // we create a wrapper placeholder

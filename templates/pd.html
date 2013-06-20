@@ -2,10 +2,21 @@
 {% set pageName = 'PdPage' %}
 {% set subtitle = 'Professional Development' %}
 
+
+
+{% block extraBody %}
+  <script type="text/javascript">
+     install_learning_fixed();
+  </script>
+{% endblock %}
+
+
 {% block header %}
   <header>
-    <div class="textwrap">
-      <h1>A New Perspective on Professional Development</h1>
+    <div class="wrap">
+      <div id="learningFixed" class="textwrap">
+        <h1>A New Perspective on Professional Development</h1>
+      </div>
     </div>
   </header>
 {% endblock header %}

@@ -49,7 +49,7 @@ def page_about():
 def page_tour():
 	return render_template('tour.html')
 
-@app.route('/pd')
+@app.route('/learning')
 def page_pd():
 	return render_template('pd.html')
 

@@ -39,6 +39,10 @@ RewriteRule ^(.*)$ /about [R=301]
 RewriteCond %{THE_REQUEST} ^GET\ /?services/?\ HTTP
 RewriteRule ^(.*)$ /pd [R=301]
 
+# Redirect pages I created
+RewriteCond %{THE_REQUEST} ^GET\ /?pd/?\ HTTP
+RewriteRule ^(.*)$ /learning [R=301]
+
 # TODO:
 # /media/ -> TODO
 # /media/gallery/ -> TODO
