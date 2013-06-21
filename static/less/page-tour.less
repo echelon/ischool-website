@@ -83,11 +83,16 @@
 	
 	article#grid {
 		.blue { background-color: @peterRiver; }
-		.orange { 
-			background-color: @orange; 
+		.darkblue { 
+			background-color: @belizeHole; 
+			color: #fff;
+		}
+		.reallydarkblue { 
+			background-color: darken(@belizeHole, 10%);
 			color: #fff;
 		}
 		.black { background-color: #000; }
+		.white { background-color: #fff; }
 
 		background-color: #000;
 		color: @clouds;
@@ -105,34 +110,71 @@
 					width: 100%;
 				}
 			}
-			#td0 {
-				background-image: 
-					url('/static/img/photos/grid/devices_450.png');
+			#gridTextIntro {
+				.darkblue;
 			}
-			#td1 {
-				.blue; // TEXT
+			#gridText1 {
+				.blue;
 			}
-			#td2 {
-				background-image: 
-					url('/static/img/photos/grid/square_dlr_450.png');
+			#gridText2 {
+				.reallydarkblue;
 			}
-			#td3 {
-				.orange; // TEXT
+			#gridText3 {
+				.blue;
 			}
-			#td4 {
-				background-image: 
-					url('/static/img/photos/grid/smiles_450.png');
+			#gridText4 {
+				.darkblue;
 			}
-			#td5 {
-				.blue; // TEXT
-			}
-			#td6 {
+			#gridImgLarge1 {
 				background-image: 
 					url('/static/img/photos/grid/mobile_toolkit_blur_450.png');
 			}
-			#td7 {
+			#gridImgLarge2 {
 				background-image: 
-					url('/static/img/photos/grid/professional_dev_450.png');
+					url('/static/img/photos/grid/toolkit_top_900.png');
+			}
+			#gridImgLarge2 {
+				//background-image: 
+				//	url('/static/img/cutouts/bus_side_1000.png');
+			}
+			#gridImgSmall1 {
+				.wrap {
+					height: 100%;
+					width: 100%;
+					background-image: 
+					 url('/static/img/photos/grid/devices_450.png');
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center center;
+					.wrap2 {
+						height: 100%;
+						width: 100%;
+						background-size: cover;
+						background-repeat: no-repeat;
+						background-position: center center;
+						background-image: url('/static/img/photos/grid/mobile_toolkit_blur_450.png');
+					}
+				}
+		//imgAbove: '/static/img/photos/grid/devices_450.png',
+		//imgBelow: '/static/img/photos/grid/mobile_toolkit_blur_450.p
+			}
+			#gridImgSmall2 {
+				//background-image: 
+				//	url('/static/img/photos/grid/smiles_450.png');
+				.white;
+			}
+			#gridImgSmall3 {
+				//background-image: 
+				//	url('/static/img/photos/grid/square_dlr_450.png');
+				.white;
+			}
+			#gridImgSmall4 {
+				background-image: 
+					url('/static/img/photos/grid/table_point_450.png');
+			}
+			#gridImgSmall5 {
+				background-image: 
+					url('/static/img/photos/grid/toolkit_bottom_450.png');
 			}
 		}
 	}

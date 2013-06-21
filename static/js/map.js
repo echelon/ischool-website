@@ -166,49 +166,41 @@ function initialize()
 		var width = $('#maps').width();
 
 		if(width <= BREAKPOINTS.PHONE_PORTRAIT) {
-			//console.log('phone_portrait')
 			map.setZoom(4);
 			map.setCenter(c2);
 			center = c2;
 		}
 		else if(width <= BREAKPOINTS.PHONE_LANDSCAPE) {
-			//console.log('phone_landscape')
 			map.setZoom(4);
 			map.setCenter(c2);
 			center = c2;
 		}
 		else if(width <= BREAKPOINTS.TABLET_PORTRAIT) {
-			//console.log('tablet_portrait')
 			map.setZoom(4);
 			map.setCenter(c2);
 			center = c2;
 		}
 		else if(width <= BREAKPOINTS.TABLET_LANDSCAPE) {
-			//console.log('tablet_landscape')
 			map.setZoom(5);
 			map.setCenter(c2);
 			center = c2;
 		}
 		else if(width <= BREAKPOINTS.DESKTOP_REGULAR) {
-			//console.log('desktop_regular')
 			map.setZoom(5);
 			map.setCenter(c2);
 			center = c2;
 		}
 		else { // We're at width >= DESKTOP_HUGE
-			//console.log('desktop_huge')
 			map.setZoom(5);
 			map.setCenter(c3);
 			center = c3;
 		}
-		//console.log(width);
 	}
 	$(window).on('resize', sizeMap);
 
 	//google.maps.event.addListener(map, 
 	//'center_changed', function() {
 	google.maps.event.addListener(map, 'dragend', function() {
-		console.log('changed center');
 		setTimeout(function() {
 			map.panTo(center);
 			//map.setCenter(center);
@@ -264,8 +256,6 @@ function initialize()
 		}
 
 		var route = response.routes[0];
-
-		console.log(response);
 
 		route.overview_polyline = null;
 		route.overview_path = null;
