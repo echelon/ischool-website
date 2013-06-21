@@ -18,6 +18,7 @@
 		height: 600px;
 		background-image: 
 			url('/static/img/photos/sir_ken_robinson_1300.png');
+		background-position: center top;
 		background-size: cover;
 		background-color: #fff;
 		color: @wetAsphault;
@@ -121,12 +122,64 @@
 		background-repeat: no-repeat;
 		background-position: right bottom;
 		background-color: @orange;
-		color: @clouds;
+		color: #fff;
 		position: relative;
+		a {
+			color: #fff;
+		}
+		a:hover, a:active {
+			color: @clouds;
+		}
 		.wrap {
 			position: absolute;
 			top: 20%;
 			width: 35%;
+		}
+	}
+
+	#changing {
+		height: 450px;
+		background-image: 
+			url('/static/img/photos/fingers_on_ipad_1300.png');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-color: @clouds;
+		color: @midnightBlue;
+		h2, h3 {
+			text-transform: capitalize;
+		}
+		.wrapOuter {
+			height: 100%;
+			display: table;
+			.wrapInnerA {
+				display: table-row;
+				height: 50%;
+				h2, h3 {
+					display: table-cell;
+					vertical-align: middle;
+				}
+			}
+			.wrapInnerB {
+				display: table-row;
+				height: 50%;
+				color: darken(@midnightBlue, 15%);
+				.wrap {
+					padding: 2em 4em;
+					display: table-cell;
+					vertical-align: top;
+					p {
+						background-color: rgba(255, 255, 255, 0.2);
+					}
+					a {
+						color: darken(@midnightBlue, 15%);
+						text-decoration: underline;
+					}
+					a:hover, a:active {
+						color: lighten(@midnightBlue, 15%);
+					}
+				}
+			}
 		}
 	}
 
