@@ -63,13 +63,13 @@ var GridImageView = Backbone.View.extend({
 		if(this.model.get('isAbove')) {
 			this.$wrap.stop()
 				.css('opacity', 0)
-				.animate({opacity: 1}, 1000);
+				.animate({opacity: 1}, 400);
 		}
 		else {
 			this.$wrap
 				.stop()
 				.css('opacity', 1)
-				.animate({opacity: 0}, 1000);
+				.animate({opacity: 0}, 400);
 		}
 	},
 });

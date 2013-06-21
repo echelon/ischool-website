@@ -82,6 +82,9 @@
 	}*/
 	
 	article#grid {
+		padding: 0;
+		margin: 0;
+
 		.blue { background-color: @peterRiver; }
 		.darkblue { 
 			background-color: @belizeHole; 
@@ -98,35 +101,35 @@
 		color: @clouds;
 
 		table {
+			.large { display: inline; }
+			.mobile { display: none; }
 			@media all and (max-width: @phoneLandscape_andUnder) {
+				.large { display: none; }
+				.mobile { display: inline; }
 				font-size: 0.8em;
 			}
 			@media all and (max-width: @phonePortrait_andUnder) {
+				.large { display: none; }
+				.mobile { display: inline; }
 				font-size: 0.6em;
 			}
 			width: 100%;
 			height: 100%;
+			margin: 0;
+			padding: 0;
 			table-layout: fixed;
 			overflow: hidden;
-			td.one {
-				width: 33.333%;
-				overflow: hidden;
-			}
-			td.two {
-				width: 66.666%;
-				overflow: hidden;
-			}
 			td {
 				background-size: 100% 100%;
 				background-repeat: no-repeat;
 				background-position: right top;
-				//width: 33%;
-				//height: 33%;
 				overflow: hidden;
 				img {
 					width: 100%;
 				}
 			}
+			td.one { width: 33.333%; }
+			td.two { width: 66.666%; }
 			#gridTextIntro {
 				.darkblue;
 			}
@@ -134,13 +137,13 @@
 				.blue;
 			}
 			#gridText2 {
-				.reallydarkblue;
+				.darkblue;
 			}
 			#gridText3 {
-				.blue;
+				.darkblue;
 			}
 			#gridText4 {
-				.darkblue;
+				.blue;
 			}
 			#gridImgLarge1 {
 				background-image: 
@@ -271,6 +274,9 @@
 			}
 		}
 		table#smallLogos {
+			@l1: 70%;
+			@l2: 63%;
+			@l3: 55%;
 			td {
 				vertical-align: middle;
 				padding: 1.0em;
@@ -278,16 +284,10 @@
 			img {
 				display: block;
 				margin: auto;
-				width: 300px;
-				@media all and (max-width:
-					@tabletLandscape_andUnder) {
-					width: 200px;
-				}
-				@media all and (max-width:
-					@phoneLandscape_andUnder) {
-					width: 150px;
-				}
 			}
+			.level1 img { width: @l1; }
+			.level2 img { width: @l2; }
+			.level3 img { width: @l3; }
 		}
 	}
 	#thanks {
