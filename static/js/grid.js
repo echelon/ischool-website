@@ -15,6 +15,44 @@ var install_grid_anim = function() {
 	];
 }
 
+var install_fix_table_width = function() {
+	var resizeTd = function() {
+		var width = 0,
+			sum = 0,
+			num = 0;
+		console.log('resizeTd');
+		$('td.one').each(function(el) {
+			sum += $(this).innerWidth();
+			num++;
+			console.log(sum, num);
+		})
+		.promise()
+		.done(function() {
+			width = sum / num;
+			console.log(width);
+			$('#grid td')
+				.height(width);
+			$('#grid .wrap')
+				.width(width)
+				.height(width);
+			$('#grid .textwrap')
+				.width(width)
+				.height(width);
+			$('#grid .wrap2')
+				.width(width)
+				.height(width);
+			$('#grid img.blank')
+				.width(width)
+				.height(width);
+			$('#grid img.blank2')
+				.height(width);
+		});
+	};
+
+	$(window).on('resize', resizeTd);
+	resizeTd();
+}
+
 var GridImage = Backbone.Model.extend({
 	defaults: {
 		isAbove: true,
