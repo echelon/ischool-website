@@ -1,56 +1,42 @@
-
-// Simple grid animation
-// This code is rough...
+/**
+ * Simple animation on the grid.
+ * Copyright (c) 2013 Brandon Thomas <bt@brand.io>
+ * See more at http://brand.io
+ */
 
 var install_grid_anim = function() {
-	var model = new GridImage({
-		imgAbove: '/static/img/photos/grid/devices_450.png',
-		imgBelow: '/static/img/photos/grid/mobile_toolkit_blur_450.png',
-	});
-	window.foo = new GridImageView({
-		model: model,
-		el: $('#gridImgSmall1'),
-	});
+	window.grid_anims = [
+		new GridImageView({
+			el: $('#gridImgSmall1'),
+		}),
+		new GridImageView({
+			el: $('#gridImgSmall4'),
+		}),
+	];
 }
 
 var GridImage = Backbone.Model.extend({
 	defaults: {
-		imgAbove: '', // Above the midpoint
-		imgBelow: '', // Below the midpoint
 		isAbove: true,
 	},
-	initialize: function() {
-		this.setAbove();
-	},
 	setAbove: function() {
-		/*var cur = this.get('imgCur'),
-			above = this.get('imgAbove');
-		if(cur != above) {
-			this.set('imgCur', above);
-		}*/
 		if(!this.get('isAbove')) {
 			this.set('isAbove', true);
 		}
 	},
 	setBelow: function() {
-		/*var cur = this.get('imgCur'),
-			below = this.get('imgBelow');
-		if(cur != below) {
-			this.set('imgCur', below);
-		}*/
 		if(this.get('isAbove')) {
 			this.set('isAbove', false);
 		}
 	},
 });
 
-var GridImages = Backbone.Collection.extend({
-	model: GridImage,
-});
-
 var GridImageView = Backbone.View.extend({
+	$wrap: null,
 	initialize: function() {
 		var that = this;
+		this.$wrap = this.$el.find('.wrap2');
+		this.model = new GridImage({});
 		this.model.on('change', function() {
 			that.updateImage();
 		});
@@ -68,27 +54,22 @@ var GridImageView = Backbone.View.extend({
 
 		if(b > a) {
 			this.model.setAbove();
-			console.log('above');
 		}
 		else {
 			this.model.setBelow();
-			console.log('below');
 		}
 	},
 	updateImage: function() {
-		console.log('update the image css');
 		if(this.model.get('isAbove')) {
-			//this.$el.find('.wrap2').fadeIn();
-			this.$el.find('.wrap2')
+			this.$wrap.stop()
 				.css('opacity', 0)
 				.animate({opacity: 1}, 1000);
 		}
 		else {
-			//this.$el.find('.wrap2').fadeOut();
-			this.$el.find('.wrap2')
+			this.$wrap
+				.stop()
 				.css('opacity', 1)
 				.animate({opacity: 0}, 1000);
-			//this.$el.find('.wrap2').css({visibility: 'hidden'});
 		}
 	},
 });
