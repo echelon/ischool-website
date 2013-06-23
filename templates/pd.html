@@ -3,10 +3,11 @@
 {% set subtitle = 'Professional Development' %}
 
 
-
 {% block extraBody %}
+  <script src="/static/js/form_tour.js{{ cache_buster() }}"></script>
   <script type="text/javascript">
      install_learning_fixed();
+     install_form_tour_on_pd();
   </script>
 {% endblock %}
 
@@ -69,13 +70,14 @@
     <p>Awakening Your Creative Genius does exactly what the title suggests. It causes people to become aware of their own creative potential and understand how to harness it in education. This keynote takes creativity out of the confines of just art and music. Keep an open mind as this experience is not meant to teach the audience anything new, but rather to get people to see what they already know from a different perspective&mdash;causing a paradigm shift.</p>
   </article>
 
-  <article id="book" class="buttonBlock">
-    <button>Book Our PD!</button>
-  </article>
 
   <article id="educate">
     <h2>We Educate</h2>
     <p>Our training is custom designed for teachers, administrators, and even students. Our courses are geared around personalized and collaborative learning, as well as digital technology that includes both hardware and software training.</p>
+  </article>
+
+  <article id="book" class="buttonBlock">
+    <button>Book Our PD!</button>
   </article>
 
   <!--<article>
