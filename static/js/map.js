@@ -42,6 +42,7 @@ function initialize()
 	var mapOptions = {
 		center: new google.maps.LatLng(39.000, -95.000),
 		zoom: 4,
+		draggable: false,
 		disableDefaultUI: true,
 		panControl: false,
 		zoomControl: false,

@@ -4,8 +4,6 @@
  * See more at http://brand.io
  */
 
-// TODO: Set as function of time
-// TODO: Decimal and thousands-place comma formatting
 // TODO: Don't freeze browser
 // TODO: Install and run after maps is constructed (fire event)
 // TODO: Now is probably the time to consider AMD and js compiling
