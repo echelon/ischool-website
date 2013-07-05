@@ -51,7 +51,7 @@ def page_tour():
 
 @app.route('/learning')
 def page_pd():
-	return render_template('pd.html')
+	return render_template('learning.html')
 
 @app.route('/test')
 def page_test():
