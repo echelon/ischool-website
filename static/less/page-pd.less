@@ -6,7 +6,7 @@
 		background-position: center top;
 		background-size: cover;
 		background-attachment: fixed;
-		height: 600px;
+		height: 550px;
 		color: #fff;
 		.wrap {
 			height: 100%;
@@ -71,10 +71,10 @@
 
 	article#book {
 		min-height: 200px;
-		background-color: rgba(0, 0, 0, 0.9);
+		background-color: @sunflower;
 		button { 
-			border: 3px solid @orange;
-			background-color: @orange;
+			border: 3px solid @sunflower;
+			background-color: @sunflower;
 			color: #fff;
 		}
 		button:hover {
@@ -87,7 +87,32 @@
 	}
 
 	article#keynotes {
-		padding: 2.2em 1.5em 3.4em;
+		padding: 2em 0 0;
+		background-color: #fff;
+		color: @orange;
+		.orange {
+			background: @orange;
+			color: #fff;
+		}
+		.left {
+			float: left;
+			padding: 0 1.5em 0 0;
+		}
+		.right {
+			float: right;
+			padding: 0 0 0 1.5em;
+		}
+		img {
+			height: 100%;
+			max-height: 350px;
+		}
+		.text {
+			padding: 1em 1em 0;
+		}
+		.clear {
+			padding: 0;
+			margin: 0;
+		}
 	}
 
 	article#testimonials {
