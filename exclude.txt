@@ -1,8 +1,32 @@
+# Temp files, dotfiles, config, tooling, etc
 .git/
-.git-bak/
-output_build/
-output/
-img/ASSET_ORIGINAL
-static/img/ASSET_ORIGINAL
+.gitignore
+.dropbox
 *~
 *pyc
+
+# Build and deploy tools, dirs
+output/
+output_build/
+upload_production.sh
+upload_staging.sh
+deploy_production.sh
+deploy_staging.sh
+build.py
+
+# Misc
+.git-bak/
+ignoreme
+exclude.txt
+README.md
+*.key
+
+# Project-specific
+img/ASSET_ORIGINAL
+img/mockups
+static/
+static/img/ASSET_ORIGINAL
+
+# Databases
+database.sqlite
+_database.sqlite
