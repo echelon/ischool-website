@@ -71,6 +71,12 @@
 		.wrap {
 			position: relative;
 			height: 450px;
+			@media all and (max-width: @desktopRegular_andUnder) {
+				height: 400px;
+			}
+			@media all and (max-width: @tabletPortrait_andUnder) {
+				height: 450px;
+			}
 			img#busCutout {
 				position: absolute;
 				left: -80px;
