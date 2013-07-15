@@ -1,5 +1,6 @@
 *~
 *pyc
+node_modules/
 static/img/*
 static/font/*
 build/*

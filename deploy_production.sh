@@ -15,9 +15,6 @@ function print_status() {
 print_status 'Running build script'
 python build.py
 
-print_status 'Compiling LESS'
-lessc --yui-compress static/less/main.less > output/final/static/design.out.css
-
 #
 # GODADDY (ugh) STATIC FINAL DEPLOY
 #

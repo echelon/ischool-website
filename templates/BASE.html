@@ -27,16 +27,11 @@
 
     <title>{% block title %}iSchool Initiative{% endblock %}</title>
 
-    <!-- TODO: Final version: Compile all of this! -->
-    <link href="/static/css/yui-reset.css" rel="stylesheet">
-    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/design.out.css{{ cache_buster() }}" rel="stylesheet">
 
     {% if config.DEV_MACHINE %}
-        <link href="/static/less/main.less{{ cache_buster() }}" 
-              rel="stylesheet/less">
         <link href="/static/img/favicon_dev.png" rel="shortcut icon">
     {% else %}
-        <link href="/static/design.out.css" rel="stylesheet">
         <link href="/static/img/favicon.png" rel="shortcut icon">
     {% endif %}
 
@@ -145,18 +140,6 @@
       {% block todo %}{% endblock todo %}
     </div>
     {%if config.DEV_MACHINE %}
-      <script type="text/javascript">
-          less = {
-              env: "development",
-              async: false,
-              fileAsync: false,
-              poll: 1000,
-              functions: {},
-              dumpLineNumbers: "comments",
-              relativeUrls: false,
-          };
-      </script>
-      <script src="/static/js/lib/less.min.js"></script>
     {% else %}
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;
