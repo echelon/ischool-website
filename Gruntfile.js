@@ -10,6 +10,53 @@ module.exports = function(grunt) {
 						'-t 500 ',
 		},
 
+		neuter: {
+			production: {
+				options: {
+					filepathTransform: function(fp) {
+						return './js/' + fp;
+					},
+					includeSourceURL: false,
+					//template: '(function){ {%= src %} })();',
+					template: '{%= src %}', // For now. Eventually: wrap.frag.
+				},
+				files: [{
+					src: 'js/main.js',
+					dest: 'static/script.out.js',
+				}],
+			},
+			/*development: {
+				options: {
+					filepathTransform: function(fp) {
+						return 'src/' + fp;
+					},
+					includeSourceURL: true,
+					//template: '(function){ {%= src %} })();',
+					template: '{%= src %}',
+				},
+				files: [{
+					src: 'src/main.js',
+					dest: 'leadstep.dev.js',
+				}],
+			},*/
+		},
+
+		uglify: {
+			options: {
+				banner: '/*! ' +
+					'<%= pkg.name %> // v<%= pkg.version %> // ' +
+					'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+					'<%= meta.copyright %> ' +
+					'*/\n',
+			},
+			production: {
+				files: [{
+					src: 'static/script.out.js',
+					dest: 'static/script.out.min.js',
+				}],
+			},
+		},
+
 		less: {
 			main: {
 				src: 'less/main.less',
@@ -21,9 +68,20 @@ module.exports = function(grunt) {
 		},
 
 		watch: {
+			script: {
+				files: ['js/*.js'],
+				tasks: [
+					'neuter:production', 
+					'uglify:production', 
+					'shell:alert',
+				],
+			},
 			style: {
 				files: ['less/*.less'],
-				tasks: ['less', 'shell:alert'],
+				tasks: [
+					'less', 
+					'shell:alert',
+				],
 			},
 		},
 
@@ -36,19 +94,19 @@ module.exports = function(grunt) {
 				},
 			},
 		},
-
 	});
  
-	// TODO: Write these dependencies to package.json
-	// TODO: Write jQuery, Backbone, etc. dependencies
-	// TODO: Remove old dependencies that are no longer used
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-less');
-	grunt.loadNpmTasks('grunt-shell');
-
+	// Bower for jQuery, Backbone, etc. dependencies
 	// TODO: jslint, build tests, etc.
-	//grunt.registerTask('test', ['todo1', 'todo2']);
-	//grunt.registerTask('default', ['neuter:production']);
-	grunt.registerTask('default', ['less', 'watch']);
-	grunt.registerTask('build', ['less']); // eg. for pre-commit hook
+	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-shell');
+	grunt.loadNpmTasks('grunt-neuter');
+
+	// watch for changes
+	grunt.registerTask('default', ['neuter:production', 'less', 'watch']);
+
+	// 'build' task, eg. for pre-commit hook
+	grunt.registerTask('build', ['neuter:production', 'less']);
 };

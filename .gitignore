@@ -7,3 +7,5 @@ build/*
 output_build/*
 output/*
 *.out.css
+*.out.js
+*.out.min.js
