@@ -77,7 +77,10 @@ module.exports = function(grunt) {
 				],
 			},
 			style: {
-				files: ['less/*.less'],
+				files: [
+					'less/*.less',
+					'less/lib/*.css',
+				],
 				tasks: [
 					'less', 
 					'shell:alert',

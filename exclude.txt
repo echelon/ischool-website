@@ -1,7 +1,10 @@
-# Temp files, dotfiles, config, tooling, etc
+####### rsync ignore file #######
+
+# Temp files, dotfiles, config, tooling, etc.
 .git/
 .gitignore
 .dropbox
+exclude.txt
 *~
 *pyc
 
@@ -9,16 +12,15 @@
 node_modules/
 output/
 output_build/
+build.py
 upload_production.sh
 upload_staging.sh
 deploy_production.sh
 deploy_staging.sh
-build.py
 
 # Misc
 .git-bak/
 ignoreme
-exclude.txt
 README.md
 *.key
 

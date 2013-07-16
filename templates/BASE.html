@@ -155,14 +155,12 @@
         </script>
     {% endif %}
     <!-- Libaries -->
-    <script src="/static/js/lib/jquery.js"></script>
-    <script src="/static/js/lib/jquery.easing.js"></script>
-    <script src="/static/js/lib/jquery.smooth-scroll.min.js"></script>
-    <script src="/static/js/lib/underscore-min.js"></script>
-    <script src="/static/js/lib/backbone-min.js"></script>
+    {% if config.DEV_MACHINE %}
+      <script src="/static/script.out.min.js{{ cache_buster() }}"></script>
+    {% else %}
+      <script src="/static/script.out.js"></script>
+    {% endif %}
     <!-- Our scripting -->
-    <script src="/static/js/fixed.js{{ cache_buster() }}"></script>
-    <script src="/static/js/dev.js{{ cache_buster() }}"></script>
     <script type="text/javascript">
       install_nav();
       {% if config.DEV_MACHINE %}install_dev_mode();{% endif %}

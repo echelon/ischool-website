@@ -1,33 +1,13 @@
 /**
- * Youtube Video in Header
+ * Embed Youtube Videos across the site.
  * Copyright (c) 2013 Brandon Thomas <bt@brand.io>
  * See more at http://brand.io
- * TODO: Generalize solution.
  */
-var install_index_video = function() {
-	window.button = new PlayButtonView();
-	window.video = new YoutubeVideo({
-		id: '0RcjojbuwxM', // TODO: Pull from HTML data attrib
-	});
-	window.video.view = new VideoView({
-		model: window.video,
-		$el: $('header'),
-	});
-};
-
-var install_about_video = function() {
-	window.video = new YoutubeVideo({
-		id: '68KgAcx_9jU', // TODO: Pull from HTML data attrib
-	});
-	window.video.view = new VideoView({
-		model: window.video,
-		$el: $('#journeyVideo'),
-	});
-};
 
 // ====================================
 
 // Expected by Youtube
+// TODO: Any way around YT requiring this to be defined?
 var onYouTubeIframeAPIReady = function() {
 	window.video.isYoutubeReady = true;
 };
@@ -41,11 +21,24 @@ var YoutubeVideo = Backbone.Model.extend({
 	},
 });
 
+// Only install once!
+var YoutubeApiView = Backbone.View.extend({
+	CLASSNAME: 'youtubeApi',
+	constructor: function() {
+		// Only install the YT API JS once. 
+		if($('#' + this.CLASSNAME)) {
+			return;
+		}
+		this.$el = $('<script></script>')
+						.id(this.CLASSNAME)
+						.attr('src', 'https://www.youtube.com/iframe_api');
+	},
+	appendTo: function() {
+	},
+});
 
 var VideoView = Backbone.View.extend({
 	$el: null,
-	$player: null,
-	$loader: null,
 	$ytScript: null,
 
 	player: null, // YT video class
@@ -60,16 +53,16 @@ var VideoView = Backbone.View.extend({
 
 	constructor: function() {
 		var that = this;
+
+		// Only install the YT API JS once. 
 		this.$ytScript = $('<script></script>')
+							.id('youtubeApi')
 							.attr('src', 
 								'https://www.youtube.com/iframe_api');
 
 		if(!this.$el) {
 			this.$el = $(this.tagName);
 		}
-
-		this.$player = this.$el.find('#player');
-		this.$loader = this.$el.find('#loader');
 
 		this.$el.append(this.$ytScript);
 
